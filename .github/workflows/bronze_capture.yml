@@ -1,0 +1,64 @@
+name: "Capa Bronce - Captura Mensual Inmobiliaria y Macroeconómica"
+
+on:
+  schedule:
+    # Ejecución ética automatizada el día 1 de cada mes a las 06:00 UTC
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/extract_bronze.py"
+      - ".github/workflows/bronze_capture.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  extract-bronze:
+    name: "Ejecutar Extractor Ético (Capa Bronce)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "1. Checkout del repositorio"
+        uses: actions/checkout@v4
+
+      - name: "2. Configurar Python 3.11"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: "3. Ejecutar extractor ético de Capa Bronce"
+        env:
+          # Si se configura el secret BANXICO_TOKEN en el repositorio, consulta la API en vivo;
+          # de lo contrario utiliza la serie histórica certificada sin fallar.
+          BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
+        run: |
+          python src/extract_bronze.py
+
+      - name: "4. Verificar integridad de la serie histórica (>= 36 periodos)"
+        run: |
+          python -c "
+          import json
+          from pathlib import Path
+          macro = json.loads(Path('data/bronze/inmobiliario/macro_banxico_inegi_36m.json').read_text(encoding='utf-8'))
+          rentas = json.loads(Path('data/bronze/inmobiliario/rentas_zmvm_historico_36m.json').read_text(encoding='utf-8'))
+          n_macro = len(macro['series_mensuales'])
+          n_rentas = len(rentas['resumen_mensual_36m'])
+          print(f'Periodos Macro: {n_macro}, Periodos Rentas: {n_rentas}')
+          assert n_macro >= 36, f'Se esperaban >= 36 periodos macro, se encontraron {n_macro}'
+          assert n_rentas >= 36, f'Se esperaban >= 36 periodos de rentas, se encontraron {n_rentas}'
+          "
+
+      - name: "5. Commit y Push automático de nuevos snapshots en Capa Bronce"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bronze/inmobiliario/
+          if git diff --cached --quiet; then
+            echo "Sin cambios incrementales en los archivos de Capa Bronce."
+          else
+            git commit -m "chore(bronze): actualización automática mensual de indicadores y rentas [skip ci]"
+            git push
+          fi

@@ -1,0 +1,6 @@
+fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,tiempo_planeado_min,tiempo_real_min,error_estimacion_pct,comentarios
+2026-11-05,Juan Antonio Ortiz Hinojosa,E0,propuesta_observatorio,Planeacion,17:00,18:10,5,60,65,8.33,Definicion del sector inmobiliario ZMVM y delimitacion de la pregunta detonadora
+2026-11-06,Juan Antonio Ortiz Hinojosa,E0,entrevista_campo,Investigacion_Diseno,11:00,11:55,5,45,50,11.11,Ejecucion de entrevista de 22 min con administrador de propiedades y sintesis de hallazgos
+2026-11-07,Juan Antonio Ortiz Hinojosa,E0,preguntas_analiticas,Diseno,16:00,17:20,10,75,70,-6.67,Formulacion matematica de la trilectica estadistica (E1 SARIMAX, E2 Monte Carlo, E3 ANOVA)
+2026-11-07,Juan Antonio Ortiz Hinojosa,E0,extractor_bronce,Codificacion,19:00,20:45,10,90,95,5.56,Desarrollo del modulo de consulta BANXICO SIE y auditoria programatica de robots.txt
+2026-11-08,Juan Antonio Ortiz Hinojosa,E0,validacion_e0,Pruebas_Revision,14:00,15:00,5,50,55,10.00,Revision de completitud de 36 periodos mensuales y redaccion de propuesta.md

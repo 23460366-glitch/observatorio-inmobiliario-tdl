@@ -1,0 +1,6 @@
+fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,tiempo_planeado_min,tiempo_real_min,error_estimacion_pct,comentarios
+2026-11-05,Diego Alberto Virgen Cuéllar,E0,viabilidad_legal,Planeacion,18:00,19:05,5,55,60,9.09,Revision de terminos de libre uso de BANXICO/INEGI y politicas robots.txt de portales inmobiliarios
+2026-11-06,Diego Alberto Virgen Cuéllar,E0,arquitectura_datos,Diseno,17:00,18:15,5,65,70,7.69,Diseno del esquema JSON/CSV de Capa Bronce y reglas de la Puerta de Calidad hacia Capa Plata
+2026-11-07,Diego Alberto Virgen Cuéllar,E0,extractor_bronce,Codificacion,20:00,21:40,10,95,90,-5.26,Implementacion de generacion de serie historica de 36 meses de rentas ZMVM y snapshots mensuales
+2026-11-08,Diego Alberto Virgen Cuéllar,E0,github_actions_ci,Codificacion,11:30,12:35,5,55,60,9.09,Configuracion del workflow .github/workflows/bronze_capture.yml con cron mensual y validacion
+2026-11-08,Diego Alberto Virgen Cuéllar,E0,sistema_calidad_psp,Pruebas_Revision,15:00,15:50,5,45,45,0.00,Definicion de los 3 objetivos medibles de calidad (OQ-01, OQ-02, OQ-03) y ficha ENTREGA.md
