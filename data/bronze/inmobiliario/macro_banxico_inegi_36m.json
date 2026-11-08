@@ -12,13 +12,13 @@
     "robots_audit": {
       "robots_url": "https://www.banxico.org.mx/robots.txt",
       "target_path": "/SieAPIRest/service/v1/",
-      "checked_at_utc": "2026-11-08T22:18:28.820562+00:00",
+      "checked_at_utc": "2026-11-08T22:31:59.678818+00:00",
       "allowed": true,
       "crawl_delay_seconds": 2.0,
       "notes": "Verificación ética exitosa"
     },
     "api_fallback_reason": "Variable BANXICO_TOKEN no definida en el entorno; se utiliza la serie histórica mensual de referencia BANXICO/INEGI (36 periodos consecutivos).",
-    "generated_at_utc": "2026-11-08T22:18:29.634601+00:00",
+    "generated_at_utc": "2026-11-08T22:32:08.425852+00:00",
     "periodos_count": 36,
     "periodo_inicial": "2023-11",
     "periodo_final": "2026-10"

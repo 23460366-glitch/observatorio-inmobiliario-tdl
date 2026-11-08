@@ -5,15 +5,15 @@
     "robots_audit": {
       "robots_url": "https://datos.cdmx.gob.mx/robots.txt",
       "target_path": "/dataset/",
-      "checked_at_utc": "2026-11-08T22:18:29.450093+00:00",
+      "checked_at_utc": "2026-11-08T22:32:00.310421+00:00",
       "allowed": true,
-      "crawl_delay_seconds": 10.0,
-      "notes": "Verificación ética exitosa"
+      "crawl_delay_seconds": 2.0,
+      "notes": "Modo conservador activado (endpoint API pública / offline: URLError). Se respeta tasa máxima de 1 petición mensual."
     },
     "total_periodos_mensuales": 36,
     "rango_temporal": "2023-11 a 2026-10",
     "total_registros_crudos": 1298,
-    "generated_at_utc": "2026-11-08T22:18:29.634601+00:00",
+    "generated_at_utc": "2026-11-08T22:32:08.425852+00:00",
     "periodos_count": 36,
     "periodo_inicial": "2023-11",
     "periodo_final": "2026-10"
@@ -78,7 +78,7 @@
       "periodo_mensual": "2024-04",
       "indice_periodo": 6,
       "total_ofertas_capturadas": 36,
-      "precio_m2_promedio_mxn": 327.11,
+      "precio_m2_promedio_mxn": 327.1,
       "precio_m2_mediana_mxn": 323.48,
       "yield_bruto_promedio_pct": 6.67,
       "dias_vacancia_promedio": 32.2,
@@ -256,7 +256,7 @@
       "total_ofertas_capturadas": 36,
       "precio_m2_promedio_mxn": 355.86,
       "precio_m2_mediana_mxn": 360.26,
-      "yield_bruto_promedio_pct": 6.29,
+      "yield_bruto_promedio_pct": 6.3,
       "dias_vacancia_promedio": 29.4,
       "inpc_vivienda_zmvm": 132.763,
       "tiie_28d_pct": 10.2034
