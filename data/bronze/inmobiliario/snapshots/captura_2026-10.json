@@ -1,8 +1,9 @@
 {
-  "ejecucion_utc": "2026-11-08T22:32:08.425852+00:00",
+  "ejecucion_utc": "2026-11-16T19:43:44.574260+00:00",
   "periodo_corte": "2026-10",
   "ultimo_indicador_macro": {
     "periodo_mensual": "2026-10",
+    "fecha_banxico_raw": "01/10/2026",
     "indice_periodo": 36,
     "inpc_general": 150.05,
     "inpc_vivienda_zmvm": 141.239,
@@ -142,13 +143,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 47082.0,
       "precio_m2_mxn": 482.58,
-      "cuota_mantenimiento_mxn": 4398.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10369000.0,
       "yield_bruto_anual_pct": 5.45,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-94BECDA1DA",
@@ -217,13 +219,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 64280.0,
       "precio_m2_mxn": 413.13,
-      "cuota_mantenimiento_mxn": 7138.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15046000.0,
       "yield_bruto_anual_pct": 5.13,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 45,
       "tasa_ocupacion_24m_pct": 93.84,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-2CFBF29159",

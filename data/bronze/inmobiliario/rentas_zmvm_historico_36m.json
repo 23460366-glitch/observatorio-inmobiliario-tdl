@@ -5,15 +5,15 @@
     "robots_audit": {
       "robots_url": "https://datos.cdmx.gob.mx/robots.txt",
       "target_path": "/dataset/",
-      "checked_at_utc": "2026-11-08T22:32:00.310421+00:00",
+      "checked_at_utc": "2026-11-16T19:43:44.423593+00:00",
       "allowed": true,
       "crawl_delay_seconds": 2.0,
       "notes": "Modo conservador activado (endpoint API pública / offline: URLError). Se respeta tasa máxima de 1 petición mensual."
     },
     "total_periodos_mensuales": 36,
     "rango_temporal": "2023-11 a 2026-10",
-    "total_registros_crudos": 1298,
-    "generated_at_utc": "2026-11-08T22:32:08.425852+00:00",
+    "total_registros_crudos": 1299,
+    "generated_at_utc": "2026-11-16T19:43:44.574260+00:00",
     "periodos_count": 36,
     "periodo_inicial": "2023-11",
     "periodo_final": "2026-10"
@@ -23,7 +23,7 @@
       "periodo_mensual": "2023-11",
       "indice_periodo": 1,
       "total_ofertas_capturadas": 36,
-      "precio_m2_promedio_mxn": 316.31,
+      "precio_m2_promedio_mxn": 323.59,
       "precio_m2_mediana_mxn": 325.83,
       "yield_bruto_promedio_pct": 6.44,
       "dias_vacancia_promedio": 29.0,
@@ -122,7 +122,7 @@
       "periodo_mensual": "2024-08",
       "indice_periodo": 10,
       "total_ofertas_capturadas": 36,
-      "precio_m2_promedio_mxn": 334.69,
+      "precio_m2_promedio_mxn": 342.75,
       "precio_m2_mediana_mxn": 340.01,
       "yield_bruto_promedio_pct": 6.5,
       "dias_vacancia_promedio": 30.8,
@@ -221,7 +221,7 @@
       "periodo_mensual": "2025-05",
       "indice_periodo": 19,
       "total_ofertas_capturadas": 36,
-      "precio_m2_promedio_mxn": 341.26,
+      "precio_m2_promedio_mxn": 349.01,
       "precio_m2_mediana_mxn": 348.89,
       "yield_bruto_promedio_pct": 6.39,
       "dias_vacancia_promedio": 28.8,
@@ -320,7 +320,7 @@
       "periodo_mensual": "2026-02",
       "indice_periodo": 28,
       "total_ofertas_capturadas": 36,
-      "precio_m2_promedio_mxn": 363.86,
+      "precio_m2_promedio_mxn": 372.47,
       "precio_m2_mediana_mxn": 369.48,
       "yield_bruto_promedio_pct": 6.42,
       "dias_vacancia_promedio": 29.9,
@@ -425,10 +425,10 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Polanco",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 63.7,
       "renta_lista_mensual_mxn": 27810.0,
       "descuento_contrato_pct": 5.0,
@@ -440,7 +440,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-4E2A0FC1CC",
@@ -455,7 +456,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 63.7,
-      "renta_lista_mensual_mxn": 29730.0,
+      "renta_lista_mensual_mxn": "$29,730.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 29730.0,
       "precio_m2_mxn": 466.72,
@@ -500,7 +501,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Polanco",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -509,13 +510,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 34960.0,
       "precio_m2_mxn": 406.23,
-      "cuota_mantenimiento_mxn": 4128.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7225000.0,
       "yield_bruto_anual_pct": 5.81,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 96.85,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-39E1C13A7F",
@@ -530,7 +532,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 107.8,
-      "renta_lista_mensual_mxn": 44050.0,
+      "renta_lista_mensual_mxn": "$44,050.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 44050.0,
       "precio_m2_mxn": 408.64,
@@ -555,12 +557,12 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 71.1,
-      "renta_lista_mensual_mxn": 27430.0,
+      "renta_lista_mensual_mxn": 46070.0,
       "descuento_contrato_pct": 0.0,
-      "renta_efectiva_mensual_mxn": 27430.0,
-      "precio_m2_mxn": 385.73,
-      "cuota_mantenimiento_mxn": 3004.0,
-      "valor_comercial_estimado_mxn": 5864000.0,
+      "renta_efectiva_mensual_mxn": 46070.0,
+      "precio_m2_mxn": 648.03,
+      "cuota_mantenimiento_mxn": 5046.0,
+      "valor_comercial_estimado_mxn": 9848000.0,
       "yield_bruto_anual_pct": 5.61,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 41,
@@ -575,7 +577,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Polanco",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -584,13 +586,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 63340.0,
       "precio_m2_mxn": 340.19,
-      "cuota_mantenimiento_mxn": 6091.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13168000.0,
       "yield_bruto_anual_pct": 5.77,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7CE310881F",
@@ -605,7 +608,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 241.9,
-      "renta_lista_mensual_mxn": 83460.0,
+      "renta_lista_mensual_mxn": "$83,460.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 83460.0,
       "precio_m2_mxn": 345.0,
@@ -650,7 +653,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Roma Norte",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -680,7 +683,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 60.2,
-      "renta_lista_mensual_mxn": 26110.0,
+      "renta_lista_mensual_mxn": "$26,110.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 26110.0,
       "precio_m2_mxn": 433.74,
@@ -725,7 +728,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Roma Norte",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -755,7 +758,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 92.5,
-      "renta_lista_mensual_mxn": 34390.0,
+      "renta_lista_mensual_mxn": "$34,390.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 34390.0,
       "precio_m2_mxn": 371.78,
@@ -780,7 +783,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 92.5,
-      "renta_lista_mensual_mxn": 34390.0,
+      "renta_lista_mensual_mxn": "$34,390.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 34390.0,
       "precio_m2_mxn": 371.78,
@@ -826,7 +829,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Roma Norte",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -835,13 +838,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 70670.0,
       "precio_m2_mxn": 325.83,
-      "cuota_mantenimiento_mxn": 6818.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15528000.0,
       "yield_bruto_anual_pct": 5.46,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 95.62,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-877335EDAA",
@@ -856,7 +860,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 185.4,
-      "renta_lista_mensual_mxn": 61150.0,
+      "renta_lista_mensual_mxn": "$61,150.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 61150.0,
       "precio_m2_mxn": 329.83,
@@ -901,7 +905,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Del Valle Centro",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -931,7 +935,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 48.6,
-      "renta_lista_mensual_mxn": 14280.0,
+      "renta_lista_mensual_mxn": "$14,280.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 14280.0,
       "precio_m2_mxn": 293.86,
@@ -976,7 +980,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Del Valle Centro",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -1006,7 +1010,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 93.6,
-      "renta_lista_mensual_mxn": 25720.0,
+      "renta_lista_mensual_mxn": "$25,720.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 24434.0,
       "precio_m2_mxn": 274.83,
@@ -1051,7 +1055,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Del Valle Centro",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -1060,13 +1064,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57400.0,
       "precio_m2_mxn": 234.11,
-      "cuota_mantenimiento_mxn": 4354.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11091000.0,
       "yield_bruto_anual_pct": 6.21,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 38,
       "tasa_ocupacion_24m_pct": 89.59,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-6DC4FC3050",
@@ -1081,7 +1086,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 220.8,
-      "renta_lista_mensual_mxn": 53790.0,
+      "renta_lista_mensual_mxn": "$53,790.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 53790.0,
       "precio_m2_mxn": 243.6,
@@ -1126,7 +1131,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Santa María la Ribera",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -1156,7 +1161,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 48.8,
-      "renta_lista_mensual_mxn": 12290.0,
+      "renta_lista_mensual_mxn": "$12,290.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 11675.5,
       "precio_m2_mxn": 251.83,
@@ -1201,7 +1206,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Santa María la Ribera",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -1231,7 +1236,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 88.2,
-      "renta_lista_mensual_mxn": 19450.0,
+      "renta_lista_mensual_mxn": "$19,450.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 19450.0,
       "precio_m2_mxn": 220.57,
@@ -1276,7 +1281,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Santa María la Ribera",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -1306,7 +1311,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 156.6,
-      "renta_lista_mensual_mxn": 31790.0,
+      "renta_lista_mensual_mxn": "$31,790.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 30200.5,
       "precio_m2_mxn": 202.99,
@@ -2385,13 +2390,14 @@
       "descuento_contrato_pct": 10.0,
       "renta_efectiva_mensual_mxn": 39366.0,
       "precio_m2_mxn": 410.69,
-      "cuota_mantenimiento_mxn": 5079.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8059000.0,
       "yield_bruto_anual_pct": 5.86,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 21,
       "tasa_ocupacion_24m_pct": 97.12,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-6B6F2250EE",
@@ -2460,13 +2466,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 83070.0,
       "precio_m2_mxn": 353.2,
-      "cuota_mantenimiento_mxn": 6417.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 19673000.0,
       "yield_bruto_anual_pct": 5.07,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 38,
       "tasa_ocupacion_24m_pct": 89.59,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D5BD9BE642",
@@ -2679,19 +2686,20 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 173.0,
       "renta_lista_mensual_mxn": 60340.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 60340.0,
       "precio_m2_mxn": 348.76,
-      "cuota_mantenimiento_mxn": 5679.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 12920000.0,
       "yield_bruto_anual_pct": 5.6,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 91.23,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-243FEFC7C8",
@@ -2779,7 +2787,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 92.0,
       "renta_lista_mensual_mxn": 27080.0,
       "descuento_contrato_pct": 0.0,
@@ -2791,7 +2799,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-180E91D6E2",
@@ -2910,13 +2919,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 51800.0,
       "precio_m2_mxn": 244.82,
-      "cuota_mantenimiento_mxn": 4117.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10525000.0,
       "yield_bruto_anual_pct": 5.91,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 91.51,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A94F9DA6A3",
@@ -3335,13 +3345,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 70020.0,
       "precio_m2_mxn": 342.71,
-      "cuota_mantenimiento_mxn": 7475.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17352000.0,
       "yield_bruto_anual_pct": 4.84,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 46,
       "tasa_ocupacion_24m_pct": 87.4,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-79EE947520",
@@ -3560,13 +3571,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 74140.0,
       "precio_m2_mxn": 338.06,
-      "cuota_mantenimiento_mxn": 5916.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16286000.0,
       "yield_bruto_anual_pct": 5.46,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7C753220CA",
@@ -3785,13 +3797,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 56050.0,
       "precio_m2_mxn": 241.61,
-      "cuota_mantenimiento_mxn": 6500.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 12406000.0,
       "yield_bruto_anual_pct": 5.42,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 37,
       "tasa_ocupacion_24m_pct": 89.86,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-18493F50C5",
@@ -4010,13 +4023,14 @@
       "descuento_contrato_pct": 10.0,
       "renta_efectiva_mensual_mxn": 33255.0,
       "precio_m2_mxn": 187.87,
-      "cuota_mantenimiento_mxn": 4159.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6468000.0,
       "yield_bruto_anual_pct": 6.17,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 19,
       "tasa_ocupacion_24m_pct": 97.4,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-025E69B591",
@@ -4210,13 +4224,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 92150.0,
       "precio_m2_mxn": 355.53,
-      "cuota_mantenimiento_mxn": 9008.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 21335000.0,
       "yield_bruto_anual_pct": 5.18,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 39,
       "tasa_ocupacion_24m_pct": 89.32,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-BF9DA2A468",
@@ -4360,13 +4375,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 30795.5,
       "precio_m2_mxn": 385.8,
-      "cuota_mantenimiento_mxn": 3979.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6796000.0,
       "yield_bruto_anual_pct": 5.44,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 14,
       "tasa_ocupacion_24m_pct": 98.08,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-2D1E921046",
@@ -4435,13 +4451,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 45407.0,
       "precio_m2_mxn": 320.82,
-      "cuota_mantenimiento_mxn": 4965.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11450000.0,
       "yield_bruto_anual_pct": 4.76,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 14,
       "tasa_ocupacion_24m_pct": 98.08,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-0053FC8331",
@@ -5180,7 +5197,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 47.6,
+      "superficie_m2": -25.0,
       "renta_lista_mensual_mxn": 19920.0,
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 18924.0,
@@ -5191,7 +5208,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "ERROR_SUPERFICIE_NEGATIVA"
     },
     {
       "id_propiedad": "PROP-AD9567F08E",
@@ -5279,7 +5297,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 103.6,
       "renta_lista_mensual_mxn": 36460.0,
       "descuento_contrato_pct": 0.0,
@@ -5291,7 +5309,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-1359A625C4",
@@ -5680,7 +5699,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 51.3,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 14180.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 14180.0,
@@ -5691,7 +5710,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-070FD05D38",
@@ -5755,7 +5775,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 99.1,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 23220.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 23220.0,
@@ -5766,7 +5786,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-A0827499C5",
@@ -5830,7 +5851,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 195.4,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 40670.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40670.0,
@@ -5841,7 +5862,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 41,
       "tasa_ocupacion_24m_pct": 88.77,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-CDB0D8B8E4",
@@ -6060,13 +6082,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 54780.0,
       "precio_m2_mxn": 346.91,
-      "cuota_mantenimiento_mxn": 4816.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11883000.0,
       "yield_bruto_anual_pct": 5.53,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 39,
       "tasa_ocupacion_24m_pct": 89.32,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-3CB6187552",
@@ -6285,13 +6308,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 78700.0,
       "precio_m2_mxn": 318.24,
-      "cuota_mantenimiento_mxn": 7263.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16233000.0,
       "yield_bruto_anual_pct": 5.82,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-EE0F986CCC",
@@ -6510,13 +6534,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 69500.0,
       "precio_m2_mxn": 274.16,
-      "cuota_mantenimiento_mxn": 5301.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15519000.0,
       "yield_bruto_anual_pct": 5.37,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-56092C91BC",
@@ -6735,13 +6760,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 41840.0,
       "precio_m2_mxn": 207.15,
-      "cuota_mantenimiento_mxn": 3824.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7970000.0,
       "yield_bruto_anual_pct": 6.3,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 91.51,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-963270D648",
@@ -6860,13 +6886,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 37970.0,
       "precio_m2_mxn": 404.76,
-      "cuota_mantenimiento_mxn": 4035.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8212000.0,
       "yield_bruto_anual_pct": 5.55,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 45,
       "tasa_ocupacion_24m_pct": 87.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D11FA96C54",
@@ -6935,13 +6962,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 65094.0,
       "precio_m2_mxn": 337.86,
-      "cuota_mantenimiento_mxn": 5491.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15025000.0,
       "yield_bruto_anual_pct": 5.2,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A9D2360997",
@@ -7160,13 +7188,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 62590.0,
       "precio_m2_mxn": 330.14,
-      "cuota_mantenimiento_mxn": 7002.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13904000.0,
       "yield_bruto_anual_pct": 5.4,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-253C46A43C",
@@ -7385,13 +7414,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 52497.0,
       "precio_m2_mxn": 242.57,
-      "cuota_mantenimiento_mxn": 6041.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10141000.0,
       "yield_bruto_anual_pct": 6.21,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-3540B7DC53",
@@ -7604,7 +7634,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 151.4,
       "renta_lista_mensual_mxn": 30320.0,
       "descuento_contrato_pct": 5.0,
@@ -7616,7 +7646,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-6942A2F9CC",
@@ -7779,7 +7810,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 106.0,
       "renta_lista_mensual_mxn": 45860.0,
       "descuento_contrato_pct": 15.0,
@@ -7791,7 +7822,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 17,
       "tasa_ocupacion_24m_pct": 97.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-F02C51F86D",
@@ -7810,13 +7842,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 52259.5,
       "precio_m2_mxn": 371.91,
-      "cuota_mantenimiento_mxn": 6422.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11726000.0,
       "yield_bruto_anual_pct": 5.35,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 95.34,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-1B2394237F",
@@ -7879,7 +7912,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 59.2,
       "renta_lista_mensual_mxn": 24990.0,
       "descuento_contrato_pct": 0.0,
@@ -7891,7 +7924,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 91.51,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-4B7F378D08",
@@ -8035,13 +8069,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 81960.0,
       "precio_m2_mxn": 329.82,
-      "cuota_mantenimiento_mxn": 5842.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15068000.0,
       "yield_bruto_anual_pct": 6.53,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-0917414F39",
@@ -8485,13 +8520,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 50630.0,
       "precio_m2_mxn": 202.18,
-      "cuota_mantenimiento_mxn": 4179.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8501000.0,
       "yield_bruto_anual_pct": 7.15,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 37,
       "tasa_ocupacion_24m_pct": 89.86,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-C963BDC96D",
@@ -8681,12 +8717,12 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 71.2,
-      "renta_lista_mensual_mxn": 30400.0,
+      "renta_lista_mensual_mxn": 51070.0,
       "descuento_contrato_pct": 0.0,
-      "renta_efectiva_mensual_mxn": 30400.0,
-      "precio_m2_mxn": 426.95,
-      "cuota_mantenimiento_mxn": 2147.0,
-      "valor_comercial_estimado_mxn": 5800000.0,
+      "renta_efectiva_mensual_mxn": 51070.0,
+      "precio_m2_mxn": 717.28,
+      "cuota_mantenimiento_mxn": 3607.0,
+      "valor_comercial_estimado_mxn": 9744000.0,
       "yield_bruto_anual_pct": 6.29,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 32,
@@ -9660,13 +9696,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 84141.5,
       "precio_m2_mxn": 384.58,
-      "cuota_mantenimiento_mxn": 8398.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 22199000.0,
       "yield_bruto_anual_pct": 4.55,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-F0EA8CBD59",
@@ -9885,13 +9922,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 52430.0,
       "precio_m2_mxn": 320.27,
-      "cuota_mantenimiento_mxn": 5482.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10734000.0,
       "yield_bruto_anual_pct": 5.86,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-80C9AD7F44",
@@ -10104,7 +10142,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 175.5,
       "renta_lista_mensual_mxn": 41460.0,
       "descuento_contrato_pct": 0.0,
@@ -10116,7 +10154,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 37,
       "tasa_ocupacion_24m_pct": 89.86,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-150022B51E",
@@ -10204,7 +10243,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 93.4,
       "renta_lista_mensual_mxn": 23060.0,
       "descuento_contrato_pct": 15.0,
@@ -10216,7 +10255,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 12,
       "tasa_ocupacion_24m_pct": 98.36,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-1B002BCEDB",
@@ -10351,7 +10391,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Lomas de Chapultepec",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -10379,7 +10419,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 47.9,
       "renta_lista_mensual_mxn": 23210.0,
       "descuento_contrato_pct": 5.0,
@@ -10391,7 +10431,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-EF12D58CAC",
@@ -10426,7 +10467,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Lomas de Chapultepec",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -10501,7 +10542,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Lomas de Chapultepec",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -10535,13 +10576,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 54520.0,
       "precio_m2_mxn": 350.41,
-      "cuota_mantenimiento_mxn": 4220.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13046000.0,
       "yield_bruto_anual_pct": 5.01,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 41,
       "tasa_ocupacion_24m_pct": 88.77,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-0DC313A143",
@@ -10576,7 +10618,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Cuauhtémoc",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -10651,7 +10693,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Cuauhtémoc",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -10685,13 +10727,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40730.0,
       "precio_m2_mxn": 381.74,
-      "cuota_mantenimiento_mxn": 4167.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8110000.0,
       "yield_bruto_anual_pct": 6.03,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-8BC8AAFF3A",
@@ -10726,7 +10769,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Cuauhtémoc",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -10760,13 +10803,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 81966.0,
       "precio_m2_mxn": 339.02,
-      "cuota_mantenimiento_mxn": 6778.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16388000.0,
       "yield_bruto_anual_pct": 6.0,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 22,
       "tasa_ocupacion_24m_pct": 93.97,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-022C386C44",
@@ -10801,7 +10845,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "San Pedro de los Pinos",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -10876,7 +10920,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "San Pedro de los Pinos",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -10951,7 +10995,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "San Pedro de los Pinos",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -10985,13 +11029,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57890.0,
       "precio_m2_mxn": 249.43,
-      "cuota_mantenimiento_mxn": 4534.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11202000.0,
       "yield_bruto_anual_pct": 6.2,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-DD07103D6A",
@@ -11026,7 +11071,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Ciudad Satélite",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -11101,7 +11146,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Ciudad Satélite",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -11176,7 +11221,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Ciudad Satélite",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -11410,13 +11455,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 81600.0,
       "precio_m2_mxn": 380.62,
-      "cuota_mantenimiento_mxn": 6155.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 18624000.0,
       "yield_bruto_anual_pct": 5.26,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-BC7B0732ED",
@@ -11594,6 +11640,32 @@
       "estado_capa": "BRONCE_CRUDO"
     },
     {
+      "id_propiedad": "PROP-63EC2E6AF5",
+      "periodo_mensual": "2024-11",
+      "fecha_captura_utc": "2024-11-16T12:30:00Z",
+      "subzona_id": "SZ2_CENTRAL_CORREDOR",
+      "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
+      "alcaldia_municipio": "Cuauhtémoc",
+      "colonia": "Hipódromo Condesa",
+      "tipo_inmueble": "depto_2rec",
+      "recamaras": 2,
+      "banos": 2,
+      "estacionamientos": 1,
+      "superficie_m2": 71.0,
+      "renta_lista_mensual_mxn": 27910.0,
+      "descuento_contrato_pct": 0.0,
+      "renta_efectiva_mensual_mxn": 27910.0,
+      "precio_m2_mxn": 393.03,
+      "cuota_mantenimiento_mxn": 2853.0,
+      "valor_comercial_estimado_mxn": 4889000.0,
+      "yield_bruto_anual_pct": 6.85,
+      "modalidad_contrato": "tradicional_12m",
+      "dias_vacancia_observados": 29,
+      "tasa_ocupacion_24m_pct": 92.05,
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "DUPLICADO_ID_PENDIENTE_PLATA"
+    },
+    {
       "id_propiedad": "PROP-4FA853FC19",
       "periodo_mensual": "2024-11",
       "fecha_captura_utc": "2024-11-15T06:00:00Z",
@@ -11635,13 +11707,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 49480.0,
       "precio_m2_mxn": 338.22,
-      "cuota_mantenimiento_mxn": 5753.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10848000.0,
       "yield_bruto_anual_pct": 5.47,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-5725CAF1E2",
@@ -11860,13 +11933,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 50710.0,
       "precio_m2_mxn": 231.24,
-      "cuota_mantenimiento_mxn": 4643.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9142000.0,
       "yield_bruto_anual_pct": 6.66,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-32AEE09250",
@@ -11880,7 +11954,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 186.9,
+      "superficie_m2": 9850.0,
       "renta_lista_mensual_mxn": 49850.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 49850.0,
@@ -11891,7 +11965,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "ERROR_SUPERFICIE_IRREAL_9850M2"
     },
     {
       "id_propiedad": "PROP-662D88E7C0",
@@ -11980,7 +12055,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 62.7,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 16970.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 16970.0,
@@ -11991,7 +12066,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 91.23,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-14BADCFB7C",
@@ -12055,7 +12131,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 88.9,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 20410.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 20410.0,
@@ -12066,7 +12142,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-904CB7E518",
@@ -12085,13 +12162,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 50010.0,
       "precio_m2_mxn": 215.83,
-      "cuota_mantenimiento_mxn": 5144.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8838000.0,
       "yield_bruto_anual_pct": 6.79,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 40,
       "tasa_ocupacion_24m_pct": 89.04,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D3B57830B6",
@@ -12130,7 +12208,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 158.7,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 31970.0,
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 30371.5,
@@ -12141,7 +12219,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-A89C3F2787",
@@ -12181,7 +12260,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 62.0,
-      "renta_lista_mensual_mxn": 29200.0,
+      "renta_lista_mensual_mxn": "$29,200.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 27740.0,
       "precio_m2_mxn": 470.96,
@@ -12256,7 +12335,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 92.3,
-      "renta_lista_mensual_mxn": 36290.0,
+      "renta_lista_mensual_mxn": "$36,290.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 36290.0,
       "precio_m2_mxn": 393.2,
@@ -12331,7 +12410,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 240.0,
-      "renta_lista_mensual_mxn": 89550.0,
+      "renta_lista_mensual_mxn": "$89,550.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 85072.5,
       "precio_m2_mxn": 373.11,
@@ -12406,7 +12485,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 54.7,
-      "renta_lista_mensual_mxn": 23350.0,
+      "renta_lista_mensual_mxn": "$23,350.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 23350.0,
       "precio_m2_mxn": 426.92,
@@ -12481,7 +12560,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 85.5,
-      "renta_lista_mensual_mxn": 35240.0,
+      "renta_lista_mensual_mxn": "$35,240.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 35240.0,
       "precio_m2_mxn": 412.12,
@@ -12556,7 +12635,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 236.9,
-      "renta_lista_mensual_mxn": 79020.0,
+      "renta_lista_mensual_mxn": "$79,020.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 75069.0,
       "precio_m2_mxn": 333.54,
@@ -12631,7 +12710,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 55.5,
-      "renta_lista_mensual_mxn": 18390.0,
+      "renta_lista_mensual_mxn": "$18,390.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 18390.0,
       "precio_m2_mxn": 331.44,
@@ -12704,9 +12783,9 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 97.7,
-      "renta_lista_mensual_mxn": 30390.0,
+      "renta_lista_mensual_mxn": "$30,390.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 30390.0,
       "precio_m2_mxn": 311.1,
@@ -12716,7 +12795,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-ED75E5E607",
@@ -12781,7 +12861,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 178.0,
-      "renta_lista_mensual_mxn": 45370.0,
+      "renta_lista_mensual_mxn": "$45,370.00 MXN",
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 38564.5,
       "precio_m2_mxn": 254.89,
@@ -12856,7 +12936,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 56.0,
-      "renta_lista_mensual_mxn": 14240.0,
+      "renta_lista_mensual_mxn": "$14,240.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 13528.0,
       "precio_m2_mxn": 254.21,
@@ -12931,7 +13011,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 70.6,
-      "renta_lista_mensual_mxn": 16200.0,
+      "renta_lista_mensual_mxn": "$16,200.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 16200.0,
       "precio_m2_mxn": 229.48,
@@ -13006,7 +13086,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 168.7,
-      "renta_lista_mensual_mxn": 33010.0,
+      "renta_lista_mensual_mxn": "$33,010.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 31359.5,
       "precio_m2_mxn": 195.66,
@@ -13260,13 +13340,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 61970.0,
       "precio_m2_mxn": 366.69,
-      "cuota_mantenimiento_mxn": 4759.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13247000.0,
       "yield_bruto_anual_pct": 5.61,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 95.34,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-E864BFAED4",
@@ -13410,13 +13491,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 39643.5,
       "precio_m2_mxn": 413.96,
-      "cuota_mantenimiento_mxn": 4487.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7336000.0,
       "yield_bruto_anual_pct": 6.48,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 22,
       "tasa_ocupacion_24m_pct": 96.99,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-F9E10FEEA1",
@@ -13485,13 +13567,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 80332.0,
       "precio_m2_mxn": 352.32,
-      "cuota_mantenimiento_mxn": 7912.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17140000.0,
       "yield_bruto_anual_pct": 5.62,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 20,
       "tasa_ocupacion_24m_pct": 94.52,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-EF81FEB21E",
@@ -13710,13 +13793,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40010.0,
       "precio_m2_mxn": 256.15,
-      "cuota_mantenimiento_mxn": 4580.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7837000.0,
       "yield_bruto_anual_pct": 6.13,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 33,
       "tasa_ocupacion_24m_pct": 90.96,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D57B3A861A",
@@ -14135,13 +14219,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 58820.0,
       "precio_m2_mxn": 382.94,
-      "cuota_mantenimiento_mxn": 5280.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 20233000.0,
       "yield_bruto_anual_pct": 3.49,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 14,
       "tasa_ocupacion_24m_pct": 98.08,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-4CC414A75F",
@@ -14360,13 +14445,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 47747.0,
       "precio_m2_mxn": 326.36,
-      "cuota_mantenimiento_mxn": 5073.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9479000.0,
       "yield_bruto_anual_pct": 6.04,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-E1EDCCD6B4",
@@ -14585,13 +14671,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40150.0,
       "precio_m2_mxn": 254.76,
-      "cuota_mantenimiento_mxn": 4105.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7990000.0,
       "yield_bruto_anual_pct": 6.03,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-99A0E74C5A",
@@ -15010,13 +15097,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 76060.0,
       "precio_m2_mxn": 384.54,
-      "cuota_mantenimiento_mxn": 8343.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17709000.0,
       "yield_bruto_anual_pct": 5.15,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 46,
       "tasa_ocupacion_24m_pct": 87.4,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-73C71CD6F0",
@@ -15204,7 +15292,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 88.2,
       "renta_lista_mensual_mxn": 38120.0,
       "descuento_contrato_pct": 0.0,
@@ -15216,7 +15304,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-4C7FCA3D10",
@@ -15235,13 +15324,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 77670.0,
       "precio_m2_mxn": 358.25,
-      "cuota_mantenimiento_mxn": 8579.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17411000.0,
       "yield_bruto_anual_pct": 5.35,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7FAD16F6DD",
@@ -15304,7 +15394,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 62.2,
       "renta_lista_mensual_mxn": 21490.0,
       "descuento_contrato_pct": 0.0,
@@ -15316,7 +15406,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-70E465FAB8",
@@ -15460,13 +15551,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 61940.0,
       "precio_m2_mxn": 273.45,
-      "cuota_mantenimiento_mxn": 6087.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13466000.0,
       "yield_bruto_anual_pct": 5.52,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-F9C13C4AF4",
@@ -16781,17 +16873,18 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 108.0,
-      "renta_lista_mensual_mxn": 44350.0,
+      "renta_lista_mensual_mxn": 74510.0,
       "descuento_contrato_pct": 0.0,
-      "renta_efectiva_mensual_mxn": 44350.0,
-      "precio_m2_mxn": 410.64,
-      "cuota_mantenimiento_mxn": 3484.0,
-      "valor_comercial_estimado_mxn": 9305000.0,
+      "renta_efectiva_mensual_mxn": 74510.0,
+      "precio_m2_mxn": 689.88,
+      "cuota_mantenimiento_mxn": null,
+      "valor_comercial_estimado_mxn": 15633000.0,
       "yield_bruto_anual_pct": 5.72,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 41,
       "tasa_ocupacion_24m_pct": 88.77,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-B50847B797",
@@ -16860,13 +16953,14 @@
       "descuento_contrato_pct": 10.0,
       "renta_efectiva_mensual_mxn": 82971.0,
       "precio_m2_mxn": 357.19,
-      "cuota_mantenimiento_mxn": 9665.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 24143000.0,
       "yield_bruto_anual_pct": 4.12,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 22,
       "tasa_ocupacion_24m_pct": 96.99,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-518ADC08ED",
@@ -16994,32 +17088,6 @@
       "estado_capa": "BRONCE_CRUDO"
     },
     {
-      "id_propiedad": "PROP-813F60B876",
-      "periodo_mensual": "2025-05",
-      "fecha_captura_utc": "2025-05-16T12:30:00Z",
-      "subzona_id": "SZ2_CENTRAL_CORREDOR",
-      "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
-      "alcaldia_municipio": "Cuauhtémoc",
-      "colonia": "Cuauhtémoc",
-      "tipo_inmueble": "depto_2rec",
-      "recamaras": 2,
-      "banos": 2,
-      "estacionamientos": 1,
-      "superficie_m2": 84.6,
-      "renta_lista_mensual_mxn": 31650.0,
-      "descuento_contrato_pct": 0.0,
-      "renta_efectiva_mensual_mxn": 31650.0,
-      "precio_m2_mxn": 374.06,
-      "cuota_mantenimiento_mxn": 2880.0,
-      "valor_comercial_estimado_mxn": 5844000.0,
-      "yield_bruto_anual_pct": 6.5,
-      "modalidad_contrato": "tradicional_12m",
-      "dias_vacancia_observados": 35,
-      "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO",
-      "nota_calidad_bronce": "DUPLICADO_ID_PENDIENTE_PLATA"
-    },
-    {
       "id_propiedad": "PROP-4F15ABEDD4",
       "periodo_mensual": "2025-05",
       "fecha_captura_utc": "2025-05-15T06:00:00Z",
@@ -17036,13 +17104,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 33155.0,
       "precio_m2_mxn": 388.69,
-      "cuota_mantenimiento_mxn": 3925.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6602000.0,
       "yield_bruto_anual_pct": 6.03,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-228657DF2B",
@@ -17111,13 +17180,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 72630.0,
       "precio_m2_mxn": 353.08,
-      "cuota_mantenimiento_mxn": 7915.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15148000.0,
       "yield_bruto_anual_pct": 5.75,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-DC98C03D06",
@@ -17336,13 +17406,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 49370.0,
       "precio_m2_mxn": 261.2,
-      "cuota_mantenimiento_mxn": 4267.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9615000.0,
       "yield_bruto_anual_pct": 6.16,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-CEF6646D81",
@@ -17555,7 +17626,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 163.6,
       "renta_lista_mensual_mxn": 34820.0,
       "descuento_contrato_pct": 5.0,
@@ -17567,7 +17638,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-B77413830A",
@@ -17657,9 +17729,9 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 89.8,
-      "renta_lista_mensual_mxn": 37860.0,
+      "renta_lista_mensual_mxn": -15000.0,
       "descuento_contrato_pct": 5.0,
-      "renta_efectiva_mensual_mxn": 35967.0,
+      "renta_efectiva_mensual_mxn": -15000.0,
       "precio_m2_mxn": 421.55,
       "cuota_mantenimiento_mxn": 4425.0,
       "valor_comercial_estimado_mxn": 7967000.0,
@@ -17667,7 +17739,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 96.44,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "ERROR_RENTA_NEGATIVA"
     },
     {
       "id_propiedad": "PROP-E0FBF447A2",
@@ -17730,7 +17803,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 225.2,
       "renta_lista_mensual_mxn": 77360.0,
       "descuento_contrato_pct": 0.0,
@@ -17742,7 +17815,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 38,
       "tasa_ocupacion_24m_pct": 89.59,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-F3D5C1E3FF",
@@ -17761,13 +17835,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 57038.0,
       "precio_m2_mxn": 365.63,
-      "cuota_mantenimiento_mxn": 4433.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13680000.0,
       "yield_bruto_anual_pct": 5.0,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-BD21F953B8",
@@ -17830,7 +17905,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 51.9,
       "renta_lista_mensual_mxn": 25190.0,
       "descuento_contrato_pct": 0.0,
@@ -17842,7 +17917,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-43D6CC72E4",
@@ -17986,13 +18062,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 49371.5,
       "precio_m2_mxn": 345.06,
-      "cuota_mantenimiento_mxn": 4893.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11359000.0,
       "yield_bruto_anual_pct": 5.22,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A56D48F1F6",
@@ -18211,13 +18288,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40340.0,
       "precio_m2_mxn": 247.01,
-      "cuota_mantenimiento_mxn": 3891.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8446000.0,
       "yield_bruto_anual_pct": 5.73,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7DFD2E0753",
@@ -18306,7 +18384,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 54.9,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 15280.0,
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 14516.0,
@@ -18317,7 +18395,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-B050DABA0F",
@@ -18381,7 +18460,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 77.5,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 19430.0,
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 18458.5,
@@ -18392,7 +18471,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-E4362A9BF0",
@@ -18436,13 +18516,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 51390.0,
       "precio_m2_mxn": 214.93,
-      "cuota_mantenimiento_mxn": 5515.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9198000.0,
       "yield_bruto_anual_pct": 6.7,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A5088419EA",
@@ -18456,7 +18537,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 218.5,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 46150.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 46150.0,
@@ -18467,7 +18548,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-B83406C7DC",
@@ -18636,13 +18718,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 73540.0,
       "precio_m2_mxn": 393.28,
-      "cuota_mantenimiento_mxn": 7615.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17848000.0,
       "yield_bruto_anual_pct": 4.94,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 36,
       "tasa_ocupacion_24m_pct": 90.14,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-014505F471",
@@ -18786,13 +18869,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 39000.0,
       "precio_m2_mxn": 390.74,
-      "cuota_mantenimiento_mxn": 3841.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7744000.0,
       "yield_bruto_anual_pct": 6.04,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 96.44,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A1B7D92C21",
@@ -18861,13 +18945,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 62110.0,
       "precio_m2_mxn": 340.69,
-      "cuota_mantenimiento_mxn": 7239.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 12794000.0,
       "yield_bruto_anual_pct": 5.83,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-E238EB5C27",
@@ -19086,13 +19171,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 40365.5,
       "precio_m2_mxn": 251.85,
-      "cuota_mantenimiento_mxn": 4078.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7850000.0,
       "yield_bruto_anual_pct": 6.17,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 24,
       "tasa_ocupacion_24m_pct": 93.42,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-2D9FBB2588",
@@ -19311,13 +19397,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 48041.5,
       "precio_m2_mxn": 209.68,
-      "cuota_mantenimiento_mxn": 4433.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9044000.0,
       "yield_bruto_anual_pct": 6.37,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 24,
       "tasa_ocupacion_24m_pct": 93.42,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-EF843DE4F8",
@@ -20155,7 +20242,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 89.7,
       "renta_lista_mensual_mxn": 23780.0,
       "descuento_contrato_pct": 5.0,
@@ -20167,7 +20254,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 91.51,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-FB2342BC8C",
@@ -20277,7 +20365,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Granada",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -20330,7 +20418,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 48.9,
       "renta_lista_mensual_mxn": 25150.0,
       "descuento_contrato_pct": 0.0,
@@ -20342,7 +20430,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 36,
       "tasa_ocupacion_24m_pct": 90.14,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-4AD3D3ABBB",
@@ -20352,7 +20441,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Granada",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -20427,7 +20516,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Granada",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -20486,13 +20575,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 87105.5,
       "precio_m2_mxn": 390.85,
-      "cuota_mantenimiento_mxn": 8016.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 23715000.0,
       "yield_bruto_anual_pct": 4.41,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-215C9E157D",
@@ -20502,7 +20592,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Juárez",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -20577,7 +20667,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Juárez",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -20636,13 +20726,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 41450.0,
       "precio_m2_mxn": 395.86,
-      "cuota_mantenimiento_mxn": 3937.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7318000.0,
       "yield_bruto_anual_pct": 6.8,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-0FAB98E554",
@@ -20652,7 +20743,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Juárez",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -20711,13 +20802,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 84900.0,
       "precio_m2_mxn": 366.91,
-      "cuota_mantenimiento_mxn": 7227.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17709000.0,
       "yield_bruto_anual_pct": 5.75,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-5395A274F7",
@@ -20727,7 +20819,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Nápoles",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -20802,7 +20894,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Nápoles",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -20877,7 +20969,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Nápoles",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -20936,13 +21028,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 59350.0,
       "precio_m2_mxn": 266.5,
-      "cuota_mantenimiento_mxn": 4456.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10898000.0,
       "yield_bruto_anual_pct": 6.54,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-77DA2602B8",
@@ -20952,7 +21045,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "San Rafael",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -21027,7 +21120,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "San Rafael",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -21102,7 +21195,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "San Rafael",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -21161,13 +21254,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 55840.0,
       "precio_m2_mxn": 219.91,
-      "cuota_mantenimiento_mxn": 6135.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9137000.0,
       "yield_bruto_anual_pct": 7.33,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 33,
       "tasa_ocupacion_24m_pct": 90.96,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-9B0E2628AF",
@@ -21361,13 +21455,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 83232.0,
       "precio_m2_mxn": 393.71,
-      "cuota_mantenimiento_mxn": 11479.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 19838000.0,
       "yield_bruto_anual_pct": 5.03,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 19,
       "tasa_ocupacion_24m_pct": 97.4,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-5A73FFD8C7",
@@ -21511,13 +21606,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 38940.0,
       "precio_m2_mxn": 433.15,
-      "cuota_mantenimiento_mxn": 3827.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6935000.0,
       "yield_bruto_anual_pct": 6.74,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-A6D25B1602",
@@ -21586,13 +21682,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 87120.0,
       "precio_m2_mxn": 358.98,
-      "cuota_mantenimiento_mxn": 6410.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16795000.0,
       "yield_bruto_anual_pct": 6.22,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 24,
       "tasa_ocupacion_24m_pct": 93.42,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-E01E1367B7",
@@ -21811,13 +21908,14 @@
       "descuento_contrato_pct": 10.0,
       "renta_efectiva_mensual_mxn": 59823.0,
       "precio_m2_mxn": 269.86,
-      "cuota_mantenimiento_mxn": 5721.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13206000.0,
       "yield_bruto_anual_pct": 5.44,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 17,
       "tasa_ocupacion_24m_pct": 97.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-AF0F4B4CC9",
@@ -22236,13 +22334,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 95990.0,
       "precio_m2_mxn": 375.97,
-      "cuota_mantenimiento_mxn": 10280.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 20812000.0,
       "yield_bruto_anual_pct": 5.53,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 90.41,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-318F37EA79",
@@ -22386,13 +22485,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 34846.0,
       "precio_m2_mxn": 406.21,
-      "cuota_mantenimiento_mxn": 4151.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6708000.0,
       "yield_bruto_anual_pct": 6.23,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D3D02319DE",
@@ -22418,6 +22518,32 @@
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 95.75,
       "estado_capa": "BRONCE_CRUDO"
+    },
+    {
+      "id_propiedad": "PROP-D3D02319DE",
+      "periodo_mensual": "2025-11",
+      "fecha_captura_utc": "2025-11-16T12:30:00Z",
+      "subzona_id": "SZ2_CENTRAL_CORREDOR",
+      "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
+      "alcaldia_municipio": "Cuauhtémoc",
+      "colonia": "Hipódromo Condesa",
+      "tipo_inmueble": "depto_2rec",
+      "recamaras": 2,
+      "banos": 2,
+      "estacionamientos": 1,
+      "superficie_m2": 98.3,
+      "renta_lista_mensual_mxn": 41340.0,
+      "descuento_contrato_pct": 0.0,
+      "renta_efectiva_mensual_mxn": 41340.0,
+      "precio_m2_mxn": 420.5,
+      "cuota_mantenimiento_mxn": 3773.0,
+      "valor_comercial_estimado_mxn": 7604000.0,
+      "yield_bruto_anual_pct": 6.52,
+      "modalidad_contrato": "largo_plazo_24m",
+      "dias_vacancia_observados": 31,
+      "tasa_ocupacion_24m_pct": 95.75,
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "DUPLICADO_ID_PENDIENTE_PLATA"
     },
     {
       "id_propiedad": "PROP-0F893AAD23",
@@ -22461,13 +22587,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 71450.0,
       "precio_m2_mxn": 353.69,
-      "cuota_mantenimiento_mxn": 7641.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15067000.0,
       "yield_bruto_anual_pct": 5.69,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-74BA99AD94",
@@ -22655,7 +22782,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 94.8,
       "renta_lista_mensual_mxn": 28440.0,
       "descuento_contrato_pct": 15.0,
@@ -22667,7 +22794,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 15,
       "tasa_ocupacion_24m_pct": 97.95,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-838C0449EE",
@@ -22686,13 +22814,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 60581.5,
       "precio_m2_mxn": 254.56,
-      "cuota_mantenimiento_mxn": 6837.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13082000.0,
       "yield_bruto_anual_pct": 5.56,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 19,
       "tasa_ocupacion_24m_pct": 94.79,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-37E4633BAC",
@@ -22755,7 +22884,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 47.2,
       "renta_lista_mensual_mxn": 13470.0,
       "descuento_contrato_pct": 0.0,
@@ -22767,7 +22896,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-6E626BAE5C",
@@ -23682,9 +23812,9 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 54.7,
-      "renta_lista_mensual_mxn": 15000.0,
+      "renta_lista_mensual_mxn": null,
       "descuento_contrato_pct": 0.0,
-      "renta_efectiva_mensual_mxn": 15000.0,
+      "renta_efectiva_mensual_mxn": null,
       "precio_m2_mxn": 274.25,
       "cuota_mantenimiento_mxn": 1452.0,
       "valor_comercial_estimado_mxn": 2320000.0,
@@ -23692,7 +23822,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "ERROR_SIN_PRECIO_RENTA"
     },
     {
       "id_propiedad": "PROP-7DFB2BD63B",
@@ -23907,7 +24038,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 45.5,
-      "renta_lista_mensual_mxn": 23320.0,
+      "renta_lista_mensual_mxn": "$23,320.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 23320.0,
       "precio_m2_mxn": 512.5,
@@ -23982,7 +24113,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 98.6,
-      "renta_lista_mensual_mxn": 45490.0,
+      "renta_lista_mensual_mxn": "$45,490.00 MXN",
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 43215.5,
       "precio_m2_mxn": 461.39,
@@ -24057,7 +24188,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 150.2,
-      "renta_lista_mensual_mxn": 56510.0,
+      "renta_lista_mensual_mxn": "$56,510.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 56510.0,
       "precio_m2_mxn": 376.25,
@@ -24086,13 +24217,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 70290.0,
       "precio_m2_mxn": 389.18,
-      "cuota_mantenimiento_mxn": 5671.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16587000.0,
       "yield_bruto_anual_pct": 5.09,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 45,
       "tasa_ocupacion_24m_pct": 87.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-FDBEC7A124",
@@ -24132,7 +24264,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 43.0,
-      "renta_lista_mensual_mxn": 21490.0,
+      "renta_lista_mensual_mxn": "$21,490.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 21490.0,
       "precio_m2_mxn": 499.7,
@@ -24207,7 +24339,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 92.5,
-      "renta_lista_mensual_mxn": 40930.0,
+      "renta_lista_mensual_mxn": "$40,930.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40930.0,
       "precio_m2_mxn": 442.45,
@@ -24236,13 +24368,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 33782.0,
       "precio_m2_mxn": 398.6,
-      "cuota_mantenimiento_mxn": 4051.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6364000.0,
       "yield_bruto_anual_pct": 6.37,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 22,
       "tasa_ocupacion_24m_pct": 93.97,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-5F2027E9B3",
@@ -24282,7 +24415,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 155.4,
-      "renta_lista_mensual_mxn": 54750.0,
+      "renta_lista_mensual_mxn": "$54,750.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 54750.0,
       "precio_m2_mxn": 352.32,
@@ -24311,13 +24444,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 66300.0,
       "precio_m2_mxn": 379.7,
-      "cuota_mantenimiento_mxn": 7646.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 12861000.0,
       "yield_bruto_anual_pct": 6.19,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 33,
       "tasa_ocupacion_24m_pct": 90.96,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-C5267C915C",
@@ -24357,7 +24491,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 48.8,
-      "renta_lista_mensual_mxn": 17850.0,
+      "renta_lista_mensual_mxn": "$17,850.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 17850.0,
       "precio_m2_mxn": 365.71,
@@ -24432,7 +24566,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 70.8,
-      "renta_lista_mensual_mxn": 23960.0,
+      "renta_lista_mensual_mxn": "$23,960.00 MXN",
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 20366.0,
       "precio_m2_mxn": 338.4,
@@ -24507,7 +24641,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 253.0,
-      "renta_lista_mensual_mxn": 63770.0,
+      "renta_lista_mensual_mxn": "$63,770.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 63770.0,
       "precio_m2_mxn": 252.04,
@@ -24582,7 +24716,7 @@
       "banos": 1,
       "estacionamientos": 1,
       "superficie_m2": 62.1,
-      "renta_lista_mensual_mxn": 17310.0,
+      "renta_lista_mensual_mxn": "$17,310.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 17310.0,
       "precio_m2_mxn": 278.74,
@@ -24606,7 +24740,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 59.5,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 17450.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 17450.0,
@@ -24617,7 +24751,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-AEFB2D99D2",
@@ -24657,7 +24792,7 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 91.5,
-      "renta_lista_mensual_mxn": 22510.0,
+      "renta_lista_mensual_mxn": "$22,510.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 22510.0,
       "precio_m2_mxn": 246.03,
@@ -24681,7 +24816,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 89.6,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 23280.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 23280.0,
@@ -24692,7 +24827,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 94.25,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-3F9164D88B",
@@ -24732,7 +24868,7 @@
       "banos": 3,
       "estacionamientos": 2,
       "superficie_m2": 228.3,
-      "renta_lista_mensual_mxn": 49610.0,
+      "renta_lista_mensual_mxn": "$49,610.00 MXN",
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 49610.0,
       "precio_m2_mxn": 217.31,
@@ -24756,18 +24892,19 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 222.9,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 51150.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 51150.0,
       "precio_m2_mxn": 229.49,
-      "cuota_mantenimiento_mxn": 5681.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8519000.0,
       "yield_bruto_anual_pct": 7.21,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-4B5542D6E5",
@@ -24886,13 +25023,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 44920.0,
       "precio_m2_mxn": 510.42,
-      "cuota_mantenimiento_mxn": 4126.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9768000.0,
       "yield_bruto_anual_pct": 5.52,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 45,
       "tasa_ocupacion_24m_pct": 87.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-B07FA0DFF1",
@@ -24907,12 +25045,12 @@
       "banos": 2,
       "estacionamientos": 1,
       "superficie_m2": 84.3,
-      "renta_lista_mensual_mxn": 38420.0,
+      "renta_lista_mensual_mxn": 64550.0,
       "descuento_contrato_pct": 5.0,
-      "renta_efectiva_mensual_mxn": 36499.0,
-      "precio_m2_mxn": 455.78,
-      "cuota_mantenimiento_mxn": 2750.0,
-      "valor_comercial_estimado_mxn": 7974000.0,
+      "renta_efectiva_mensual_mxn": 61322.5,
+      "precio_m2_mxn": 765.71,
+      "cuota_mantenimiento_mxn": 4621.0,
+      "valor_comercial_estimado_mxn": 13397000.0,
       "yield_bruto_anual_pct": 5.49,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 33,
@@ -24961,13 +25099,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 77390.0,
       "precio_m2_mxn": 408.41,
-      "cuota_mantenimiento_mxn": 7693.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 19494000.0,
       "yield_bruto_anual_pct": 4.76,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-12E8AC337B",
@@ -25155,7 +25294,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 245.9,
       "renta_lista_mensual_mxn": 97490.0,
       "descuento_contrato_pct": 0.0,
@@ -25167,7 +25306,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-07747CE019",
@@ -25186,13 +25326,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 68650.0,
       "precio_m2_mxn": 369.48,
-      "cuota_mantenimiento_mxn": 6945.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 14170000.0,
       "yield_bruto_anual_pct": 5.81,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-692C719333",
@@ -25255,7 +25396,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 60.6,
       "renta_lista_mensual_mxn": 20520.0,
       "descuento_contrato_pct": 0.0,
@@ -25267,7 +25408,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 91.23,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-2A65ABF2A5",
@@ -25411,13 +25553,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 58396.5,
       "precio_m2_mxn": 261.0,
-      "cuota_mantenimiento_mxn": 6585.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11216000.0,
       "yield_bruto_anual_pct": 6.25,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-98C18BDC46",
@@ -25506,7 +25649,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": null,
+      "superficie_m2": 59.9,
       "renta_lista_mensual_mxn": 16820.0,
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 14297.0,
@@ -25517,8 +25660,7 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 16,
       "tasa_ocupacion_24m_pct": 97.81,
-      "estado_capa": "BRONCE_CRUDO",
-      "nota_calidad_bronce": "MISSING_M2_PENDIENTE_PLATA"
+      "estado_capa": "BRONCE_CRUDO"
     },
     {
       "id_propiedad": "PROP-ECCF475A79",
@@ -25582,7 +25724,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": null,
+      "superficie_m2": 68.4,
       "renta_lista_mensual_mxn": 17090.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 17090.0,
@@ -25593,8 +25735,7 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 34,
       "tasa_ocupacion_24m_pct": 90.68,
-      "estado_capa": "BRONCE_CRUDO",
-      "nota_calidad_bronce": "MISSING_M2_PENDIENTE_PLATA"
+      "estado_capa": "BRONCE_CRUDO"
     },
     {
       "id_propiedad": "PROP-258AFB180C",
@@ -25638,13 +25779,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57200.0,
       "precio_m2_mxn": 226.55,
-      "cuota_mantenimiento_mxn": 5473.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9046000.0,
       "yield_bruto_anual_pct": 7.59,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-23DABD2C83",
@@ -25658,7 +25800,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": null,
+      "superficie_m2": 202.4,
       "renta_lista_mensual_mxn": 45900.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 45900.0,
@@ -25669,8 +25811,7 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 41,
       "tasa_ocupacion_24m_pct": 88.77,
-      "estado_capa": "BRONCE_CRUDO",
-      "nota_calidad_bronce": "MISSING_M2_PENDIENTE_PLATA"
+      "estado_capa": "BRONCE_CRUDO"
     },
     {
       "id_propiedad": "PROP-3B6CD38D16",
@@ -25839,13 +25980,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 74271.0,
       "precio_m2_mxn": 368.07,
-      "cuota_mantenimiento_mxn": 7089.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 19950000.0,
       "yield_bruto_anual_pct": 4.47,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-06BE4A16F9",
@@ -26064,13 +26206,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 50331.0,
       "precio_m2_mxn": 355.57,
-      "cuota_mantenimiento_mxn": 4792.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11793000.0,
       "yield_bruto_anual_pct": 5.12,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-B73E86A8AF",
@@ -26289,13 +26432,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 38088.5,
       "precio_m2_mxn": 283.22,
-      "cuota_mantenimiento_mxn": 4993.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8464000.0,
       "yield_bruto_anual_pct": 5.4,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 11,
       "tasa_ocupacion_24m_pct": 98.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-FCCA81F9D4",
@@ -27658,7 +27802,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 149.4,
       "renta_lista_mensual_mxn": 59470.0,
       "descuento_contrato_pct": 5.0,
@@ -27670,7 +27814,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 33,
       "tasa_ocupacion_24m_pct": 90.96,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-7C917D7E50",
@@ -27689,13 +27834,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 83170.0,
       "precio_m2_mxn": 404.13,
-      "cuota_mantenimiento_mxn": 9942.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 18391000.0,
       "yield_bruto_anual_pct": 5.43,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 91.23,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-C53446CD79",
@@ -27758,7 +27904,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 50.3,
       "renta_lista_mensual_mxn": 23440.0,
       "descuento_contrato_pct": 0.0,
@@ -27770,7 +27916,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 96.3,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-C5B811F91C",
@@ -27839,13 +27986,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 39111.5,
       "precio_m2_mxn": 434.23,
-      "cuota_mantenimiento_mxn": 4487.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 7333000.0,
       "yield_bruto_anual_pct": 6.4,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-6A3C87CC19",
@@ -27914,13 +28062,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 84692.5,
       "precio_m2_mxn": 361.24,
-      "cuota_mantenimiento_mxn": 9218.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17744000.0,
       "yield_bruto_anual_pct": 5.73,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 23,
       "tasa_ocupacion_24m_pct": 93.7,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-53EC612055",
@@ -28139,13 +28288,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 40380.0,
       "precio_m2_mxn": 269.72,
-      "cuota_mantenimiento_mxn": 4326.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8071000.0,
       "yield_bruto_anual_pct": 6.0,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 95.21,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-F73082BB15",
@@ -28364,13 +28514,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57470.0,
       "precio_m2_mxn": 233.51,
-      "cuota_mantenimiento_mxn": 4086.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10537000.0,
       "yield_bruto_anual_pct": 6.54,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 29,
       "tasa_ocupacion_24m_pct": 92.05,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-4970712439",
@@ -28564,13 +28715,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 68660.0,
       "precio_m2_mxn": 367.77,
-      "cuota_mantenimiento_mxn": 5920.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 18415000.0,
       "yield_bruto_anual_pct": 4.47,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 38,
       "tasa_ocupacion_24m_pct": 94.79,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-F6D9D8B4FA",
@@ -28734,7 +28886,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 95.6,
+      "superficie_m2": 4.5,
       "renta_lista_mensual_mxn": 39780.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 39780.0,
@@ -28745,7 +28897,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 33,
       "tasa_ocupacion_24m_pct": 90.96,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "ERROR_SUPERFICIE_MENOR_20M2"
     },
     {
       "id_propiedad": "PROP-52B36CE412",
@@ -28789,13 +28942,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 84293.5,
       "precio_m2_mxn": 384.94,
-      "cuota_mantenimiento_mxn": 6900.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 16560000.0,
       "yield_bruto_anual_pct": 6.11,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-8E2F3C4480",
@@ -29014,13 +29168,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 49419.0,
       "precio_m2_mxn": 298.61,
-      "cuota_mantenimiento_mxn": 4499.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9850000.0,
       "yield_bruto_anual_pct": 6.02,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 22,
       "tasa_ocupacion_24m_pct": 96.99,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-80CF52B1DF",
@@ -29239,13 +29394,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57980.0,
       "precio_m2_mxn": 225.86,
-      "cuota_mantenimiento_mxn": 4245.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10016000.0,
       "yield_bruto_anual_pct": 6.95,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 36,
       "tasa_ocupacion_24m_pct": 90.14,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-EC8FD2CE14",
@@ -29364,13 +29520,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 46490.0,
       "precio_m2_mxn": 489.85,
-      "cuota_mantenimiento_mxn": 4781.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9633000.0,
       "yield_bruto_anual_pct": 5.79,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 95.21,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-AFF778B9EA",
@@ -29439,13 +29596,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 100139.5,
       "precio_m2_mxn": 421.99,
-      "cuota_mantenimiento_mxn": 7752.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 27475000.0,
       "yield_bruto_anual_pct": 4.37,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-D7ECDEBE61",
@@ -29664,13 +29822,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 82770.0,
       "precio_m2_mxn": 382.14,
-      "cuota_mantenimiento_mxn": 9035.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 17622000.0,
       "yield_bruto_anual_pct": 5.64,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 27,
       "tasa_ocupacion_24m_pct": 92.6,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-00AF719CD8",
@@ -30083,7 +30242,7 @@
       "tipo_inmueble": "depto_2rec",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 92.1,
       "renta_lista_mensual_mxn": 21940.0,
       "descuento_contrato_pct": 5.0,
@@ -30095,7 +30254,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-C5F93215EA",
@@ -30114,13 +30274,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 44081.0,
       "precio_m2_mxn": 247.3,
-      "cuota_mantenimiento_mxn": 3863.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 9113000.0,
       "yield_bruto_anual_pct": 5.8,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 17,
       "tasa_ocupacion_24m_pct": 97.67,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-731DA6D152",
@@ -30180,7 +30341,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Anzures",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -30255,10 +30416,10 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Anzures",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 84.5,
       "renta_lista_mensual_mxn": 41380.0,
       "descuento_contrato_pct": 10.0,
@@ -30270,7 +30431,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 20,
       "tasa_ocupacion_24m_pct": 97.26,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-22BA3458BD",
@@ -30330,7 +30492,7 @@
       "subzona_nombre": "Prime Poniente (Miguel Hidalgo)",
       "alcaldia_municipio": "Miguel Hidalgo",
       "colonia": "Anzures",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -30405,7 +30567,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Hipódromo Condesa",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -30480,7 +30642,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Hipódromo Condesa",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -30555,7 +30717,7 @@
       "subzona_nombre": "Central Bohemio-Corporativa (Cuauhtémoc)",
       "alcaldia_municipio": "Cuauhtémoc",
       "colonia": "Hipódromo Condesa",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -30630,7 +30792,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Narvarte Poniente",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -30705,7 +30867,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Narvarte Poniente",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -30780,7 +30942,7 @@
       "subzona_nombre": "Consolidada Media-Alta (Benito Juárez / Coyoacán)",
       "alcaldia_municipio": "Benito Juárez",
       "colonia": "Narvarte Poniente",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -30855,7 +31017,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Escandón I Sección",
-      "tipo_inmueble": "depto_1rec",
+      "tipo_inmueble": "Depto 1 Rec",
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
@@ -30909,7 +31071,7 @@
       "recamaras": 1,
       "banos": 1,
       "estacionamientos": 1,
-      "superficie_m2": 56.5,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 16710.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 16710.0,
@@ -30920,7 +31082,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 39,
       "tasa_ocupacion_24m_pct": 89.32,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-05F7532EB3",
@@ -30930,7 +31093,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Escandón I Sección",
-      "tipo_inmueble": "depto_2rec",
+      "tipo_inmueble": "Departamento 2 Recámaras",
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
@@ -30984,7 +31147,7 @@
       "recamaras": 2,
       "banos": 2,
       "estacionamientos": 1,
-      "superficie_m2": 83.1,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 24060.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 24060.0,
@@ -30995,7 +31158,8 @@
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 95.21,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-AAF836B993",
@@ -31005,7 +31169,7 @@
       "subzona_nombre": "En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan)",
       "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
       "colonia": "Escandón I Sección",
-      "tipo_inmueble": "casa",
+      "tipo_inmueble": "CASA HABITACION",
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
@@ -31059,7 +31223,7 @@
       "recamaras": 3,
       "banos": 3,
       "estacionamientos": 2,
-      "superficie_m2": 224.4,
+      "superficie_m2": null,
       "renta_lista_mensual_mxn": 50460.0,
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 50460.0,
@@ -31070,7 +31234,8 @@
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 32,
       "tasa_ocupacion_24m_pct": 91.23,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MAR_SUPERFICIE_M2"
     },
     {
       "id_propiedad": "PROP-6F784F9FDF",
@@ -31289,13 +31454,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 84759.0,
       "precio_m2_mxn": 400.99,
-      "cuota_mantenimiento_mxn": 7763.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 21329000.0,
       "yield_bruto_anual_pct": 4.77,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-24AE125FA0",
@@ -31439,13 +31605,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 46050.0,
       "precio_m2_mxn": 439.37,
-      "cuota_mantenimiento_mxn": 4238.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 8598000.0,
       "yield_bruto_anual_pct": 6.43,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 28,
       "tasa_ocupacion_24m_pct": 92.33,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7886286458",
@@ -31514,13 +31681,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 54640.0,
       "precio_m2_mxn": 368.17,
-      "cuota_mantenimiento_mxn": 5252.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 12006000.0,
       "yield_bruto_anual_pct": 5.46,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 26,
       "tasa_ocupacion_24m_pct": 92.88,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-7A677E5FFE",
@@ -31739,13 +31907,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 63800.0,
       "precio_m2_mxn": 285.57,
-      "cuota_mantenimiento_mxn": 6890.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 13663000.0,
       "yield_bruto_anual_pct": 5.6,
       "modalidad_contrato": "temporal_amueblado",
       "dias_vacancia_observados": 30,
       "tasa_ocupacion_24m_pct": 91.78,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-3B7022E5AA",
@@ -31964,13 +32133,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 34540.0,
       "precio_m2_mxn": 236.4,
-      "cuota_mantenimiento_mxn": 4101.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 5746000.0,
       "yield_bruto_anual_pct": 7.21,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 42,
       "tasa_ocupacion_24m_pct": 88.49,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-525785FD21",
@@ -32089,13 +32259,14 @@
       "descuento_contrato_pct": 5.0,
       "renta_efectiva_mensual_mxn": 47082.0,
       "precio_m2_mxn": 482.58,
-      "cuota_mantenimiento_mxn": 4398.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10369000.0,
       "yield_bruto_anual_pct": 5.45,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 25,
       "tasa_ocupacion_24m_pct": 93.15,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-94BECDA1DA",
@@ -32164,13 +32335,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 64280.0,
       "precio_m2_mxn": 413.13,
-      "cuota_mantenimiento_mxn": 7138.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 15046000.0,
       "yield_bruto_anual_pct": 5.13,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 45,
       "tasa_ocupacion_24m_pct": 93.84,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-2CFBF29159",
@@ -32389,13 +32561,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 57340.0,
       "precio_m2_mxn": 390.33,
-      "cuota_mantenimiento_mxn": 4378.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 11387000.0,
       "yield_bruto_anual_pct": 6.04,
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 31,
       "tasa_ocupacion_24m_pct": 91.51,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-01EB8AEE38",
@@ -32539,13 +32712,14 @@
       "descuento_contrato_pct": 15.0,
       "renta_efectiva_mensual_mxn": 29682.0,
       "precio_m2_mxn": 325.12,
-      "cuota_mantenimiento_mxn": 3886.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 6027000.0,
       "yield_bruto_anual_pct": 5.91,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 15,
       "tasa_ocupacion_24m_pct": 97.95,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-8390C6644F",
@@ -32583,7 +32757,7 @@
       "tipo_inmueble": "casa",
       "recamaras": 3,
       "banos": 3,
-      "estacionamientos": 2,
+      "estacionamientos": null,
       "superficie_m2": 166.6,
       "renta_lista_mensual_mxn": 48370.0,
       "descuento_contrato_pct": 5.0,
@@ -32595,7 +32769,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 21,
       "tasa_ocupacion_24m_pct": 94.25,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-4506141398",
@@ -32614,13 +32789,14 @@
       "descuento_contrato_pct": 0.0,
       "renta_efectiva_mensual_mxn": 54900.0,
       "precio_m2_mxn": 280.24,
-      "cuota_mantenimiento_mxn": 4829.0,
+      "cuota_mantenimiento_mxn": null,
       "valor_comercial_estimado_mxn": 10341000.0,
       "yield_bruto_anual_pct": 6.37,
       "modalidad_contrato": "largo_plazo_24m",
       "dias_vacancia_observados": 35,
       "tasa_ocupacion_24m_pct": 95.21,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MNAR_MANTENIMIENTO_ALTO"
     },
     {
       "id_propiedad": "PROP-EEAAFE3F15",
@@ -32683,7 +32859,7 @@
       "tipo_inmueble": "depto_1rec",
       "recamaras": 1,
       "banos": 1,
-      "estacionamientos": 1,
+      "estacionamientos": null,
       "superficie_m2": 62.3,
       "renta_lista_mensual_mxn": 18350.0,
       "descuento_contrato_pct": 0.0,
@@ -32695,7 +32871,8 @@
       "modalidad_contrato": "tradicional_12m",
       "dias_vacancia_observados": 39,
       "tasa_ocupacion_24m_pct": 89.32,
-      "estado_capa": "BRONCE_CRUDO"
+      "estado_capa": "BRONCE_CRUDO",
+      "nota_calidad_bronce": "MISSING_MCAR_ESTACIONAMIENTOS"
     },
     {
       "id_propiedad": "PROP-D48E85D270",

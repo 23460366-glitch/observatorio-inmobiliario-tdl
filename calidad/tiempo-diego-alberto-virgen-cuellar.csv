@@ -4,3 +4,7 @@ fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,t
 2026-11-07,Diego Alberto Virgen Cuéllar,E0,extractor_bronce,Codificacion,20:00,21:40,10,95,90,-5.26,Implementacion de generacion de serie historica de 36 meses de rentas ZMVM y snapshots mensuales
 2026-11-08,Diego Alberto Virgen Cuéllar,E0,github_actions_ci,Codificacion,11:30,12:35,5,55,60,9.09,Configuracion del workflow .github/workflows/bronze_capture.yml con cron mensual y validacion
 2026-11-08,Diego Alberto Virgen Cuéllar,E0,sistema_calidad_psp,Pruebas_Revision,15:00,15:50,5,45,45,0.00,Definicion de los 3 objetivos medibles de calidad (OQ-01, OQ-02, OQ-03) y ficha ENTREGA.md
+2026-11-13,Diego Alberto Virgen Cuéllar,E1,integracion_fuentes,Codificacion,17:00,18:10,5,60,65,8.33,Resolucion de discrepancias de esquema fechas DD/MM/YYYY monedas string y categorias en pipeline_e1.py
+2026-11-14,Diego Alberto Virgen Cuéllar,E1,puerta_calidad_pandera,Codificacion,19:00,20:30,10,75,80,6.67,Implementacion de DataFrameSchema en Pandera con lazy=True y envio documentado a cuarentena
+2026-11-15,Diego Alberto Virgen Cuéllar,E1,normalizacion_y_oro,Codificacion,16:00,17:30,5,85,85,0.00,Escalado Min-Max y Z-Score discretizacion jerarquias conceptuales y cubos de Capa Oro (E1 E2 E3)
+2026-11-16,Diego Alberto Virgen Cuéllar,E1,entrega_y_ci_e1,Pruebas_Revision,11:00,11:50,5,45,45,0.00,Actualizacion de GitHub Actions y redaccion de docs/E1/ENTREGA.md

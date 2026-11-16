@@ -1,0 +1,29 @@
+modalidad_contrato,descuento_contrato_pct,subzona_id,subzona_nombre,n_observaciones,dias_vacancia_promedio,dias_vacancia_mediana,tasa_ocupacion_24m_promedio_pct,renta_efectiva_promedio_mxn,yield_efectivo_promedio_pct,ingreso_efectivo_esperado_24m_mxn
+largo_plazo_24m,0.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),20,38.35,37.0,94.75,45706.01,5.83,1039354.67
+largo_plazo_24m,0.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),22,29.27,28.5,95.99,41174.1,6.42,948552.45
+largo_plazo_24m,0.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),31,32.26,33.0,95.58,31324.56,6.79,718560.35
+largo_plazo_24m,0.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),24,35.92,35.0,95.08,25825.38,7.44,589314.51
+largo_plazo_24m,5.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),22,28.41,27.5,96.11,41647.14,5.42,960649.59
+largo_plazo_24m,5.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),21,22.67,23.0,96.9,40813.8,6.17,949165.73
+largo_plazo_24m,5.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),23,24.35,25.0,96.67,34482.13,6.37,800013.0
+largo_plazo_24m,5.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),19,24.95,25.0,96.58,21618.39,7.12,501096.99
+largo_plazo_24m,10.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),21,20.95,21.0,97.13,39914.59,5.22,930456.99
+largo_plazo_24m,10.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),15,16.73,17.0,97.71,34289.19,6.05,804095.22
+largo_plazo_24m,10.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),16,18.38,18.5,97.48,32418.94,6.14,758447.59
+largo_plazo_24m,10.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),18,20.94,21.5,97.13,18596.43,6.7,433505.1
+largo_plazo_24m,15.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),23,16.26,17.0,97.77,39772.67,4.76,933257.75
+largo_plazo_24m,15.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),23,12.43,12.0,98.3,42749.91,5.29,1008555.88
+largo_plazo_24m,15.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),23,13.48,14.0,98.15,26337.93,5.91,620416.28
+largo_plazo_24m,15.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),24,15.08,15.5,97.94,19314.12,6.46,453989.98
+temporal_amueblado,0.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),49,38.78,39.0,89.38,47753.49,5.63,1024369.66
+temporal_amueblado,0.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),47,28.85,28.0,92.09,43625.22,6.39,964187.16
+temporal_amueblado,0.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),43,30.81,31.0,91.56,34262.63,6.67,752900.74
+temporal_amueblado,0.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),42,35.33,35.5,90.32,27385.54,7.5,593630.87
+tradicional_12m,0.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),117,38.91,39.0,89.34,47742.48,5.55,1023675.16
+tradicional_12m,0.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),124,29.4,30.0,91.94,44602.65,6.43,984184.23
+tradicional_12m,0.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),125,31.68,31.0,91.32,30927.18,6.88,677824.82
+tradicional_12m,0.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),132,35.42,36.0,90.3,27843.58,7.4,603426.07
+tradicional_12m,5.0,SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),71,29.01,29.0,92.05,44137.78,5.34,975091.84
+tradicional_12m,5.0,SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),70,22.77,23.0,93.76,39143.57,6.11,880824.27
+tradicional_12m,5.0,SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),62,23.21,23.0,93.64,30146.33,6.52,677496.56
+tradicional_12m,5.0,SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),64,27.36,28.0,92.5,25884.7,7.01,574640.34

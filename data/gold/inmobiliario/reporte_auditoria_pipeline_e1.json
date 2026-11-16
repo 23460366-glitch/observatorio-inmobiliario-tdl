@@ -1,0 +1,113 @@
+{
+  "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E1 (Bronce -> Plata -> Oro)",
+  "executed_at_utc": "2026-11-16T19:48:08.347067+00:00",
+  "integracion_y_conflictos": {
+    "total_registros_bronce": 1299,
+    "total_periodos_macro": 36,
+    "registros_integrados": 1299,
+    "conflictos_moneda_string_resueltos": 37,
+    "conflictos_categoria_tipo_inmueble_resueltos": 48,
+    "fechas_banxico_normalizadas": 36,
+    "registros_sin_match_macro": 0
+  },
+  "puerta_calidad_pandera_y_cuarentena": {
+    "total_evaluados": 1299,
+    "total_aprobados_plata": 1291,
+    "total_enviados_cuarentena": 8,
+    "tasa_rechazo_cuarentena_pct": 0.62,
+    "desglose_motivos_cuarentena": {
+      "DUPLICADO_ID_PERIODO: Registro duplicado por republicación en el mismo mes": 3,
+      "PANDERA_FAIL[superficie_m2]: superficie_m2_menor_20m2 (valor=-25.0)": 1,
+      "PANDERA_FAIL[superficie_m2]: superficie_m2_mayor_1200m2 (valor=9850.0)": 1,
+      "PANDERA_FAIL[renta_lista_mensual_mxn]: renta_lista_invalida_o_negativa (valor=-15000.0)": 1,
+      "PANDERA_FAIL[renta_lista_mensual_mxn]: not_nullable (valor=nan)": 1,
+      "PANDERA_FAIL[superficie_m2]: superficie_m2_menor_20m2 (valor=4.5)": 1
+    }
+  },
+  "valores_faltantes_mcar_mar_mnar": {
+    "faltantes_antes_imputacion": {
+      "estacionamientos": 28,
+      "superficie_m2": 15,
+      "cuota_mantenimiento_mxn": 108
+    },
+    "faltantes_despues_imputacion": {
+      "estacionamientos": 0,
+      "superficie_m2": 0,
+      "cuota_mantenimiento_mxn": 0
+    },
+    "diagnostico_mecanismos": {
+      "estacionamientos_MCAR": {
+        "mecanismo": "MCAR (Missing Completely At Random)",
+        "chi2_stat": 0.0001,
+        "p_value": 1.0,
+        "interpretacion": "p > 0.05 confirma que la ausencia no depende de la ubicación ni del precio; se imputa por moda condicional del tipo de inmueble."
+      },
+      "superficie_m2_MAR": {
+        "mecanismo": "MAR (Missing At Random)",
+        "chi2_stat": 45.482,
+        "p_value": 7.30833849863119e-10,
+        "interpretacion": "p < 0.001 demuestra dependencia sistemática respecto a la variable observada subzona_id (concentrado en SZ4); se imputa con mediana estratificada por (subzona_id, tipo_inmueble, recamaras)."
+      },
+      "cuota_mantenimiento_MNAR": {
+        "mecanismo": "MNAR (Missing Not At Random)",
+        "t_stat": 14.665,
+        "p_value": 1.5575299803986967e-29,
+        "renta_media_cuando_falta_mxn": 60821.11,
+        "renta_media_cuando_presente_mxn": 35074.77,
+        "interpretacion": "p < 0.001 confirma que los anuncios que omiten la cuota de mantenimiento corresponden a rentas significativamente más altas (ocultamiento estratégico de cuotas caras). Se conserva la bandera binaria flag_mnar_mantenimiento y se imputa por razón mediana zonal."
+      }
+    }
+  },
+  "deteccion_y_tratamiento_atipicos": {
+    "detectados_iqr": 4,
+    "detectados_zscore_robusto": 3,
+    "detectados_isolation_forest": 33,
+    "detectados_consenso_2_de_3": 4,
+    "precio_m2_max_antes_winsor": 765.72,
+    "precio_m2_max_despues_winsor": 626.96,
+    "precio_m2_std_antes_winsor": 89.7,
+    "precio_m2_std_despues_winsor": 88.63
+  },
+  "normalizacion_discretizacion_jerarquias": {
+    "variables_normalizadas_minmax_zscore": [
+      "precio_m2_winsor_mxn",
+      "superficie_m2",
+      "renta_efectiva_winsor_mxn",
+      "yield_bruto_anual_pct",
+      "dias_vacancia_observados"
+    ],
+    "distribucion_rango_superficie": {
+      "2_Medio (60-100 m2)": 425,
+      "1_Compacto (<60 m2)": 361,
+      "4_Residencial Plus (>160 m2)": 356,
+      "3_Amplio (100-160 m2)": 149
+    },
+    "distribucion_estrato_precio_m2": {
+      "Q4_Prime": 323,
+      "Q2_Moderado": 323,
+      "Q1_Accesible": 323,
+      "Q3_Alto": 322
+    },
+    "distribucion_nivel_vacancia": {
+      "Normal (22-35 dias)": 831,
+      "Lenta (36-50 dias)": 261,
+      "Rapida (<=21 dias)": 199
+    },
+    "niveles_jerarquia_espacial": [
+      "colonia",
+      "alcaldia_municipio",
+      "subzona_nombre",
+      "corredor_macro_zmvm",
+      "region_metropolitana"
+    ]
+  },
+  "reduccion_datos_y_capa_oro": {
+    "columnas_totales_capa_plata_completa": 61,
+    "columnas_seleccionadas_vista_reducida": 31,
+    "reduccion_dimensionalidad_pct": 49.18,
+    "filas_plata_microdatos": 1291,
+    "filas_oro_e1_series_tiempo": 36,
+    "filas_oro_e2_experimento_whatif": 28,
+    "filas_oro_e3_multivariado_yield": 12
+  }
+}

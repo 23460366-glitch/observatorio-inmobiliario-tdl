@@ -1,0 +1,13 @@
+subzona_id,subzona_nombre,familia_inmueble,tipo_inmueble,n_inmuebles,superficie_m2_promedio,precio_m2_promedio_mxn,precio_m2_mediana_mxn,renta_mensual_promedio_mxn,yield_bruto_promedio_pct,yield_bruto_mediana_pct,yield_bruto_std_pct,dias_vacancia_promedio
+SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),Vivienda_Horizontal_Casa,casa,108,200.55,377.7,376.85,73478.69,4.83,4.87,0.47,33.9
+SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),Vivienda_Vertical_Departamento,depto_1rec,108,52.29,491.58,490.94,24765.38,5.97,5.99,0.43,32.46
+SZ1_PRIME_PONIENTE,Prime Poniente (Miguel Hidalgo),Vivienda_Vertical_Departamento,depto_2rec,107,87.36,444.49,436.03,37687.37,5.54,5.55,0.47,33.19
+SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),Vivienda_Horizontal_Casa,casa,108,201.03,349.73,352.32,68118.94,5.6,5.62,0.45,25.5
+SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),Vivienda_Vertical_Departamento,depto_1rec,107,52.62,455.54,457.78,23321.71,6.81,6.84,0.49,26.03
+SZ2_CENTRAL_CORREDOR,Central Bohemio-Corporativa (Cuauhtémoc),Vivienda_Vertical_Departamento,depto_2rec,107,89.27,403.4,404.33,34854.21,6.31,6.36,0.44,25.36
+SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),Vivienda_Horizontal_Casa,casa,107,201.14,260.28,259.42,50831.75,5.99,6.04,0.43,27.47
+SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),Vivienda_Vertical_Departamento,depto_1rec,108,52.34,339.63,340.4,17331.24,7.23,7.26,0.46,28.23
+SZ3_CONSOLIDADA_SUR,Consolidada Media-Alta (Benito Juárez / Coyoacán),Vivienda_Vertical_Departamento,depto_2rec,108,88.09,303.37,302.69,25797.39,6.68,6.7,0.47,26.85
+SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),Vivienda_Horizontal_Casa,casa,108,196.6,216.13,215.88,41550.48,6.66,6.7,0.5,32.02
+SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),Vivienda_Vertical_Departamento,depto_1rec,107,52.28,280.22,279.58,14129.05,7.63,7.61,0.59,29.56
+SZ4_EMERGENTE_METROPOLITANA,En Consolidación / Conurbada (Sta. María - Escandón - Naucalpan),Vivienda_Vertical_Departamento,depto_2rec,108,88.4,249.15,248.78,21404.99,7.35,7.39,0.55,31.15

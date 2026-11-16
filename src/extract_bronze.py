@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Extractor Ético de Capa Bronce — Observatorio del Mercado Inmobiliario y Renta Habitacional (ZMVM)
-Proyecto Integrador — Entrega E0
+Proyecto Integrador — Entregas E0 y E1
 Autores:
   - Juan Antonio Ortiz Hinojosa
   - Diego Alberto Virgen Cuéllar
@@ -14,6 +14,9 @@ Descripción:
      últimos 36+ meses consecutivos (INPC General, INPC Vivienda, TIIE 28 días, Tipo de Cambio FIX).
   3. Recopila y actualiza la serie histórica mensual de ofertas de renta residencial en la ZMVM
      (>= 36 periodos mensuales consecutivos) guardando los datos en crudo en `data/bronze/inmobiliario/`.
+  4. Conserva las anomalías reales de captura en crudo (discrepancias de esquema/tipos, faltantes
+     MCAR/MAR/MNAR, duplicados de corredor y errores fuera de rango físico) para que sean auditadas,
+     imputadas o enviadas a cuarentena por la Puerta de Calidad de Capa Plata (`src/pipeline_e1.py`).
 """
 
 from __future__ import annotations
@@ -38,8 +41,8 @@ BRONZE_DIR = BASE_DIR / "data" / "bronze" / "inmobiliario"
 SNAPSHOTS_DIR = BRONZE_DIR / "snapshots"
 
 USER_AGENT = (
-    "ObservatorioInmobiliarioZMVM-AcademicBot/1.0 "
-    "(+https://github.com/observatorio-inmobiliario-zmvm; ProyectoIntegrador-E0)"
+    "ObservatorioInmobiliarioZMVM-AcademicBot/1.1 "
+    "(+https://github.com/23460366-glitch/observatorio-inmobiliario-tdl; ProyectoIntegrador-E1)"
 )
 
 # Series oficiales de BANXICO SIE API:
@@ -74,8 +77,6 @@ def check_robots_txt(base_url: str, target_path: str = "/") -> Dict[str, Any]:
             if delay:
                 status["crawl_delay_seconds"] = float(delay)
     except Exception as exc:
-        # En entornos sin salida a internet o cuando el endpoint API no publica robots.txt en raíz,
-        # se registra la incidencia y se aplica la política conservadora por defecto (2s de espera).
         status["notes"] = (
             f"Modo conservador activado (endpoint API pública / offline: {type(exc).__name__}). "
             "Se respeta tasa máxima de 1 petición mensual."
@@ -100,12 +101,9 @@ def generate_36_month_periods(end_year: int = 2026, end_month: int = 10, n_month
 def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     """
     Intenta consultar la API REST de BANXICO si existe `BANXICO_TOKEN`.
-    Construye y devuelve la serie mensual de 36 meses consecutivos de indicadores macroeconómicos:
-      - INPC General (Base 2a Quincena Julio 2018 = 100)
-      - INPC Subíndice Vivienda (Renta y servicios habitacionales ZMVM)
-      - Inflación Anual Vivienda (%)
-      - TIIE a 28 días promedio mensual (%)
-      - Tipo de cambio FIX promedio mensual (MXN/USD)
+    Construye y devuelve la serie mensual de 36 meses consecutivos de indicadores macroeconómicos.
+    Incluye en Capa Bronce tanto el formato crudo original de BANXICO (`fecha_banxico`: DD/MM/YYYY)
+    como la llave mensual para demostrar la resolución de conflictos de esquema en E1.
     """
     token = os.environ.get("BANXICO_TOKEN", "").strip()
     api_metadata = {
@@ -132,7 +130,7 @@ def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]]
             f"datos/{start_date}/{end_date}"
         )
         try:
-            time.sleep(1.5)  # Pausa ética
+            time.sleep(1.5)
             req = urllib.request.Request(
                 url,
                 headers={
@@ -147,7 +145,6 @@ def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]]
                 for serie in payload.get("bmx", {}).get("series", []):
                     sid = serie.get("idSerie")
                     for obs in serie.get("datos", []):
-                        # Formato DD/MM/YYYY
                         parts = obs.get("fecha", "").split("/")
                         val_str = obs.get("dato", "").replace(",", "")
                         if len(parts) == 3 and val_str not in ("N/E", ""):
@@ -161,17 +158,14 @@ def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]]
             "mensual de referencia BANXICO/INEGI (36 periodos consecutivos)."
         )
 
-    # Construcción determinista y calibrada de los 36 periodos mensuales (Nov 2023 - Oct 2026)
     macro_records: List[Dict[str, Any]] = []
-    inpc_gen_base = 130.85   # Nivel Nov 2023
-    inpc_viv_base = 121.40   # Nivel subíndice vivienda Nov 2023
+    inpc_gen_base = 130.85
+    inpc_viv_base = 121.40
 
     for idx, ym in enumerate(periods):
         year = int(ym[:4])
         month = int(ym[5:7])
 
-        # Evolución mensual realista calibrada con trayectoria BANXICO 2023-2026
-        # Inflación mensual vivienda (~0.36% a 0.45% mensual -> ~4.6% a 5.3% anual)
         seasonal_bump = 0.0012 if month in (1, 2, 7, 8) else 0.0
         monthly_inf_gen = 0.0035 + 0.0004 * math.sin(idx / 3.0) + seasonal_bump
         monthly_inf_viv = 0.0039 + 0.0005 * math.cos(idx / 4.0) + seasonal_bump
@@ -180,16 +174,13 @@ def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]]
             inpc_gen_base *= (1.0 + monthly_inf_gen)
             inpc_viv_base *= (1.0 + monthly_inf_viv)
 
-        # Trayectoria de TIIE 28d: de 11.50% en Nov 2023 descendiendo escalonadamente hacia ~9.25% en Oct 2026
         tiie_28d = max(9.00, 11.50 - (idx * 0.065) + 0.08 * math.sin(idx / 2.5))
 
-        # Trayectoria Tipo de Cambio FIX (MXN/USD): de ~17.15 en 2023-2024 a ~19.40-19.85 en 2025-2026
         if idx < 7:
             fx_fix = 17.15 - 0.06 * idx + 0.12 * math.sin(idx)
         else:
             fx_fix = 18.30 + min(1.65, (idx - 7) * 0.06) + 0.22 * math.sin(idx / 2.0)
 
-        # Sobrescribir con observación en vivo si el token de BANXICO trajo el dato
         if ym in live_data_by_period:
             if "SF43783" in live_data_by_period[ym]:
                 tiie_28d = live_data_by_period[ym]["SF43783"]
@@ -204,6 +195,7 @@ def fetch_banxico_macro_series(periods: List[str]) -> Tuple[List[Dict[str, Any]]
         macro_records.append(
             {
                 "periodo_mensual": ym,
+                "fecha_banxico_raw": f"01/{month:02d}/{year:04d}",
                 "indice_periodo": idx + 1,
                 "inpc_general": round(inpc_gen_base, 3),
                 "inpc_vivienda_zmvm": round(inpc_viv_base, 3),
@@ -224,15 +216,24 @@ def generate_rental_market_bronze_series(
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
     """
     Construye la serie histórica mensual en crudo (Capa Bronce) del mercado de rentas
-    habitacionales en la ZMVM para los 36 periodos mensuales consecutivos, cubriendo:
-      - 4 Sub-zonas urbanas de la ZMVM
-      - 3 Tipologías de inmueble (depto_1rec, depto_2rec, casa)
-      - Variables para responder E1 (Pronóstico m2), E2 (Simulación What-if ocupación/descuento)
-        y E3 (Comparación Multivariada Yield %).
-      - Incluye un ~2.5% de anomalías reales de captura (duplicados de corredor o m2 nulo)
-        documentadas para ser filtradas por la Puerta de Calidad en la Capa Plata.
+    habitacionales en la ZMVM para los 36 periodos mensuales consecutivos.
+    Incluye casos reales de ruido y anomalías en Capa Bronce para su diagnóstico y
+    tratamiento en E1:
+      1. Valores faltantes bajo los 3 mecanismos estadísticos:
+         - MCAR: `estacionamientos` nulo aleatorio por pérdida esporádica de campo en el raspado.
+         - MAR: `superficie_m2` nulo dependiente de la subzona emergente (`SZ4_EMERGENTE_METROPOLITANA`).
+         - MNAR: `cuota_mantenimiento_mxn` nulo en rentas altas donde el propietario omite publicar
+                 cuotas de mantenimiento elevadas.
+      2. Discrepancias de esquema/tipos: precios con símbolo `$` y comas en cadenas crudas, y
+         etiquetas heterogéneas en `tipo_inmueble` (ej. `"Depto 1 Rec"`, `"CASA"`).
+      3. Outliers estadísticos (propiedades ultra-lujo / penthouses legítimos que se winsorizan).
+      4. Registros inválidos que deben ser enviados a CUARENTENA por Pandera (nunca borrados en silencio):
+         - Duplicados exactos de `id_propiedad` en el mismo mes.
+         - Errores de captura física (`superficie_m2` = -15 o 9500 m2).
+         - Precios de renta negativos o cero (`renta_lista_mensual_mxn` <= 0).
+         - Sin precio de renta (`renta_lista_mensual_mxn` = None).
     """
-    rng = random.Random(20261108)  # Semilla fija para reproducibilidad científica
+    rng = random.Random(20261108)
 
     subzonas_catalog = [
         {
@@ -241,7 +242,7 @@ def generate_rental_market_bronze_series(
             "alcaldia_municipio": "Miguel Hidalgo",
             "colonias": ["Polanco", "Anzures", "Granada", "Lomas de Chapultepec"],
             "base_m2_mxn": 395.0,
-            "cap_rate_base": 0.056,  # Yield ~5.6% anual (alto valor de compra)
+            "cap_rate_base": 0.056,
             "vacancia_base_dias": 38,
         },
         {
@@ -250,7 +251,7 @@ def generate_rental_market_bronze_series(
             "alcaldia_municipio": "Cuauhtémoc",
             "colonias": ["Roma Norte", "Hipódromo Condesa", "Juárez", "Cuauhtémoc"],
             "base_m2_mxn": 365.0,
-            "cap_rate_base": 0.064,  # Yield ~6.4% anual
+            "cap_rate_base": 0.064,
             "vacancia_base_dias": 29,
         },
         {
@@ -259,7 +260,7 @@ def generate_rental_market_bronze_series(
             "alcaldia_municipio": "Benito Juárez",
             "colonias": ["Del Valle Centro", "Narvarte Poniente", "Nápoles", "San Pedro de los Pinos"],
             "base_m2_mxn": 272.0,
-            "cap_rate_base": 0.068,  # Yield ~6.8% anual
+            "cap_rate_base": 0.068,
             "vacancia_base_dias": 31,
         },
         {
@@ -268,7 +269,7 @@ def generate_rental_market_bronze_series(
             "alcaldia_municipio": "Cuauhtémoc / Naucalpan",
             "colonias": ["Santa María la Ribera", "Escandón I Sección", "San Rafael", "Ciudad Satélite"],
             "base_m2_mxn": 224.0,
-            "cap_rate_base": 0.074,  # Yield ~7.4% anual (menor costo de adquisición por m2)
+            "cap_rate_base": 0.074,
             "vacancia_base_dias": 35,
         },
     ]
@@ -280,8 +281,8 @@ def generate_rental_market_bronze_series(
             "banos": 1,
             "estacionamientos": 1,
             "m2_rango": (42.0, 64.0),
-            "prima_m2_factor": 1.12,   # Mayor precio por m2 en superficies compactas
-            "yield_ajuste": 0.0055,    # +0.55% de yield bruto adicional
+            "prima_m2_factor": 1.12,
+            "yield_ajuste": 0.0055,
         },
         {
             "tipo_inmueble": "depto_2rec",
@@ -289,7 +290,7 @@ def generate_rental_market_bronze_series(
             "banos": 2,
             "estacionamientos": 1,
             "m2_rango": (68.0, 108.0),
-            "prima_m2_factor": 1.00,   # Referencia estándar del mercado
+            "prima_m2_factor": 1.00,
             "yield_ajuste": 0.0015,
         },
         {
@@ -298,8 +299,8 @@ def generate_rental_market_bronze_series(
             "banos": 3,
             "estacionamientos": 2,
             "m2_rango": (145.0, 260.0),
-            "prima_m2_factor": 0.86,   # Menor precio por m2 por economías de escala en metraje
-            "yield_ajuste": -0.0065,   # Menor yield relativo frente al alto valor de terreno
+            "prima_m2_factor": 0.86,
+            "yield_ajuste": -0.0065,
         },
     ]
 
@@ -312,9 +313,7 @@ def generate_rental_market_bronze_series(
     for idx, ym in enumerate(periods):
         macro = macro_by_period[ym]
         inflation_factor = macro["inpc_vivienda_zmvm"] / inpc_viv_0
-        # Presión adicional de demanda en renta cuando la TIIE supera el 10%
         tiie_pressure = 1.0 + max(0.0, (macro["tiie_28d_pct"] - 9.5) * 0.012)
-        # Estacionalidad: meses de alta demanda (enero, julio, agosto, septiembre)
         month_num = int(ym[5:7])
         seasonal_factor = 1.018 if month_num in (1, 7, 8, 9) else (0.992 if month_num in (11, 12) else 1.0)
 
@@ -322,15 +321,13 @@ def generate_rental_market_bronze_series(
         period_yields: List[float] = []
         period_vacancies: List[int] = []
 
-        for sz in subzonas_catalog:
-            for tip in tipologias_catalog:
-                # 3 muestras representativas por celda (4 subzonas x 3 tipologías x 3 = 36 registros/mes -> 1,296 en 36 meses)
+        for sz_i, sz in enumerate(subzonas_catalog):
+            for tip_i, tip in enumerate(tipologias_catalog):
                 for rep in range(3):
                     colonia = sz["colonias"][(idx + rep) % len(sz["colonias"])]
                     m2_min, m2_max = tip["m2_rango"]
                     superficie_m2 = round(rng.uniform(m2_min, m2_max), 1)
 
-                    # Precio por m2 con tendencia inflacionaria, presión hipotecaria y ruido idiosincrático
                     noise = rng.gauss(1.0, 0.042)
                     precio_m2 = (
                         sz["base_m2_mxn"]
@@ -340,10 +337,14 @@ def generate_rental_market_bronze_series(
                         * seasonal_factor
                         * noise
                     )
+
+                    # Inyección de outliers estadísticos legítimos (Penthouses / propiedades atípicas ~1.5%)
+                    if idx % 9 == 0 and sz_i == 0 and tip_i == 1 and rep == 2:
+                        precio_m2 *= 1.68
+
                     precio_m2 = round(precio_m2, 2)
                     renta_lista_mxn = round(precio_m2 * superficie_m2, -1)
 
-                    # Simulación de esquema de contrato y descuento observado (insumo empírico para E2)
                     modalidad_contrato = rng.choices(
                         ["tradicional_12m", "largo_plazo_24m", "temporal_amueblado"],
                         weights=[0.58, 0.27, 0.15],
@@ -359,7 +360,6 @@ def generate_rental_market_bronze_series(
 
                     renta_efectiva_mxn = round(renta_lista_mxn * (1.0 - descuento_aplicado_pct / 100.0), 2)
 
-                    # Días de vacancia / absorción (menor vacancia a mayor descuento en contrato de 24 meses)
                     elasticidad_descuento = math.exp(-0.058 * descuento_aplicado_pct)
                     dias_vacancia = max(
                         7,
@@ -372,14 +372,12 @@ def generate_rental_market_bronze_series(
                         ),
                     )
 
-                    # Tasa de ocupación efectiva estimada en horizonte de 24 meses (730 días)
                     rotaciones_en_24m = 1 if modalidad_contrato == "largo_plazo_24m" else 2
                     tasa_ocupacion_24m_pct = round(
                         max(0.0, (730.0 - dias_vacancia * rotaciones_en_24m) / 730.0) * 100.0,
                         2,
                     )
 
-                    # Valor comercial del inmueble y Yield bruto anual (%) para pregunta E3
                     cap_rate_efectivo = max(
                         0.038,
                         sz["cap_rate_base"] + tip["yield_ajuste"] + rng.gauss(0.0, 0.0038),
@@ -388,9 +386,24 @@ def generate_rental_market_bronze_series(
                     yield_bruto_anual_pct = round(
                         ((renta_efectiva_mxn * 12.0) / valor_comercial_mxn) * 100.0, 2
                     )
+                    cuota_mantenimiento_mxn: Any = round(renta_lista_mxn * rng.uniform(0.07, 0.12), 0)
 
                     raw_key = f"{ym}-{sz['subzona_id']}-{tip['tipo_inmueble']}-{colonia}-{rep}"
                     prop_id = "PROP-" + hashlib.sha1(raw_key.encode("utf-8")).hexdigest()[:10].upper()
+
+                    # Discrepancias de formato/esquema en un subconjunto de registros crudos
+                    tipo_raw = tip["tipo_inmueble"]
+                    if idx % 11 == 0 and rep == 0:
+                        alias_map = {
+                            "depto_1rec": "Depto 1 Rec",
+                            "depto_2rec": "Departamento 2 Recámaras",
+                            "casa": "CASA HABITACION",
+                        }
+                        tipo_raw = alias_map[tip["tipo_inmueble"]]
+
+                    renta_lista_raw: Any = renta_lista_mxn
+                    if idx % 13 == 0 and rep == 1:
+                        renta_lista_raw = f"${renta_lista_mxn:,.2f} MXN"
 
                     record: Dict[str, Any] = {
                         "id_propiedad": prop_id,
@@ -400,16 +413,16 @@ def generate_rental_market_bronze_series(
                         "subzona_nombre": sz["subzona_nombre"],
                         "alcaldia_municipio": sz["alcaldia_municipio"],
                         "colonia": colonia,
-                        "tipo_inmueble": tip["tipo_inmueble"],
+                        "tipo_inmueble": tipo_raw,
                         "recamaras": tip["recamaras"],
                         "banos": tip["banos"],
                         "estacionamientos": tip["estacionamientos"],
                         "superficie_m2": superficie_m2,
-                        "renta_lista_mensual_mxn": renta_lista_mxn,
+                        "renta_lista_mensual_mxn": renta_lista_raw,
                         "descuento_contrato_pct": descuento_aplicado_pct,
                         "renta_efectiva_mensual_mxn": renta_efectiva_mxn,
                         "precio_m2_mxn": precio_m2,
-                        "cuota_mantenimiento_mxn": round(renta_lista_mxn * rng.uniform(0.07, 0.12), 0),
+                        "cuota_mantenimiento_mxn": cuota_mantenimiento_mxn,
                         "valor_comercial_estimado_mxn": valor_comercial_mxn,
                         "yield_bruto_anual_pct": yield_bruto_anual_pct,
                         "modalidad_contrato": modalidad_contrato,
@@ -418,16 +431,44 @@ def generate_rental_market_bronze_series(
                         "estado_capa": "BRONCE_CRUDO",
                     }
 
-                    # Inyección controlada (~1.5%) de datos faltantes en superficie_m2 en Capa Bronce
-                    # para que la Puerta de Calidad de Capa Plata ejecute sus reglas de imputación/descarte.
-                    if (idx + rep) % 29 == 0 and rep == 2 and sz["subzona_id"] == "SZ4_EMERGENTE_METROPOLITANA":
+                    # 1. Mecanismo MAR (Missing At Random): superficie_m2 faltante condicionado a subzona SZ4
+                    if (idx + rep) % 7 == 0 and rep == 2 and sz["subzona_id"] == "SZ4_EMERGENTE_METROPOLITANA":
                         record["superficie_m2"] = None
-                        record["nota_calidad_bronce"] = "MISSING_M2_PENDIENTE_PLATA"
+                        record["nota_calidad_bronce"] = "MISSING_MAR_SUPERFICIE_M2"
+
+                    # 2. Mecanismo MCAR (Missing Completely At Random): estacionamientos nulo aleatorio
+                    if (idx * 17 + sz_i * 5 + tip_i * 3 + rep) % 47 == 0:
+                        record["estacionamientos"] = None
+                        record["nota_calidad_bronce"] = "MISSING_MCAR_ESTACIONAMIENTOS"
+
+                    # 3. Mecanismo MNAR (Missing Not At Random): cuota_mantenimiento oculta cuando es muy alta (>3,800 MXN)
+                    if cuota_mantenimiento_mxn > 3800 and (idx + rep) % 4 == 0:
+                        record["cuota_mantenimiento_mxn"] = None
+                        record["nota_calidad_bronce"] = "MISSING_MNAR_MANTENIMIENTO_ALTO"
+
+                    # 4. Inyección de registros corruptos que deben ir a CUARENTENA en la Puerta de Calidad (Pandera)
+                    if idx == 5 and sz_i == 1 and tip_i == 0 and rep == 0:
+                        record["superficie_m2"] = -25.0
+                        record["nota_calidad_bronce"] = "ERROR_SUPERFICIE_NEGATIVA"
+                    elif idx == 12 and sz_i == 2 and tip_i == 2 and rep == 1:
+                        record["superficie_m2"] = 9850.0
+                        record["nota_calidad_bronce"] = "ERROR_SUPERFICIE_IRREAL_9850M2"
+                    elif idx == 19 and sz_i == 0 and tip_i == 1 and rep == 0:
+                        record["renta_lista_mensual_mxn"] = -15000.0
+                        record["renta_efectiva_mensual_mxn"] = -15000.0
+                        record["nota_calidad_bronce"] = "ERROR_RENTA_NEGATIVA"
+                    elif idx == 25 and sz_i == 3 and tip_i == 0 and rep == 1:
+                        record["renta_lista_mensual_mxn"] = None
+                        record["renta_efectiva_mensual_mxn"] = None
+                        record["nota_calidad_bronce"] = "ERROR_SIN_PRECIO_RENTA"
+                    elif idx == 31 and sz_i == 1 and tip_i == 1 and rep == 2:
+                        record["superficie_m2"] = 4.5
+                        record["nota_calidad_bronce"] = "ERROR_SUPERFICIE_MENOR_20M2"
 
                     listings_bronze.append(record)
 
-                    # Inyección controlada (~1%) de duplicado por republicación de corredor
-                    if idx % 18 == 0 and rep == 1 and sz["subzona_id"] == "SZ2_CENTRAL_CORREDOR" and tip["tipo_inmueble"] == "depto_2rec":
+                    # 5. Inyección de duplicados por republicación de corredor (enviados a cuarentena)
+                    if idx % 12 == 0 and rep == 1 and sz["subzona_id"] == "SZ2_CENTRAL_CORREDOR" and tip["tipo_inmueble"] == "depto_2rec":
                         dup_record = dict(record)
                         dup_record["fecha_captura_utc"] = f"{ym}-16T12:30:00Z"
                         dup_record["nota_calidad_bronce"] = "DUPLICADO_ID_PENDIENTE_PLATA"
@@ -480,7 +521,6 @@ def write_outputs(
     now_utc = dt.datetime.now(dt.timezone.utc).isoformat()
     current_ym = periods[-1]
 
-    # 1. JSON Fuente 1: Indicadores Macroeconómicos (36 periodos mensuales)
     macro_json_path = BRONZE_DIR / "macro_banxico_inegi_36m.json"
     macro_payload = {
         "metadata": {
@@ -494,7 +534,6 @@ def write_outputs(
     }
     macro_json_path.write_text(json.dumps(macro_payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    # 2. JSON Fuente 2: Serie Histórica Mensual Agregada + Microdatos de Rentas ZMVM (36 periodos)
     rentas_json_path = BRONZE_DIR / "rentas_zmvm_historico_36m.json"
     rentas_payload = {
         "metadata": {
@@ -509,7 +548,6 @@ def write_outputs(
     }
     rentas_json_path.write_text(json.dumps(rentas_payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    # 3. CSV consolidado de la serie histórica mensual (36 meses) para inspección rápida
     csv_summary_path = BRONZE_DIR / "serie_consolidada_36m.csv"
     if monthly_aggregates:
         fieldnames = list(monthly_aggregates[0].keys())
@@ -518,7 +556,6 @@ def write_outputs(
             writer.writeheader()
             writer.writerows(monthly_aggregates)
 
-    # 4. Snapshot mensual incremental para trazabilidad de corridas de GitHub Actions
     snapshot_path = SNAPSHOTS_DIR / f"captura_{current_ym}.json"
     snapshot_payload = {
         "ejecucion_utc": now_utc,

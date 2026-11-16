@@ -4,3 +4,7 @@ fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,t
 2026-11-07,Juan Antonio Ortiz Hinojosa,E0,preguntas_analiticas,Diseno,16:00,17:20,10,75,70,-6.67,Formulacion matematica de la trilectica estadistica (E1 SARIMAX, E2 Monte Carlo, E3 ANOVA)
 2026-11-07,Juan Antonio Ortiz Hinojosa,E0,extractor_bronce,Codificacion,19:00,20:45,10,90,95,5.56,Desarrollo del modulo de consulta BANXICO SIE y auditoria programatica de robots.txt
 2026-11-08,Juan Antonio Ortiz Hinojosa,E0,validacion_e0,Pruebas_Revision,14:00,15:00,5,50,55,10.00,Revision de completitud de 36 periodos mensuales y redaccion de propuesta.md
+2026-11-13,Juan Antonio Ortiz Hinojosa,E1,diagnostico_faltantes,Diseno,16:00,17:05,5,55,60,9.09,Diseno de pruebas Chi-cuadrado y t de Welch para clasificar mecanismos MCAR MAR y MNAR
+2026-11-14,Juan Antonio Ortiz Hinojosa,E1,imputacion_y_outliers,Codificacion,18:00,19:40,10,85,90,5.88,Implementacion de imputacion estratificada y detectores IQR Z-Score Robusto (MAD) e IsolationForest
+2026-11-15,Juan Antonio Ortiz Hinojosa,E1,notebook_limpieza,Codificacion,11:00,12:20,5,75,75,0.00,Estructuracion y ejecucion del cuaderno interactivo docs/E1/limpieza.ipynb
+2026-11-16,Juan Antonio Ortiz Hinojosa,E1,relatoria_e1,Pruebas_Revision,10:00,10:50,5,45,45,0.00,Redaccion de docs/relatoria-E1.md y verificacion de metricas estadisticas
