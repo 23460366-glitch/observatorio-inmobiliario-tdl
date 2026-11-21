@@ -1,9 +1,9 @@
 {
-  "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E2 (Fuente Geoespacial + Linaje Completo)",
-  "executed_at_utc": "2026-11-21T19:58:38.848796+00:00",
+  "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E2 (Mapa Maestro Unificado + Linaje Completo)",
+  "executed_at_utc": "2026-11-21T20:07:52.368331+00:00",
   "fuente_especializada_geoespacial": {
     "fuente_especializada": "Geoespacial: DENUE (INEGI) + Marco Geoestadístico Nacional + OpenStreetMap",
-    "fecha_ingesta_bronce_utc": "2026-11-21T19:58:35.890846+00:00",
+    "fecha_ingesta_bronce_utc": "2026-11-21T20:07:42.567883+00:00",
     "crs_origen": "EPSG:4326 (WGS 84 Geográfico)",
     "crs_proyeccion_metrica": "EPSG:32614 (WGS 84 / UTM zone 14N en metros)",
     "total_poligonos_colonias_ageb": 16,
@@ -11,7 +11,7 @@
     "robots_audit_inegi_denue": {
       "robots_url": "https://www.inegi.org.mx/robots.txt",
       "target_path": "/app/api/denue/v1/",
-      "checked_at_utc": "2026-11-21T19:58:35.890882+00:00",
+      "checked_at_utc": "2026-11-21T20:07:42.567961+00:00",
       "allowed": true,
       "crawl_delay_seconds": 2.0,
       "notes": "Verificación ética exitosa"
@@ -19,7 +19,7 @@
     "robots_audit_osm_overpass": {
       "robots_url": "https://overpass-api.de/robots.txt",
       "target_path": "/api/interpreter",
-      "checked_at_utc": "2026-11-21T19:58:36.357264+00:00",
+      "checked_at_utc": "2026-11-21T20:07:42.729857+00:00",
       "allowed": false,
       "crawl_delay_seconds": 2.0,
       "notes": "Verificación ética exitosa"
@@ -56,9 +56,11 @@
     "mapa_interactivo_html": "docs/E2/mapa_interactivo_zmvm.html"
   },
   "expansion_geoespacial_colima": {
-    "oro_colima_csv": "data/gold/inmobiliario/oro_colima_zm.csv",
-    "oro_colima_geojson": "data/gold/inmobiliario/oro_geoespacial_colima.geojson",
-    "mapa_interactivo_colima_html": "docs/E2/mapa_interactivo_colima.html",
-    "total_zonas_colima": 8
+    "oro_colima_csv": "data\\gold\\inmobiliario\\oro_colima_zm.csv",
+    "oro_colima_geojson": "data\\gold\\inmobiliario\\oro_geoespacial_colima.geojson",
+    "oro_maestro_unificado_geojson": "data\\gold\\inmobiliario\\oro_geoespacial_maestro_unificado.geojson",
+    "mapa_interactivo_maestro_html": "docs/E2/mapa_interactivo_zmvm.html",
+    "total_zonas_colima": 8,
+    "total_zonas_unificadas": 24
   }
 }

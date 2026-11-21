@@ -961,13 +961,17 @@ def generate_cartographic_visualizations(
     plt.savefig(png_path, dpi=180)
     plt.close(fig)
 
-    # --- 2. Mapa Interactivo Estilo "Google Earth" (Esri WorldImagery + Hybrid Labels, Cero CARTO API Key) ---
+    # --- 2. Mapa Interactivo Maestro Unificado (ZMVM + Colima-Villa de Álvarez) Estilo "Google Earth" ---
+    # Primero garantizamos que los datos de Colima y el GeoDataFrame/GeoJSON maestro unificado estén generados
+    colima_data = build_colima_geospatial_gold_and_map(gdf_colonias, gdf_estaciones, gdf_map)
+
     m = folium.Map(
-        location=[19.432, -99.182],
+        location=[19.415, -99.165],
         zoom_start=12,
         tiles=None,
         control_scale=True,
     )
+    map_js_var = m.get_name()
 
     # Capa Base 1 (Activa por defecto): Vista Satelital de Alta Resolución Esri.WorldImagery (Costo $0, sin API key)
     folium.TileLayer(
@@ -979,7 +983,7 @@ def generate_cartographic_visualizations(
         show=True,
     ).add_to(m)
 
-    # Capa Base 2 (Opción Secundaria Limpia): Esri.WorldTopoMap
+    # Capa Base 2: Esri.WorldTopoMap
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
         attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, INEGI",
@@ -989,7 +993,7 @@ def generate_cartographic_visualizations(
         show=False,
     ).add_to(m)
 
-    # Capa Base 3 (Opción Secundaria Limpia): OpenStreetMap Estándar
+    # Capa Base 3: OpenStreetMap Estándar
     folium.TileLayer(
         tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
         attr="&copy; OpenStreetMap contributors",
@@ -1028,8 +1032,16 @@ def generate_cartographic_visualizations(
         force_separate_button=True,
     ).add_to(m)
 
-    # Función auxiliar de color coroplético y clasificación de perfil de negocio según Precio por m2 (MXN/m2)
-    def get_choropleth_color(precio_m2: float) -> str:
+    # Función auxiliar de color coroplético según Región y Precio por m2 (MXN/m2)
+    def get_choropleth_color(precio_m2: float, region_code: str = "ZMVM") -> str:
+        if region_code == "Colima-VdeA":
+            if precio_m2 >= 210:
+                return "#EF4444"  # Rojo Prime Norte Colima (Esmeralda Norte / Lomas de Vista Hermosa)
+            elif precio_m2 >= 185:
+                return "#F97316"  # Naranja Medio-Alto (Jardines de las Lomas / La Comarca)
+            elif precio_m2 >= 165:
+                return "#EAB308"  # Ámbar Consolidado (Esmeralda Sur / Real Bugambilias)
+            return "#06B6D4"      # Turquesa Alto Yield (Zona Universidad UdeC / Centro Colima)
         if precio_m2 >= 500:
             return "#EF4444"  # Rojo coral brillante sobre satélite (Prime >= $500/m2)
         elif precio_m2 >= 430:
@@ -1041,7 +1053,9 @@ def generate_cartographic_visualizations(
         else:
             return "#06B6D4"  # Turquesa alto contraste (< $290/m2 - Alto Yield %)
 
-    def get_business_profile_label(subzona_id: str, yield_pct: float) -> str:
+    def get_business_profile_label(subzona_id: str, yield_pct: float, custom_profile: Any = None) -> str:
+        if isinstance(custom_profile, str) and custom_profile.strip():
+            return custom_profile
         if subzona_id == "SZ1_PRIME_PONIENTE":
             return "Perfil Prime Corporativo & Lujo Patrimonial"
         elif subzona_id == "SZ2_CENTRAL_CORREDOR":
@@ -1050,18 +1064,26 @@ def generate_cartographic_visualizations(
             return "Perfil Familiar Consolidado & Balance Yield/Riesgo"
         return f"Perfil Emergente Alto Rendimiento (Yield {yield_pct:.1f}%)"
 
-    # Construir GeoJSON enriquecido de colonias para usar folium.GeoJson + Search Plugin + Hover limpio (permanent=False)
+    # Construir GeoJSON Maestro Unificado de las 24 colonias (16 ZMVM + 8 Colima-VdeA)
+    gdf_unified = colima_data["gdf_unified"]
+    gdf_nodos_unified = colima_data["gdf_nodos_unified"]
+
     features_colonias: List[Dict[str, Any]] = []
-    for _, row in gdf_map.iterrows():
+    for _, row in gdf_unified.iterrows():
+        region_val = str(row["region"])
         precio_val = float(row["precio_m2_promedio_mxn"])
         yield_val = float(row["yield_bruto_promedio_pct"])
-        col_color = get_choropleth_color(precio_val)
-        perfil_negocio = get_business_profile_label(str(row["subzona_id"]), yield_val)
-        hover_title = f"{row['colonia']} (${precio_val:,.0f}/m²)"
+        col_color = get_choropleth_color(precio_val, region_val)
+        perfil_negocio = get_business_profile_label(
+            str(row["subzona_id"]), yield_val, row.get("perfil_comercial")
+        )
+        hover_title = f"[{region_val}] {row['colonia']} (${precio_val:,.0f}/m²)"
+        transporte_nombre = str(row.get("estacion_transporte_principal", "Nodo Vial Principal"))
 
         popup_card = f"""
-        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 325px; padding: 2px;">
+        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 330px; padding: 2px;">
             <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid {col_color};">
+                <div style="font-size: 11px; color: #38BDF8; font-weight: 700; text-transform: uppercase;">🌎 Región: {region_val}</div>
                 <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.2px;">📍 {row['colonia']}</div>
                 <div style="font-size: 11.5px; color: #CBD5E1; margin-top: 2px;">🏛️ <b>Alcaldía/Municipio:</b> {row['alcaldia_municipio']}</div>
                 <div style="display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">
@@ -1083,8 +1105,8 @@ def generate_cartographic_visualizations(
                         <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} unidades</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Estación Transporte Cercana:</b></td>
-                        <td style="padding: 5px 0; text-align: right; color: #0284C7; font-weight: 600;">{row['estacion_transporte_principal']} ({row['dist_transporte_masivo_m']:.0f} m)</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Transporte / Vialidad OSM:</b></td>
+                        <td style="padding: 5px 0; text-align: right; color: #0284C7; font-weight: 600;">{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
                         <td style="padding: 5px 0; color: #475569;"><b>Índice Accesibilidad Urbana:</b></td>
@@ -1092,7 +1114,7 @@ def generate_cartographic_visualizations(
                     </tr>
                     <tr>
                         <td style="padding: 5px 0; color: #64748B; font-size: 10.5px;"><b>AGEB INEGI / Linaje Bronce:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{row['cve_ageb_ref']} ({row['linaje_hash_lote_bronce'][:11]})</td>
+                        <td style="padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{row['cve_ageb_ref']} ({str(row['linaje_hash_lote_bronce'])[:11]})</td>
                     </tr>
                 </table>
             </div>
@@ -1104,13 +1126,14 @@ def generate_cartographic_visualizations(
                 "type": "Feature",
                 "geometry": json.loads(gpd.GeoSeries([row["geometry"]], crs="EPSG:4326").to_json())["features"][0]["geometry"],
                 "properties": {
+                    "region": region_val,
                     "colonia": str(row["colonia"]),
-                    "search_label": f"{row['colonia']} ({row['alcaldia_municipio']})",
+                    "search_label": f"[{region_val}] {row['colonia']} ({row['alcaldia_municipio']})",
                     "alcaldia_municipio": str(row["alcaldia_municipio"]),
                     "precio_str": f"${precio_val:,.2f} MXN/m²",
                     "yield_str": f"{yield_val:.2f}%",
                     "denue_str": f"{int(row['denue_unidades_buffer_500m'])} comercios",
-                    "transporte_str": f"{row['estacion_transporte_principal']} ({row['dist_transporte_masivo_m']:.0f} m)",
+                    "transporte_str": f"{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)",
                     "perfil_negocio": perfil_negocio,
                     "fill_color": col_color,
                     "hover_title": hover_title,
@@ -1121,10 +1144,10 @@ def generate_cartographic_visualizations(
 
     geojson_colonias_data = {"type": "FeatureCollection", "features": features_colonias}
 
-    # Capa Coroplética Suavizada (fill_opacity=0.45 para apreciar el relieve satelital debajo, permanent=False sin etiquetas encimadas)
+    # Capa Coroplética Suavizada Unificada (24 colonias: 16 ZMVM + 8 Colima-VdeA)
     geojson_layer = folium.GeoJson(
         geojson_colonias_data,
-        name="🏘️ Polígonos Coropléticos AGEB/Colonias (Renta $/m² y Yield)",
+        name="🏘️ Polígonos Coropléticos Unificados ZMVM + Colima-VdeA ($/m² y Yield)",
         style_function=lambda feat: {
             "fillColor": feat["properties"]["fill_color"],
             "color": "#FFFFFF",
@@ -1138,8 +1161,8 @@ def generate_cartographic_visualizations(
             "fillOpacity": 0.68,
         },
         tooltip=folium.GeoJsonTooltip(
-            fields=["colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"],
-            aliases=["📍 Colonia:", "🏛️ Alcaldía/Mun.:", "💰 Renta Promedio:", "📈 Yield Anual:", "🏷️ Perfil:"],
+            fields=["region", "colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"],
+            aliases=["🌎 Región:", "📍 Colonia:", "🏛️ Alcaldía/Mun.:", "💰 Renta Promedio:", "📈 Yield Anual:", "🏷️ Perfil:"],
             localize=True,
             sticky=True,
             labels=True,
@@ -1155,26 +1178,27 @@ def generate_cartographic_visualizations(
             fields=["popup_html"],
             labels=False,
             localize=True,
-            max_width=350,
+            max_width=355,
         ),
     ).add_to(m)
 
-    # Buscador interactivo de colonias (folium.plugins.Search)
+    # Buscador interactivo de colonias de ambas regiones (folium.plugins.Search)
     Search(
         layer=geojson_layer,
         geom_type="Polygon",
-        placeholder="🔍 Buscar colonia o alcaldía (ej. Polanco, Roma, Del Valle, Satélite)...",
+        placeholder="🔍 Buscar colonia en ZMVM o Colima (ej. Polanco, Roma, Esmeralda Norte, La Comarca)...",
         collapsed=False,
         search_label="search_label",
         weight=4,
         position="topleft",
     ).add_to(m)
 
-    # Capa de Radios de 500m y Puntos de Equipamiento Económico DENUE (INEGI)
+    # Capa de Radios de 500m y Puntos de Equipamiento Económico DENUE (INEGI) en ambas regiones
     fg_buffers_denue = folium.FeatureGroup(
-        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI)", show=True
+        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI - ZMVM & Colima)", show=True
     )
-    for _, row in gdf_map.iterrows():
+    for _, row in gdf_unified.iterrows():
+        reg_c = str(row["region"])
         folium.Circle(
             location=[row["lat_centroide"], row["lon_centroide"]],
             radius=500,
@@ -1184,7 +1208,7 @@ def generate_cartographic_visualizations(
             fill=True,
             fill_color="#0284C7",
             fill_opacity=0.10,
-            tooltip=f"🏪 Buffer 500m DENUE — {row['colonia']}: {int(row['denue_unidades_buffer_500m'])} comercios",
+            tooltip=f"🏪 [{reg_c}] Buffer 500m DENUE — {row['colonia']}: {int(row['denue_unidades_buffer_500m'])} comercios",
         ).add_to(fg_buffers_denue)
 
         folium.CircleMarker(
@@ -1193,18 +1217,18 @@ def generate_cartographic_visualizations(
             color="#FFFFFF",
             weight=1.5,
             fill=True,
-            fill_color=get_choropleth_color(float(row["precio_m2_promedio_mxn"])),
+            fill_color=get_choropleth_color(float(row["precio_m2_promedio_mxn"]), reg_c),
             fill_opacity=0.95,
-            tooltip=f"Centroide AGEB {row['colonia']} ({int(row['denue_unidades_buffer_500m'])} unidades DENUE)",
+            tooltip=f"[{reg_c}] Centroide AGEB {row['colonia']} ({int(row['denue_unidades_buffer_500m'])} unidades DENUE)",
         ).add_to(fg_buffers_denue)
     fg_buffers_denue.add_to(m)
 
-    # Cluster / Capa de Estaciones de Transporte Masivo (OpenStreetMap)
+    # Cluster Unificado de Estaciones de Transporte Masivo y Nodos Viales (OpenStreetMap)
     fg_transporte_cluster = MarkerCluster(
-        name="🚇 Estaciones de Transporte Masivo (Metro / Metrobús OSM)",
+        name="🚇 Estaciones de Transporte y Nodos Viales (OSM - ZMVM & Colima)",
         options={"maxClusterRadius": 28, "disableClusteringAtZoom": 13},
     )
-    for _, est in gdf_estaciones.iterrows():
+    for _, est in gdf_nodos_unified.iterrows():
         folium.CircleMarker(
             location=[est["lat"], est["lon"]],
             radius=8,
@@ -1213,27 +1237,63 @@ def generate_cartographic_visualizations(
             fill=True,
             fill_color="#38BDF8",
             fill_opacity=0.95,
-            tooltip=f"🚇 {est['nombre']} ({est['sistema']})",
+            tooltip=f"🚇 [{est['region']}] {est['nombre']} ({est['sistema']})",
             popup=folium.Popup(
-                f"<div style='font-family:Segoe UI,sans-serif;width:220px;'>"
+                f"<div style='font-family:Segoe UI,sans-serif;width:230px;'>"
                 f"<b>🚇 {est['nombre']}</b><br>"
-                f"<b>Sistema:</b> {est['sistema']}<br>"
+                f"<b>Región:</b> {est['region']}<br>"
+                f"<b>Sistema/Tipo:</b> {est['sistema']}<br>"
                 f"<b>ID Nodo OSM:</b> {est['id_estacion']}<br>"
                 f"<b>Coords:</b> {est['lat']:.4f}, {est['lon']:.4f}</div>",
-                max_width=240,
+                max_width=245,
             ),
         ).add_to(fg_transporte_cluster)
     fg_transporte_cluster.add_to(m)
 
     folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
-    # Panel flotante compacto estilo Google Earth Pro en la esquina inferior izquierda
-    dashboard_overlay_html = """
+    # Control Flotante de Navegación Rápida (`flyTo` / `fitBounds`) en la esquina superior izquierda (debajo del zoom)
+    # + Panel flotante compacto estilo Google Earth Pro en la esquina inferior izquierda
+    dashboard_overlay_html = f"""
+    <div style="
+        position: fixed;
+        top: 128px;
+        left: 12px;
+        width: 245px;
+        background: rgba(15, 23, 42, 0.94);
+        color: #F8FAFC;
+        border: 1px solid #38BDF8;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+        padding: 10px 12px;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        z-index: 9999;
+        backdrop-filter: blur(6px);
+    ">
+        <div style="font-size: 11.5px; font-weight: 800; color: #38BDF8; margin-bottom: 6px; letter-spacing: 0.3px;">
+            🧭 NAVEGACIÓN RÁPIDA (FLY-TO)
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+            <button onclick="{map_js_var}.flyTo([19.415, -99.165], 12, {{animate: true, duration: 1.6}});"
+                style="cursor: pointer; background: linear-gradient(135deg, #0284C7, #0369A1); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                🏙️ ZMVM (CDMX / Edomex)
+            </button>
+            <button onclick="{map_js_var}.flyTo([19.245, -103.725], 13, {{animate: true, duration: 1.6}});"
+                style="cursor: pointer; background: linear-gradient(135deg, #059669, #047857); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                🌴 Colima – Villa de Álvarez
+            </button>
+            <button onclick="{map_js_var}.fitBounds([[19.20, -103.80], [19.55, -99.10]], {{animate: true, duration: 1.6}});"
+                style="cursor: pointer; background: linear-gradient(135deg, #4F46E5, #4338CA); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                🇲🇽 Vista Nacional (Ambas)
+            </button>
+        </div>
+    </div>
+
     <div style="
         position: fixed;
         bottom: 22px;
         left: 18px;
-        width: 330px;
+        width: 340px;
         background: rgba(15, 23, 42, 0.92);
         color: #F8FAFC;
         border: 1px solid #334155;
@@ -1245,24 +1305,24 @@ def generate_cartographic_visualizations(
         backdrop-filter: blur(6px);
     ">
         <div style="font-size: 13px; font-weight: 800; color: #38BDF8; margin-bottom: 2px;">
-            🛰️ Observatorio Inmobiliario ZMVM — Vista Híbrida
+            🛰️ Observatorio Maestro Unificado (ZMVM & Colima)
         </div>
         <div style="font-size: 10.5px; color: #94A3B8; margin-bottom: 8px;">
-            Esri WorldImagery + DENUE (INEGI) + OpenStreetMap
+            Esri WorldImagery + DENUE (INEGI) + OpenStreetMap (24 Zonas)
         </div>
 
         <div style="font-size: 11px; font-weight: 700; color: #E2E8F0; margin-bottom: 5px;">
             📊 Escala Coroplética — Renta Promedio ($/m²)
         </div>
         <div style="display: flex; flex-direction: column; gap: 3px; font-size: 10.5px; margin-bottom: 8px;">
-            <div><span style="display:inline-block;width:12px;height:12px;background:#EF4444;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Prime Corporativo (&ge; $500/m²):</b> Polanco, Granada, Anzures</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#F97316;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Cosmopolita Central ($430–$499/m²):</b> Roma, Condesa, Juárez</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#EAB308;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Consolidado Sur ($340–$429/m²):</b> Del Valle, Nápoles</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#22C55E;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Residencial Medio ($290–$339/m²):</b> Narvarte, S. Pedro Pinos</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#06B6D4;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Emergente Alto Yield (&lt; $290/m²):</b> Sta. María, Escandón, Satélite</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#EF4444;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Prime (&ge;$500 ZMVM | &ge;$210 Colima):</b> Polanco, Esmeralda Norte</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#F97316;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Cosmopolita / Norte ($430+ ZMVM | $185+ Col):</b> Roma, La Comarca</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#EAB308;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Consolidado ($340+ ZMVM | $165+ Col):</b> Del Valle, Real Bugambilias</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#22C55E;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Residencial Medio ($290–$339 ZMVM):</b> Narvarte, S. Pedro Pinos</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#06B6D4;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Alto Yield (&lt;$290 ZMVM | UdeC Colima):</b> Sta. María, Zona Universidad</div>
         </div>
         <div style="border-top: 1px solid #334155; padding-top: 6px; font-size: 10px; color: #CBD5E1;">
-            💡 <i>Pasa el cursor sobre un polígono para ver el resumen o haz clic para abrir su ficha completa. Usa la barra superior para buscar por colonia.</i>
+            💡 <i>Usa los botones de <b>Navegación Rápida (Fly-To)</b> arriba a la izquierda para volar entre ZMVM, Colima–Villa de Álvarez o Vista Nacional.</i>
         </div>
     </div>
     """
@@ -1270,6 +1330,11 @@ def generate_cartographic_visualizations(
 
     html_path = DOCS_E2_DIR / "mapa_interactivo_zmvm.html"
     m.save(str(html_path))
+
+    # Eliminar archivo duplicado mapa_interactivo_colima.html si existiera
+    dup_colima_html = DOCS_E2_DIR / "mapa_interactivo_colima.html"
+    if dup_colima_html.exists():
+        dup_colima_html.unlink()
 
     return {
         "mapa_coropletico_png": str(png_path.relative_to(BASE_DIR)),
@@ -1390,18 +1455,21 @@ NODOS_VIALES_Y_EQUIPAMIENTO_COLIMA_OSM: List[Dict[str, Any]] = [
 ]
 
 
-def build_colima_geospatial_gold_and_map() -> Dict[str, Any]:
+def build_colima_geospatial_gold_and_map(
+    gdf_colonias_zmvm: gpd.GeoDataFrame | None = None,
+    gdf_estaciones_zmvm: gpd.GeoDataFrame | None = None,
+    gdf_map_zmvm: gpd.GeoDataFrame | None = None,
+) -> Dict[str, Any]:
     """
     Integra la fuente geoespacial (DENUE INEGI + OpenStreetMap) para las 8 zonas clave de la
-    Zona Metropolitana de Colima – Villa de Álvarez (bounding box lat: 19.21 a 19.29, lon: -103.77 a -103.68):
-      1. Genera `data/gold/inmobiliario/oro_colima_zm.csv` y `data/gold/inmobiliario/oro_geoespacial_colima.geojson`.
-      2. Registra todas las filas de Colima en `data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv` y `.json`.
-      3. Construye el mapa interactivo satelital estilo Google Earth centrado en Colima
-         (`lat: 19.245, lon: -103.725, zoom: 13`) en `docs/E2/mapa_interactivo_colima.html`.
+    Zona Metropolitana de Colima – Villa de Álvarez y las combina con las 16 colonias de la ZMVM
+    en un único GeoDataFrame y GeoJSON Maestro Unificado (`oro_geoespacial_maestro_unificado.geojson`)
+    con la columna `region` ("ZMVM" o "Colima-VdeA"), sin duplicar archivos HTML.
     """
     silver_col_path = SILVER_DIR / "rentas_colima_plata_limpio.csv"
     if not silver_col_path.exists():
-        return {"status": "skip_no_colima_silver"}
+        from src.pipeline_e1 import process_colima_silver_and_gold
+        process_colima_silver_and_gold()
 
     df_col = pd.read_csv(silver_col_path, encoding="utf-8")
     now_utc = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1436,19 +1504,23 @@ def build_colima_geospatial_gold_and_map() -> Dict[str, Any]:
         group_hash = compute_sha256_short("|".join(ids_sorted))
         poly = create_colonia_polygon(info["lat"], info["lon"], dlat=0.0046, dlon=0.0054)
 
-        # Crecimiento acumulado 36m (plusvalía en renta por m2)
         p_ini = float(sub[sub["periodo_mensual"] == "2023-11"]["precio_m2_winsor_mxn"].mean())
         p_fin = float(sub[sub["periodo_mensual"] == "2026-10"]["precio_m2_winsor_mxn"].mean())
         plusvalia_36m_pct = round(((p_fin - p_ini) / p_ini) * 100.0, 2)
 
         row_dict = {
+            "region": "Colima-VdeA",
             "region_id": "COLIMA_VILLA_ALVAREZ",
             "colonia": col_name,
             "alcaldia_municipio": info["municipio"],
             "subzona_id": info["subzona_id"],
+            "subzona_nombre": info["perfil_comercial"],
             "cve_ageb_inegi": info["cve_ageb_ref"],
+            "cve_ageb_ref": info["cve_ageb_ref"],
             "latitud_centroide": info["lat"],
             "longitud_centroide": info["lon"],
+            "lat_centroide": info["lat"],
+            "lon_centroide": info["lon"],
             "n_inmuebles": int(len(sub)),
             "superficie_m2_promedio": round(float(sub["superficie_m2"].mean()), 1),
             "precio_m2_promedio_mxn": round(float(sub["precio_m2_winsor_mxn"].mean()), 2),
@@ -1459,8 +1531,10 @@ def build_colima_geospatial_gold_and_map() -> Dict[str, Any]:
             "dias_vacancia_promedio": round(float(sub["dias_vacancia_observados"].mean()), 1),
             "tasa_ocupacion_24m_promedio_pct": round(float(sub["tasa_ocupacion_24m_pct"].mean()), 2),
             "denue_unidades_buffer_500m": info["denue_unidades_500m"],
+            "denue_salud_educacion_scian61_62": info["escuelas_universidades_denue"],
             "escuelas_universidades_500m": info["escuelas_universidades_denue"],
             "vialidad_principal_osm": info["vialidad_principal_osm"],
+            "estacion_transporte_principal": info["vialidad_principal_osm"],
             "dist_transporte_masivo_m": info["dist_vialidad_m"],
             "indice_accesibilidad_urbana_0_100": round(float(sub["indice_accesibilidad_urbana_0_100"].mean()), 2),
             "perfil_comercial": info["perfil_comercial"],
@@ -1486,7 +1560,7 @@ def build_colima_geospatial_gold_and_map() -> Dict[str, Any]:
     oro_colima_geojson_path = GOLD_DIR / "oro_geoespacial_colima.geojson"
     gdf_colima.to_file(oro_colima_geojson_path, driver="GeoJSON")
 
-    # Actualizar el catálogo maestro de linaje (`catalogo_linaje_oro_a_bronce.csv` y `.json`) agregando las 8 zonas de Colima
+    # Actualizar el catálogo maestro de linaje (`catalogo_linaje_oro_a_bronce.csv` y `.json`)
     lineage_csv_path = GOLD_DIR / "catalogo_linaje_oro_a_bronce.csv"
     lineage_json_path = GOLD_DIR / "catalogo_linaje_oro_a_bronce.json"
     if lineage_csv_path.exists():
@@ -1520,220 +1594,136 @@ def build_colima_geospatial_gold_and_map() -> Dict[str, Any]:
             lin_j["registros_linaje_oro"] = df_lin_all.to_dict(orient="records")
             lineage_json_path.write_text(json.dumps(lin_j, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    # Construir Mapa Interactivo Estilo Google Earth centrado en Colima – Villa de Álvarez (`docs/E2/mapa_interactivo_colima.html`)
-    m_col = folium.Map(
-        location=[19.258, -103.718],
-        zoom_start=13,
-        tiles=None,
-        control_scale=True,
-    )
-
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics",
-        name="🛰️ Satélite Google Earth Style (Esri WorldImagery)",
-        max_zoom=19,
-        control=True,
-        show=True,
-    ).add_to(m_col)
-
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-        attr="Tiles &copy; Esri &mdash; INEGI, Esri World Topo Map",
-        name="🗺️ Mapa Topográfico y División Municipal (Esri / INEGI)",
-        max_zoom=19,
-        control=True,
-        show=False,
-    ).add_to(m_col)
-
-    folium.TileLayer(
-        tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-        attr="&copy; OpenStreetMap contributors",
-        name="🏙️ OpenStreetMap Urbano Colima",
-        max_zoom=19,
-        control=True,
-        show=False,
-    ).add_to(m_col)
-
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
-        attr="Labels &copy; Esri &mdash; World Boundaries and Places Reference",
-        name="🏷️ Etiquetas Híbridas de Calles y Colonias (Esri Overlay)",
-        max_zoom=19,
-        overlay=True,
-        control=True,
-        show=True,
-    ).add_to(m_col)
-
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
-        attr="Roads &copy; Esri &mdash; World Transportation Reference",
-        name="🛣️ Vialidades Primarias Híbridas (Anillo Periférico / Constitución)",
-        max_zoom=19,
-        overlay=True,
-        control=True,
-        show=True,
-    ).add_to(m_col)
-
-    Fullscreen(position="topleft", title="Pantalla Completa", force_separate_button=True).add_to(m_col)
-
-    def get_colima_color(precio_m2: float) -> str:
-        if precio_m2 >= 210:
-            return "#EF4444"  # Rojo Prime Norte (Esmeralda Norte / Lomas de Vista Hermosa)
-        elif precio_m2 >= 185:
-            return "#F97316"  # Naranja Medio-Alto (Jardines de las Lomas / La Comarca)
-        elif precio_m2 >= 165:
-            return "#EAB308"  # Ámbar Consolidado (Esmeralda Sur / Real Bugambilias)
-        else:
-            return "#10B981"  # Verde Esmeralda Alto Yield (Zona Universidad UdeC / Centro)
-
-    features_colima: List[Dict[str, Any]] = []
-    for _, row in gdf_colima.iterrows():
-        p_val = float(row["precio_m2_promedio_mxn"])
-        y_val = float(row["yield_bruto_promedio_pct"])
-        c_col = get_colima_color(p_val)
-
-        popup_html = f"""
-        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 325px; padding: 2px;">
-            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid {c_col};">
-                <div style="font-size: 15px; font-weight: 800;">🌴 {row['colonia']}</div>
-                <div style="font-size: 11.5px; color: #CBD5E1; margin-top: 2px;">🏛️ <b>Municipio:</b> {row['alcaldia_municipio']}, Colima</div>
-                <div style="display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">
-                    ⭐ {row['perfil_comercial']}
-                </div>
-            </div>
-            <div style="border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;">
-                <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Renta Promedio ($/m²):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;">${p_val:,.2f} MXN/m²</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Yield Bruto Anual:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #059669;">{y_val:.2f}% anual</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Plusvalía Acumulada (36m):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;">+{row['plusvalia_renta_36m_pct']:.1f}%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Comercios DENUE (500m):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 700;">{int(row['denue_unidades_buffer_500m'])} unidades</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Vialidad Primaria OSM:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-size: 11px;">{row['vialidad_principal_osm']}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 5px 0; color: #64748B; font-size: 10.5px;"><b>AGEB INEGI / Linaje:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{row['cve_ageb_inegi']} ({row['linaje_hash_lote_bronce'][:11]})</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        """
-
-        features_colima.append(
-            {
-                "type": "Feature",
-                "geometry": json.loads(gpd.GeoSeries([row["geometry"]], crs="EPSG:4326").to_json())["features"][0]["geometry"],
-                "properties": {
-                    "colonia": str(row["colonia"]),
-                    "search_label": f"{row['colonia']} ({row['alcaldia_municipio']})",
-                    "alcaldia_municipio": str(row["alcaldia_municipio"]),
-                    "precio_str": f"${p_val:,.2f} MXN/m²",
-                    "yield_str": f"{y_val:.2f}%",
-                    "perfil_negocio": str(row["perfil_comercial"]),
-                    "fill_color": c_col,
-                    "popup_html": popup_html,
-                },
-            }
+    # Combinar ZMVM + Colima-VdeA en un solo GeoDataFrame Maestro Unificado con columna `region`
+    if gdf_map_zmvm is None:
+        if gdf_colonias_zmvm is None or gdf_estaciones_zmvm is None:
+            gdf_colonias_zmvm, gdf_estaciones_zmvm, _ = extract_geospatial_bronze_source()
+        df_gold_geo_zmvm = pd.read_csv(GOLD_DIR / "oro_geoespacial_colonias_denue_osm.csv", encoding="utf-8")
+        gdf_map_zmvm = gdf_colonias_zmvm.merge(
+            df_gold_geo_zmvm[
+                [
+                    "colonia",
+                    "alcaldia_municipio",
+                    "subzona_nombre",
+                    "precio_m2_promedio_mxn",
+                    "yield_bruto_promedio_pct",
+                    "dias_vacancia_promedio",
+                    "dist_transporte_masivo_m",
+                    "estacion_transporte_principal",
+                    "denue_unidades_buffer_500m",
+                    "indice_accesibilidad_urbana_0_100",
+                    "linaje_n_registros_bronce",
+                    "linaje_hash_lote_bronce",
+                ]
+            ],
+            on="colonia",
+            how="left",
         )
 
-    gj_colima_layer = folium.GeoJson(
-        {"type": "FeatureCollection", "features": features_colima},
-        name="🏘️ Zonas de Plusvalía Colima – Villa de Álvarez ($/m² y Yield)",
-        style_function=lambda feat: {
-            "fillColor": feat["properties"]["fill_color"],
-            "color": "#FFFFFF",
-            "weight": 2.2,
-            "fillOpacity": 0.45,
-        },
-        highlight_function=lambda feat: {
-            "fillColor": feat["properties"]["fill_color"],
-            "color": "#FDE047",
-            "weight": 3.8,
-            "fillOpacity": 0.68,
-        },
-        tooltip=folium.GeoJsonTooltip(
-            fields=["colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"],
-            aliases=["📍 Zona/Colonia:", "🏛️ Municipio:", "💰 Renta Promedio:", "📈 Yield Anual:", "🏷️ Perfil:"],
-            localize=True,
-            sticky=True,
-            labels=True,
-            permanent=False,
-            style=(
-                "background-color: rgba(15, 23, 42, 0.94); color: #F8FAFC; "
-                "font-family: 'Segoe UI', sans-serif; font-size: 11.5px; "
-                "padding: 8px 10px; border-radius: 6px; border: 1px solid #10B981;"
-            ),
-        ),
-        popup=folium.GeoJsonPopup(fields=["popup_html"], labels=False, max_width=350),
-    ).add_to(m_col)
+    gdf_zmvm_copy = gdf_map_zmvm.copy()
+    gdf_zmvm_copy["region"] = "ZMVM"
+    gdf_zmvm_copy["perfil_comercial"] = ""
 
-    Search(
-        layer=gj_colima_layer,
-        geom_type="Polygon",
-        placeholder="🔍 Buscar zona en Colima o Villa de Álvarez (ej. Esmeralda, Comarca, UdeC)...",
-        collapsed=False,
-        search_label="search_label",
-        position="topleft",
-    ).add_to(m_col)
+    shared_cols = [
+        "region",
+        "colonia",
+        "alcaldia_municipio",
+        "subzona_id",
+        "subzona_nombre",
+        "cve_ageb_ref",
+        "lat_centroide",
+        "lon_centroide",
+        "precio_m2_promedio_mxn",
+        "yield_bruto_promedio_pct",
+        "dias_vacancia_promedio",
+        "dist_transporte_masivo_m",
+        "estacion_transporte_principal",
+        "denue_unidades_buffer_500m",
+        "denue_salud_educacion_scian61_62",
+        "indice_accesibilidad_urbana_0_100",
+        "perfil_comercial",
+        "linaje_n_registros_bronce",
+        "linaje_hash_lote_bronce",
+        "geometry",
+    ]
 
-    fg_nodos_col = MarkerCluster(name="🛣️ Nodos Viales, Comerciales y Campus UdeC (OSM)").add_to(m_col)
+    gdf_unified = gpd.GeoDataFrame(
+        pd.concat([gdf_zmvm_copy[shared_cols], gdf_colima[shared_cols]], ignore_index=True),
+        crs="EPSG:4326",
+    )
+    unified_geojson_path = GOLD_DIR / "oro_geoespacial_maestro_unificado.geojson"
+    gdf_unified.to_file(unified_geojson_path, driver="GeoJSON")
+
+    # Combinar nodos de transporte y equipamiento OSM de ambas regiones
+    if gdf_estaciones_zmvm is None:
+        _, gdf_estaciones_zmvm, _ = extract_geospatial_bronze_source()
+
+    est_zmvm_df = pd.DataFrame(gdf_estaciones_zmvm.drop(columns=["geometry"])).copy()
+    est_zmvm_df["region"] = "ZMVM"
+
+    est_col_rows = []
     for nodo in NODOS_VIALES_Y_EQUIPAMIENTO_COLIMA_OSM:
-        folium.CircleMarker(
-            location=[nodo["lat"], nodo["lon"]],
-            radius=8,
-            color="#0F172A",
-            weight=2,
-            fill=True,
-            fill_color="#38BDF8",
-            fill_opacity=0.95,
-            tooltip=f"📍 {nodo['nombre']} ({nodo['tipo']})",
-        ).add_to(fg_nodos_col)
+        est_col_rows.append(
+            {
+                "id_estacion": nodo["id_nodo"],
+                "nombre": nodo["nombre"],
+                "sistema": nodo["tipo"],
+                "lat": nodo["lat"],
+                "lon": nodo["lon"],
+                "region": "Colima-VdeA",
+            }
+        )
+    df_nodos_all = pd.concat(
+        [
+            est_zmvm_df[["id_estacion", "nombre", "sistema", "lat", "lon", "region"]],
+            pd.DataFrame(est_col_rows),
+        ],
+        ignore_index=True,
+    )
+    gdf_nodos_unified = gpd.GeoDataFrame(
+        df_nodos_all,
+        geometry=[Point(xy) for xy in zip(df_nodos_all["lon"], df_nodos_all["lat"])],
+        crs="EPSG:4326",
+    )
 
-    folium.LayerControl(collapsed=False, position="topright").add_to(m_col)
-
-    html_colima_path = DOCS_E2_DIR / "mapa_interactivo_colima.html"
-    m_col.save(str(html_colima_path))
+    # Eliminar archivo duplicado mapa_interactivo_colima.html si existiera
+    dup_colima_html = DOCS_E2_DIR / "mapa_interactivo_colima.html"
+    if dup_colima_html.exists():
+        dup_colima_html.unlink()
 
     return {
         "oro_colima_csv": str(oro_colima_csv_path.relative_to(BASE_DIR)),
         "oro_colima_geojson": str(oro_colima_geojson_path.relative_to(BASE_DIR)),
-        "mapa_interactivo_colima_html": str(html_colima_path.relative_to(BASE_DIR)),
+        "oro_maestro_unificado_geojson": str(unified_geojson_path.relative_to(BASE_DIR)),
+        "mapa_interactivo_maestro_html": "docs/E2/mapa_interactivo_zmvm.html",
         "total_zonas_colima": int(len(df_gold_colima)),
+        "total_zonas_unificadas": int(len(gdf_unified)),
+        "gdf_unified": gdf_unified,
+        "gdf_nodos_unified": gdf_nodos_unified,
     }
 
 
 def run_full_e2_pipeline() -> Dict[str, Any]:
-    """Orquesta la ejecución completa del pipeline de la Entrega E2 (ZMVM + Expansión Colima)."""
+    """Orquesta la ejecución completa del pipeline de la Entrega E2 (Mapa Maestro Unificado ZMVM + Colima)."""
     gdf_colonias, gdf_estaciones, geo_meta = extract_geospatial_bronze_source()
     gdf_silver_geo, spatial_summary = enrich_silver_with_geopandas_and_lineage(
         gdf_colonias, gdf_estaciones, geo_meta
     )
     lineage_summary = update_gold_layer_with_full_lineage(gdf_silver_geo)
     cartography_outputs = generate_cartographic_visualizations(gdf_colonias, gdf_estaciones)
-    colima_e2_outputs = build_colima_geospatial_gold_and_map()
+    colima_e2_outputs = build_colima_geospatial_gold_and_map(gdf_colonias, gdf_estaciones)
+    colima_summary_clean = {
+        k: v for k, v in colima_e2_outputs.items() if k not in ("gdf_unified", "gdf_nodos_unified")
+    }
 
     report_e2 = {
-        "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E2 (Fuente Geoespacial + Linaje Completo)",
+        "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E2 (Mapa Maestro Unificado + Linaje Completo)",
         "executed_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "fuente_especializada_geoespacial": geo_meta,
         "enriquecimiento_espacial_geopandas": spatial_summary,
         "linaje_y_trazabilidad_oro_a_bronce": lineage_summary,
         "artefactos_cartograficos": cartography_outputs,
-        "expansion_geoespacial_colima": colima_e2_outputs,
+        "expansion_geoespacial_colima": colima_summary_clean,
     }
 
     report_e2_path = GOLD_DIR / "reporte_auditoria_pipeline_e2.json"

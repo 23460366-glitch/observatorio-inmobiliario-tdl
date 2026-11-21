@@ -86,6 +86,7 @@ st.markdown(
 @st.cache_data(show_spinner=False)
 def load_regional_analytics(region_key: str):
     is_colima = region_key.startswith("Colima")
+    is_all = region_key.startswith("Todas")
     reg_code = "COLIMA" if is_colima else "ZMVM"
 
     e1_res = run_time_series_forecasting_e1(horizon_months=12, region=reg_code)
@@ -94,8 +95,17 @@ def load_regional_analytics(region_key: str):
     e4_tdl = get_tdl_seal_certification_metrics()
     df_lineage = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv")
 
-    if is_colima and (ROOT_DIR / "data/gold/inmobiliario/oro_colima_zm.csv").exists():
-        df_geo_gold = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_colima_zm.csv")
+    # Cargar SIEMPRE el dataset geoespacial maestro unificado (ZMVM + Colima-VdeA)
+    unified_geojson_path = ROOT_DIR / "data/gold/inmobiliario/oro_geoespacial_maestro_unificado.geojson"
+    geojson_unified = json.loads(unified_geojson_path.read_text(encoding="utf-8"))
+
+    df_geo_zmvm = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_geoespacial_colonias_denue_osm.csv")
+    df_geo_zmvm["region"] = "ZMVM"
+    df_geo_col = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_colima_zm.csv")
+    df_geo_col["region"] = "Colima-VdeA"
+
+    if is_colima:
+        df_geo_gold = df_geo_col
         df_silver = pd.read_csv(ROOT_DIR / "data/silver/inmobiliario/rentas_colima_plata_limpio.csv")
         df_whatif = (
             df_silver.groupby(
@@ -117,16 +127,31 @@ def load_regional_analytics(region_key: str):
             * df_whatif["renta_efectiva_promedio_mxn"]
             * (df_whatif["tasa_ocupacion_24m_promedio_pct"] / 100.0)
         ).round(2)
-        geojson_colima = json.loads(
-            (ROOT_DIR / "data/gold/inmobiliario/oro_geoespacial_colima.geojson").read_text(encoding="utf-8")
-        )
+    elif is_all:
+        common_geo_cols = [
+            "region",
+            "colonia",
+            "alcaldia_municipio",
+            "subzona_id",
+            "cve_ageb_inegi",
+            "precio_m2_promedio_mxn",
+            "yield_bruto_promedio_pct",
+            "dias_vacancia_promedio",
+            "dist_transporte_masivo_m",
+            "denue_unidades_buffer_500m",
+            "indice_accesibilidad_urbana_0_100",
+        ]
+        df_geo_gold = pd.concat([df_geo_zmvm[common_geo_cols], df_geo_col[common_geo_cols]], ignore_index=True)
+        df_s_zmvm = pd.read_csv(ROOT_DIR / "data/silver/inmobiliario/rentas_zmvm_plata_geolocalizado_e2.csv")
+        df_s_col = pd.read_csv(ROOT_DIR / "data/silver/inmobiliario/rentas_colima_plata_limpio.csv")
+        df_silver = pd.concat([df_s_zmvm, df_s_col], ignore_index=True)
+        df_whatif = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_e2_simulacion_whatif_24m.csv")
     else:
-        df_geo_gold = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_geoespacial_colonias_denue_osm.csv")
+        df_geo_gold = df_geo_zmvm
         df_silver = pd.read_csv(ROOT_DIR / "data/silver/inmobiliario/rentas_zmvm_plata_geolocalizado_e2.csv")
         df_whatif = pd.read_csv(ROOT_DIR / "data/gold/inmobiliario/oro_e2_simulacion_whatif_24m.csv")
-        geojson_colima = None
 
-    return e1_res, e2_fact, e3_mv, e4_tdl, df_whatif, df_geo_gold, df_lineage, df_silver, geojson_colima
+    return e1_res, e2_fact, e3_mv, e4_tdl, df_whatif, df_geo_gold, df_lineage, df_silver, geojson_unified
 
 
 # Barra lateral con Selector Ejecutivo Multi-Región
@@ -139,9 +164,10 @@ with st.sidebar:
         options=[
             "ZMVM (CDMX/Edomex)",
             "Colima – Villa de Álvarez",
+            "Todas las regiones (Vista Nacional)",
         ],
         index=0,
-        help="Alterna dinámicamente todos los KPIs, pronósticos SARIMA/Holt-Winters, mapas 3D/Satelitales, PCA/MANOVA y simuladores What-If entre la ZMVM y la Zona Metropolitana de Colima – Villa de Álvarez.",
+        help="Sincroniza dinámicamente la cámara 3D de PyDeck, el enfoque del mapa satelital maestro Folium (`mapa_interactivo_zmvm.html`), los KPIs, pronósticos SARIMA y simuladores What-If.",
     )
 
     st.markdown(
@@ -161,7 +187,13 @@ with st.sidebar:
     st.success("🏅 Sello TDL Certificado (Costo $0 | 0 API Keys)")
 
 is_colima_mode = region_seleccionada.startswith("Colima")
-region_titulo_corto = "ZM de Colima – Villa de Álvarez" if is_colima_mode else "ZMVM (CDMX y Área Conurbada)"
+is_all_regions_mode = region_seleccionada.startswith("Todas")
+if is_colima_mode:
+    region_titulo_corto = "ZM de Colima – Villa de Álvarez"
+elif is_all_regions_mode:
+    region_titulo_corto = "Todas las Regiones (ZMVM + Colima – Villa de Álvarez)"
+else:
+    region_titulo_corto = "ZMVM (CDMX y Área Conurbada)"
 
 (
     e1_res,
@@ -172,7 +204,7 @@ region_titulo_corto = "ZM de Colima – Villa de Álvarez" if is_colima_mode els
     df_geo_gold,
     df_lineage,
     df_silver,
-    geojson_colima,
+    geojson_unified,
 ) = load_regional_analytics(region_seleccionada)
 
 # Encabezado principal dinámico
@@ -366,72 +398,88 @@ with tab2:
             value=(float(np.floor(min_p - 5)), float(np.ceil(max_p + 5))),
         )
 
-    if is_colima_mode and geojson_colima is not None:
-        st.markdown("#### 🏙️ Vista 3D Extruida (`PyDeck` sobre Satélite Esri World Imagery: Altura = Precio $\\text{MXN/m}^2$) + Mapa Satelital Folium")
-        col_3d, col_2d = st.columns([1.0, 1.15])
-        with col_3d:
-            # Asignar color RGB según precio_m2_promedio_mxn a cada feature del GeoJSON de Colima
-            for feat in geojson_colima["features"]:
-                p_v = float(feat["properties"].get("precio_m2_promedio_mxn", 180.0))
-                feat["properties"]["elevation_m"] = round((p_v - 120.0) * 18.0, 1)
-                if p_v >= 210:
-                    feat["properties"]["fill_rgb"] = [239, 68, 68, 185]
-                elif p_v >= 185:
-                    feat["properties"]["fill_rgb"] = [249, 115, 22, 185]
-                elif p_v >= 165:
-                    feat["properties"]["fill_rgb"] = [234, 179, 8, 185]
-                else:
-                    feat["properties"]["fill_rgb"] = [16, 185, 129, 185]
+    # UN SOLO COMPONENTE DE MAPA MAESTRO (Tanto en Vista 3D PyDeck como en Vista Satelital Folium)
+    # alimentado por el dataset geoespacial maestro unificado (24 colonias: 16 ZMVM + 8 Colima-VdeA).
+    st.markdown(
+        "#### 🏙️ Mapa Maestro Unificado: Vista 3D Extruida (`PyDeck`) y Satelital Híbrida (`Folium` con botones `Fly-To`)"
+    )
 
-            tile_layer_sat = pdk.Layer(
-                "TileLayer",
-                data="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-                min_zoom=0,
-                max_zoom=19,
-                tile_size=256,
-            )
-            geojson_3d_layer = pdk.Layer(
-                "GeoJsonLayer",
-                geojson_colima,
-                opacity=0.78,
-                stroked=True,
-                filled=True,
-                extruded=True,
-                wireframe=True,
-                get_elevation="properties.elevation_m",
-                get_fill_color="properties.fill_rgb",
-                get_line_color=[255, 255, 255, 255],
-                pickable=True,
-            )
-            view_state_colima = pdk.ViewState(
-                latitude=19.258,
-                longitude=-103.718,
-                zoom=12.4,
-                pitch=48,
-                bearing=-15,
-            )
-            st.pydeck_chart(
-                pdk.Deck(
-                    layers=[tile_layer_sat, geojson_3d_layer],
-                    initial_view_state=view_state_colima,
-                    map_style=None,
-                    tooltip={
-                        "html": "<b>🌴 {colonia}</b> ({alcaldia_municipio})<br/>"
-                        "Renta: <b>${precio_m2_promedio_mxn} MXN/m²</b><br/>"
-                        "Yield Anual: <b>{yield_bruto_promedio_pct}%</b><br/>"
-                        "Comercios DENUE (500m): <b>{denue_unidades_buffer_500m}</b>",
-                        "style": {"backgroundColor": "#0F172A", "color": "white", "fontSize": "12px"},
-                    },
-                )
-            )
-        with col_2d:
-            map_colima_html = ROOT_DIR / "docs/E2/mapa_interactivo_colima.html"
-            if map_colima_html.exists():
-                components.html(map_colima_html.read_text(encoding="utf-8"), height=510, scrolling=False)
+    for feat in geojson_unified["features"]:
+        p_v = float(feat["properties"].get("precio_m2_promedio_mxn", 250.0))
+        reg_f = str(feat["properties"].get("region", "ZMVM"))
+        feat["properties"]["elevation_m"] = round(p_v * 5.5, 1) if reg_f == "ZMVM" else round(p_v * 9.5, 1)
+        if (reg_f == "ZMVM" and p_v >= 500) or (reg_f == "Colima-VdeA" and p_v >= 210):
+            feat["properties"]["fill_rgb"] = [239, 68, 68, 190]
+        elif (reg_f == "ZMVM" and p_v >= 430) or (reg_f == "Colima-VdeA" and p_v >= 185):
+            feat["properties"]["fill_rgb"] = [249, 115, 22, 190]
+        elif (reg_f == "ZMVM" and p_v >= 340) or (reg_f == "Colima-VdeA" and p_v >= 165):
+            feat["properties"]["fill_rgb"] = [234, 179, 8, 190]
+        else:
+            feat["properties"]["fill_rgb"] = [6, 182, 212, 190]
+
+    # Actualizar automáticamente el ViewState de PyDeck cuando el usuario cambia el selector de región
+    if is_colima_mode:
+        active_view_state = pdk.ViewState(
+            latitude=19.245, longitude=-103.725, zoom=12.6, pitch=48, bearing=-15
+        )
+        folium_init_js = "setTimeout(function(){ var m = Object.values(window).find(v => v && v._leaflet_id && v.flyTo); if(m) m.flyTo([19.245, -103.725], 13, {animate:true, duration:1.2}); }, 450);"
+    elif is_all_regions_mode:
+        active_view_state = pdk.ViewState(
+            latitude=19.34, longitude=-101.45, zoom=6.3, pitch=35, bearing=0
+        )
+        folium_init_js = "setTimeout(function(){ var m = Object.values(window).find(v => v && v._leaflet_id && v.fitBounds); if(m) m.fitBounds([[19.20, -103.80], [19.55, -99.10]]); }, 450);"
     else:
+        active_view_state = pdk.ViewState(
+            latitude=19.415, longitude=-99.165, zoom=11.6, pitch=48, bearing=-12
+        )
+        folium_init_js = ""
+
+    tile_layer_sat = pdk.Layer(
+        "TileLayer",
+        data="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        min_zoom=0,
+        max_zoom=19,
+        tile_size=256,
+    )
+    geojson_3d_layer = pdk.Layer(
+        "GeoJsonLayer",
+        geojson_unified,
+        opacity=0.80,
+        stroked=True,
+        filled=True,
+        extruded=True,
+        wireframe=True,
+        get_elevation="properties.elevation_m",
+        get_fill_color="properties.fill_rgb",
+        get_line_color=[255, 255, 255, 255],
+        pickable=True,
+    )
+
+    col_3d, col_2d = st.columns([1.0, 1.25])
+    with col_3d:
+        st.caption("##### 🧊 Cámara 3D Sincronizada (`PyDeck` Unificado: 24 Zonas ZMVM + Colima)")
+        st.pydeck_chart(
+            pdk.Deck(
+                layers=[tile_layer_sat, geojson_3d_layer],
+                initial_view_state=active_view_state,
+                map_style=None,
+                tooltip={
+                    "html": "<b>🌎 [{region}] {colonia}</b> ({alcaldia_municipio})<br/>"
+                    "Renta: <b>${precio_m2_promedio_mxn} MXN/m²</b><br/>"
+                    "Yield Anual: <b>{yield_bruto_promedio_pct}%</b><br/>"
+                    "Comercios DENUE (500m): <b>{denue_unidades_buffer_500m}</b>",
+                    "style": {"backgroundColor": "#0F172A", "color": "white", "fontSize": "12px"},
+                },
+            )
+        )
+    with col_2d:
+        st.caption("##### 🛰️ Mapa Satelital Maestro Unificado (`docs/E2/mapa_interactivo_zmvm.html` con botones `Fly-To`)")
         map_html_path = ROOT_DIR / "docs/E2/mapa_interactivo_zmvm.html"
         if map_html_path.exists():
-            components.html(map_html_path.read_text(encoding="utf-8"), height=610, scrolling=False)
+            raw_html = map_html_path.read_text(encoding="utf-8")
+            if folium_init_js:
+                raw_html = raw_html.replace("</body>", f"<script>{folium_init_js}</script></body>")
+            components.html(raw_html, height=560, scrolling=False)
 
     df_geo_filt = df_geo_gold[
         (df_geo_gold["alcaldia_municipio"].isin(alcaldias_sel))

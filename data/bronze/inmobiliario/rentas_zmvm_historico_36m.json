@@ -5,7 +5,7 @@
     "robots_audit": {
       "robots_url": "https://datos.cdmx.gob.mx/robots.txt",
       "target_path": "/dataset/",
-      "checked_at_utc": "2026-11-21T19:58:28.368854+00:00",
+      "checked_at_utc": "2026-11-21T20:07:39.802573+00:00",
       "allowed": true,
       "crawl_delay_seconds": 2.0,
       "notes": "Modo conservador activado (endpoint API pública / offline: URLError). Se respeta tasa máxima de 1 petición mensual."
@@ -13,7 +13,7 @@
     "total_periodos_mensuales": 36,
     "rango_temporal": "2023-11 a 2026-10",
     "total_registros_crudos": 1299,
-    "generated_at_utc": "2026-11-21T19:58:28.722380+00:00",
+    "generated_at_utc": "2026-11-21T20:07:39.930717+00:00",
     "periodos_count": 36,
     "periodo_inicial": "2023-11",
     "periodo_final": "2026-10"

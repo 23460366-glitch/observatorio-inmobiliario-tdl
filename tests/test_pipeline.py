@@ -193,19 +193,38 @@ def test_statistical_analytics_e1_e2_e3_e4():
 
 def test_colima_villa_de_alvarez_expansion_and_lineage():
     """
-    Verifica la extracción, validación Pandera, Capa Oro (`oro_colima_zm.csv` y `oro_geoespacial_colima.geojson`),
-    completitud ISO/IEC 25012 (>= 95%), linaje en `catalogo_linaje_oro_a_bronce.csv`, pronóstico y PCA/MANOVA
-    para la Zona Metropolitana de Colima – Villa de Álvarez sin alterar los datos de la ZMVM.
+    Verifica la extracción, validación Pandera, Capa Oro (`oro_colima_zm.csv`, `oro_geoespacial_colima.geojson`
+    y `oro_geoespacial_maestro_unificado.geojson`), completitud ISO/IEC 25012 (>= 95%), linaje en
+    `catalogo_linaje_oro_a_bronce.csv`, mapa maestro unificado (`mapa_interactivo_zmvm.html` con botones `flyTo`
+    y sin duplicado `mapa_interactivo_colima.html`), pronóstico y PCA/MANOVA para Colima – Villa de Álvarez.
     """
     oro_colima_csv = BASE_DIR / "data/gold/inmobiliario/oro_colima_zm.csv"
     oro_colima_geojson = BASE_DIR / "data/gold/inmobiliario/oro_geoespacial_colima.geojson"
-    mapa_colima_html = BASE_DIR / "docs/E2/mapa_interactivo_colima.html"
+    oro_unified_geojson = BASE_DIR / "data/gold/inmobiliario/oro_geoespacial_maestro_unificado.geojson"
+    mapa_maestro_html = BASE_DIR / "docs/E2/mapa_interactivo_zmvm.html"
+    mapa_colima_dup_html = BASE_DIR / "docs/E2/mapa_interactivo_colima.html"
     reporte_cliente_md = BASE_DIR / "docs/E4/reporte_inteligencia_cliente.md"
 
     assert oro_colima_csv.exists()
     assert oro_colima_geojson.exists()
-    assert mapa_colima_html.exists()
+    assert oro_unified_geojson.exists()
+    assert mapa_maestro_html.exists()
+    assert not mapa_colima_dup_html.exists(), "El archivo duplicado mapa_interactivo_colima.html no debe existir"
     assert reporte_cliente_md.exists()
+
+    # Verificar que el GeoJSON maestro unificado contiene las 24 zonas (16 ZMVM + 8 Colima-VdeA) con columna region
+    unified_data = json.loads(oro_unified_geojson.read_text(encoding="utf-8"))
+    assert len(unified_data["features"]) == 24
+    regions_set = {f["properties"]["region"] for f in unified_data["features"]}
+    assert regions_set == {"ZMVM", "Colima-VdeA"}
+
+    # Verificar que el mapa maestro HTML contiene los 3 botones flyTo/fitBounds y ambas regiones
+    master_html_text = mapa_maestro_html.read_text(encoding="utf-8")
+    assert "flyTo([19.415, -99.165], 12" in master_html_text
+    assert "flyTo([19.245, -103.725], 13" in master_html_text
+    assert "fitBounds([[19.20, -103.80], [19.55, -99.10]]" in master_html_text
+    assert "Esmeralda Norte" in master_html_text
+    assert "Polanco" in master_html_text
 
     df_col_gold = pd.read_csv(oro_colima_csv, encoding="utf-8")
     assert len(df_col_gold) == 8
