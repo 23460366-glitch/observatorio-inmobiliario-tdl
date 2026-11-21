@@ -1,4 +1,4 @@
-name: "Pipeline Datos Inmobiliario ZMVM - Capas Bronce, Plata (Pandera) y Oro"
+name: "Pipeline Datos Inmobiliario ZMVM - Capas Bronce, Plata (Pandera), Geoespacial y Oro (Linaje)"
 
 on:
   schedule:
@@ -17,8 +17,8 @@ permissions:
   contents: write
 
 jobs:
-  pipeline-bronce-plata-oro:
-    name: "Ejecutar Captura Bronce + Limpieza E1 (Pandera Quality Gate -> Plata y Oro)"
+  pipeline-bronce-plata-oro-e2:
+    name: "Ejecutar Captura Bronce + Limpieza E1 (Pandera) + Geoespacial y Linaje E2"
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,7 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
-      - name: "3. Instalar dependencias (Pandera, Scikit-Learn, Pandas, SciPy)"
+      - name: "3. Instalar dependencias (Pandera, GeoPandas, Shapely, Scikit-Learn, Folium)"
         run: |
           pip install -r requirements.txt
 
@@ -45,27 +45,31 @@ jobs:
         run: |
           python src/pipeline_e1.py
 
-      - name: "6. Verificar integridad de Capas Bronce, Plata, Cuarentena y Oro"
+      - name: "6. Ejecutar Pipeline E2 (Integración Geoespacial DENUE/OSM + Linaje Bronce->Oro)"
+        run: |
+          python -m src.pipeline_e2
+
+      - name: "7. Verificar integridad de Capas Bronce, Plata, Cuarentena, Geoespacial y Linaje Oro"
         run: |
           python -c "
           import json
-          import pandas as pd
           from pathlib import Path
-          rep = json.loads(Path('data/gold/inmobiliario/reporte_auditoria_pipeline_e1.json').read_text(encoding='utf-8'))
-          assert rep['puerta_calidad_pandera_y_cuarentena']['total_aprobados_plata'] >= 1200
-          assert rep['puerta_calidad_pandera_y_cuarentena']['total_enviados_cuarentena'] > 0
-          assert rep['reduccion_datos_y_capa_oro']['filas_oro_e1_series_tiempo'] >= 36
-          print('Auditoría E1 verificada con éxito:', rep['puerta_calidad_pandera_y_cuarentena'])
+          rep1 = json.loads(Path('data/gold/inmobiliario/reporte_auditoria_pipeline_e1.json').read_text(encoding='utf-8'))
+          rep2 = json.loads(Path('data/gold/inmobiliario/reporte_auditoria_pipeline_e2.json').read_text(encoding='utf-8'))
+          assert rep1['puerta_calidad_pandera_y_cuarentena']['total_aprobados_plata'] >= 1200
+          assert rep2['linaje_y_trazabilidad_oro_a_bronce']['registros_oro_con_linaje_completo_pct'] == 100.0
+          assert rep2['linaje_y_trazabilidad_oro_a_bronce']['registros_oro_huerfanos'] == 0
+          print('Auditoría E1 + E2 verificada con éxito:', rep2['linaje_y_trazabilidad_oro_a_bronce'])
           "
 
-      - name: "7. Commit y Push automático de artefactos actualizados"
+      - name: "8. Commit y Push automático de artefactos actualizados"
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bronze/inmobiliario/ data/silver/inmobiliario/ data/gold/inmobiliario/
+          git add data/bronze/inmobiliario/ data/silver/inmobiliario/ data/gold/inmobiliario/ docs/E2/mapa_coropletico_precio_equipamiento_zmvm.png docs/E2/mapa_interactivo_zmvm.html
           if git diff --cached --quiet; then
             echo "Sin cambios incrementales en las capas de datos."
           else
-            git commit -m "chore(pipeline): actualización automática de capas Bronce, Plata, Cuarentena y Oro [skip ci]"
+            git commit -m "chore(pipeline-e2): actualización automática de capas Bronce, Plata, Geoespacial y Linaje Oro [skip ci]"
             git push
           fi

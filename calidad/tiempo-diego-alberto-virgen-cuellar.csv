@@ -8,3 +8,6 @@ fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,t
 2026-11-14,Diego Alberto Virgen Cuéllar,E1,puerta_calidad_pandera,Codificacion,19:00,20:30,10,75,80,6.67,Implementacion de DataFrameSchema en Pandera con lazy=True y envio documentado a cuarentena
 2026-11-15,Diego Alberto Virgen Cuéllar,E1,normalizacion_y_oro,Codificacion,16:00,17:30,5,85,85,0.00,Escalado Min-Max y Z-Score discretizacion jerarquias conceptuales y cubos de Capa Oro (E1 E2 E3)
 2026-11-16,Diego Alberto Virgen Cuéllar,E1,entrega_y_ci_e1,Pruebas_Revision,11:00,11:50,5,45,45,0.00,Actualizacion de GitHub Actions y redaccion de docs/E1/ENTREGA.md
+2026-11-19,Diego Alberto Virgen Cuéllar,E2,declaracion_etica_datos,Diseno,17:00,18:15,5,65,70,7.69,Redaccion de docs/etica-datos.md con analisis de licencias ODbL/CC-BY/INEGI robots.txt LFPDPPP y sesgos
+2026-11-20,Diego Alberto Virgen Cuéllar,E2,linaje_bronce_plata_oro,Codificacion,19:00,20:35,5,90,90,0.00,Implementacion de trazabilidad criptografica SHA-256 y catalogo_linaje_oro_a_bronce.csv para las 92 filas Oro
+2026-11-21,Diego Alberto Virgen Cuéllar,E2,relatoria_y_entrega_e2,Pruebas_Revision,11:00,12:20,5,75,75,0.00,Documentacion de docs/E2/ENTREGA.md docs/relatoria-E2.md y actualizacion del workflow CI/CD

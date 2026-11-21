@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6241ce9bae6d98420f13ec3672619aa3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6241ce9bae6d98420f13ec3672619aa3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6241ce9bae6d98420f13ec3672619aa3 = L.map(
+                "map_6241ce9bae6d98420f13ec3672619aa3",
+                {
+                    center: [19.425, -99.178],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d10316ad7c7b62511d0a86a185cd7b8c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d10316ad7c7b62511d0a86a185cd7b8c.addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var circle_marker_5187ef2350ca3398d26e596716585cdb = L.circleMarker(
+                [19.4335, -99.1945],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_3ca531196bd194aea3b6c6453a6d80ca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_38be80e686273228e0b125c21dd9a127 = $(`<div id="html_38be80e686273228e0b125c21dd9a127" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Polanco<br><b>AGEB Ref (INEGI):</b> 090160001034A<br><b>Precio Promedio:</b> $438.84 MXN/m²<br><b>Yield Bruto Anual:</b> 5.44%<br><b>Unidades DENUE (500m):</b> 417<br><b>Dist. Transporte OSM:</b> 370 m<br><b>Índice Accesibilidad:</b> 80.5/100</div>`)[0];
+                popup_3ca531196bd194aea3b6c6453a6d80ca.setContent(html_38be80e686273228e0b125c21dd9a127);
+            
+        
+
+        circle_marker_5187ef2350ca3398d26e596716585cdb.bindPopup(popup_3ca531196bd194aea3b6c6453a6d80ca)
+        ;
+
+        
+    
+    
+            circle_marker_5187ef2350ca3398d26e596716585cdb.bindTooltip(
+                `<div>
+                     Polanco ($439/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e13ff3286bf9e3aad0913b4718833ba4 = L.circleMarker(
+                [19.433, -99.1765],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_f57beb23406a61befa9bb69b271ed944 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8f6d6fb0ec4c300c846398ae363eebf6 = $(`<div id="html_8f6d6fb0ec4c300c846398ae363eebf6" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Anzures<br><b>AGEB Ref (INEGI):</b> 090160001048A<br><b>Precio Promedio:</b> $435.65 MXN/m²<br><b>Yield Bruto Anual:</b> 5.42%<br><b>Unidades DENUE (500m):</b> 295<br><b>Dist. Transporte OSM:</b> 880 m<br><b>Índice Accesibilidad:</b> 57.2/100</div>`)[0];
+                popup_f57beb23406a61befa9bb69b271ed944.setContent(html_8f6d6fb0ec4c300c846398ae363eebf6);
+            
+        
+
+        circle_marker_e13ff3286bf9e3aad0913b4718833ba4.bindPopup(popup_f57beb23406a61befa9bb69b271ed944)
+        ;
+
+        
+    
+    
+            circle_marker_e13ff3286bf9e3aad0913b4718833ba4.bindTooltip(
+                `<div>
+                     Anzures ($436/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_de97b7e223c1631e8b9c611fa4b97d6f = L.circleMarker(
+                [19.4425, -99.2015],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_7c5b3cb5473d2dfe48925f9edf3bae4d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6dd5e9c5fa4088961b3350fc1f1269a1 = $(`<div id="html_6dd5e9c5fa4088961b3350fc1f1269a1" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Granada<br><b>AGEB Ref (INEGI):</b> 090160001021A<br><b>Precio Promedio:</b> $440.83 MXN/m²<br><b>Yield Bruto Anual:</b> 5.42%<br><b>Unidades DENUE (500m):</b> 338<br><b>Dist. Transporte OSM:</b> 1089 m<br><b>Índice Accesibilidad:</b> 58.1/100</div>`)[0];
+                popup_7c5b3cb5473d2dfe48925f9edf3bae4d.setContent(html_6dd5e9c5fa4088961b3350fc1f1269a1);
+            
+        
+
+        circle_marker_de97b7e223c1631e8b9c611fa4b97d6f.bindPopup(popup_7c5b3cb5473d2dfe48925f9edf3bae4d)
+        ;
+
+        
+    
+    
+            circle_marker_de97b7e223c1631e8b9c611fa4b97d6f.bindTooltip(
+                `<div>
+                     Granada ($441/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f9f70d98b9f5f60fe112725d33cb7c98 = L.circleMarker(
+                [19.4235, -99.216],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_91805f86d6662189b29d5acb336d41c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d8d793b19d45095035c1fe315d79e530 = $(`<div id="html_d8d793b19d45095035c1fe315d79e530" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Lomas de Chapultepec<br><b>AGEB Ref (INEGI):</b> 090160001062A<br><b>Precio Promedio:</b> $436.27 MXN/m²<br><b>Yield Bruto Anual:</b> 5.49%<br><b>Unidades DENUE (500m):</b> 244<br><b>Dist. Transporte OSM:</b> 2832 m<br><b>Índice Accesibilidad:</b> 48.5/100</div>`)[0];
+                popup_91805f86d6662189b29d5acb336d41c5.setContent(html_d8d793b19d45095035c1fe315d79e530);
+            
+        
+
+        circle_marker_f9f70d98b9f5f60fe112725d33cb7c98.bindPopup(popup_91805f86d6662189b29d5acb336d41c5)
+        ;
+
+        
+    
+    
+            circle_marker_f9f70d98b9f5f60fe112725d33cb7c98.bindTooltip(
+                `<div>
+                     Lomas de Chapultepec ($436/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_10a230615a701ec441c9f8f0250d5396 = L.circleMarker(
+                [19.4195, -99.1625],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_43dd643f063a7938ba2ece3dd92d587b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_41daa38382640ec39f3b935c2d0d339f = $(`<div id="html_41daa38382640ec39f3b935c2d0d339f" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Roma Norte<br><b>AGEB Ref (INEGI):</b> 090150001088A<br><b>Precio Promedio:</b> $403.32 MXN/m²<br><b>Yield Bruto Anual:</b> 6.27%<br><b>Unidades DENUE (500m):</b> 508<br><b>Dist. Transporte OSM:</b> 470 m<br><b>Índice Accesibilidad:</b> 88.2/100</div>`)[0];
+                popup_43dd643f063a7938ba2ece3dd92d587b.setContent(html_41daa38382640ec39f3b935c2d0d339f);
+            
+        
+
+        circle_marker_10a230615a701ec441c9f8f0250d5396.bindPopup(popup_43dd643f063a7938ba2ece3dd92d587b)
+        ;
+
+        
+    
+    
+            circle_marker_10a230615a701ec441c9f8f0250d5396.bindTooltip(
+                `<div>
+                     Roma Norte ($403/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bc48d7912808e5d14eab24259e914582 = L.circleMarker(
+                [19.4115, -99.1735],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_9d9ad78560378ddbeaadde959cc07e8d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e73959267862eef838bd6d26a29972b = $(`<div id="html_6e73959267862eef838bd6d26a29972b" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Hipódromo Condesa<br><b>AGEB Ref (INEGI):</b> 090150001095A<br><b>Precio Promedio:</b> $400.69 MXN/m²<br><b>Yield Bruto Anual:</b> 6.16%<br><b>Unidades DENUE (500m):</b> 465<br><b>Dist. Transporte OSM:</b> 725 m<br><b>Índice Accesibilidad:</b> 82.8/100</div>`)[0];
+                popup_9d9ad78560378ddbeaadde959cc07e8d.setContent(html_6e73959267862eef838bd6d26a29972b);
+            
+        
+
+        circle_marker_bc48d7912808e5d14eab24259e914582.bindPopup(popup_9d9ad78560378ddbeaadde959cc07e8d)
+        ;
+
+        
+    
+    
+            circle_marker_bc48d7912808e5d14eab24259e914582.bindTooltip(
+                `<div>
+                     Hipódromo Condesa ($401/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f6f890e10bf3307f9f6cd608a37477ef = L.circleMarker(
+                [19.427, -99.1605],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_3f4d73b5dd7b5cbaac8684c7274337cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a13eec4ce3956813681235d7b316f55e = $(`<div id="html_a13eec4ce3956813681235d7b316f55e" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Juárez<br><b>AGEB Ref (INEGI):</b> 090150001054A<br><b>Precio Promedio:</b> $403.49 MXN/m²<br><b>Yield Bruto Anual:</b> 6.32%<br><b>Unidades DENUE (500m):</b> 493<br><b>Dist. Transporte OSM:</b> 425 m<br><b>Índice Accesibilidad:</b> 83.3/100</div>`)[0];
+                popup_3f4d73b5dd7b5cbaac8684c7274337cc.setContent(html_a13eec4ce3956813681235d7b316f55e);
+            
+        
+
+        circle_marker_f6f890e10bf3307f9f6cd608a37477ef.bindPopup(popup_3f4d73b5dd7b5cbaac8684c7274337cc)
+        ;
+
+        
+    
+    
+            circle_marker_f6f890e10bf3307f9f6cd608a37477ef.bindTooltip(
+                `<div>
+                     Juárez ($403/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ad3c332d391d83be8b206f5ee3739b4 = L.circleMarker(
+                [19.4335, -99.1665],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_c2fb1b3df4c59f8f8980eef733c84b51 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_220564580bbea9fe8add9e4aee0bd6d9 = $(`<div id="html_220564580bbea9fe8add9e4aee0bd6d9" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Cuauhtémoc<br><b>AGEB Ref (INEGI):</b> 090150001041A<br><b>Precio Promedio:</b> $403.35 MXN/m²<br><b>Yield Bruto Anual:</b> 6.21%<br><b>Unidades DENUE (500m):</b> 379<br><b>Dist. Transporte OSM:</b> 1042 m<br><b>Índice Accesibilidad:</b> 62.1/100</div>`)[0];
+                popup_c2fb1b3df4c59f8f8980eef733c84b51.setContent(html_220564580bbea9fe8add9e4aee0bd6d9);
+            
+        
+
+        circle_marker_3ad3c332d391d83be8b206f5ee3739b4.bindPopup(popup_c2fb1b3df4c59f8f8980eef733c84b51)
+        ;
+
+        
+    
+    
+            circle_marker_3ad3c332d391d83be8b206f5ee3739b4.bindTooltip(
+                `<div>
+                     Cuauhtémoc ($403/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1b4a69eee6a6bda6a589fb6f8369c437 = L.circleMarker(
+                [19.3805, -99.1645],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_8a3cd71ea96907b8cbf501babf022b0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b5be22de5fef51bb9fbc92f411733f8e = $(`<div id="html_b5be22de5fef51bb9fbc92f411733f8e" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Del Valle Centro<br><b>AGEB Ref (INEGI):</b> 090140001032A<br><b>Precio Promedio:</b> $301.18 MXN/m²<br><b>Yield Bruto Anual:</b> 6.59%<br><b>Unidades DENUE (500m):</b> 393<br><b>Dist. Transporte OSM:</b> 897 m<br><b>Índice Accesibilidad:</b> 69.1/100</div>`)[0];
+                popup_8a3cd71ea96907b8cbf501babf022b0c.setContent(html_b5be22de5fef51bb9fbc92f411733f8e);
+            
+        
+
+        circle_marker_1b4a69eee6a6bda6a589fb6f8369c437.bindPopup(popup_8a3cd71ea96907b8cbf501babf022b0c)
+        ;
+
+        
+    
+    
+            circle_marker_1b4a69eee6a6bda6a589fb6f8369c437.bindTooltip(
+                `<div>
+                     Del Valle Centro ($301/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0d3df27c6f1b917c78723d553310184c = L.circleMarker(
+                [19.3945, -99.1565],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_bcd280bc4643f2ffde4ac0e90bef25b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cd0409a3076bee9b6f7d191b878c3c84 = $(`<div id="html_cd0409a3076bee9b6f7d191b878c3c84" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Narvarte Poniente<br><b>AGEB Ref (INEGI):</b> 090140001018A<br><b>Precio Promedio:</b> $299.31 MXN/m²<br><b>Yield Bruto Anual:</b> 6.65%<br><b>Unidades DENUE (500m):</b> 361<br><b>Dist. Transporte OSM:</b> 1016 m<br><b>Índice Accesibilidad:</b> 61.2/100</div>`)[0];
+                popup_bcd280bc4643f2ffde4ac0e90bef25b8.setContent(html_cd0409a3076bee9b6f7d191b878c3c84);
+            
+        
+
+        circle_marker_0d3df27c6f1b917c78723d553310184c.bindPopup(popup_bcd280bc4643f2ffde4ac0e90bef25b8)
+        ;
+
+        
+    
+    
+            circle_marker_0d3df27c6f1b917c78723d553310184c.bindTooltip(
+                `<div>
+                     Narvarte Poniente ($299/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2c7117cf3a925a8e879f6ea2f2b1dafe = L.circleMarker(
+                [19.394, -99.1775],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_a7c8ecc22cf46557705a52f0ab73ec37 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3b3d468f07101642c62eabdf57d2e54 = $(`<div id="html_c3b3d468f07101642c62eabdf57d2e54" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Nápoles<br><b>AGEB Ref (INEGI):</b> 090140001025A<br><b>Precio Promedio:</b> $302.17 MXN/m²<br><b>Yield Bruto Anual:</b> 6.72%<br><b>Unidades DENUE (500m):</b> 371<br><b>Dist. Transporte OSM:</b> 515 m<br><b>Índice Accesibilidad:</b> 72.7/100</div>`)[0];
+                popup_a7c8ecc22cf46557705a52f0ab73ec37.setContent(html_c3b3d468f07101642c62eabdf57d2e54);
+            
+        
+
+        circle_marker_2c7117cf3a925a8e879f6ea2f2b1dafe.bindPopup(popup_a7c8ecc22cf46557705a52f0ab73ec37)
+        ;
+
+        
+    
+    
+            circle_marker_2c7117cf3a925a8e879f6ea2f2b1dafe.bindTooltip(
+                `<div>
+                     Nápoles ($302/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_683668d97e8244040f1127659883f57d = L.circleMarker(
+                [19.3905, -99.1855],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_33d4213871be24de9ddaebf19e8c2633 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f992718b8c372ac75004813c73a8505b = $(`<div id="html_f992718b8c372ac75004813c73a8505b" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> San Pedro de los Pinos<br><b>AGEB Ref (INEGI):</b> 090140001044A<br><b>Precio Promedio:</b> $302.19 MXN/m²<br><b>Yield Bruto Anual:</b> 6.57%<br><b>Unidades DENUE (500m):</b> 290<br><b>Dist. Transporte OSM:</b> 232 m<br><b>Índice Accesibilidad:</b> 69.9/100</div>`)[0];
+                popup_33d4213871be24de9ddaebf19e8c2633.setContent(html_f992718b8c372ac75004813c73a8505b);
+            
+        
+
+        circle_marker_683668d97e8244040f1127659883f57d.bindPopup(popup_33d4213871be24de9ddaebf19e8c2633)
+        ;
+
+        
+    
+    
+            circle_marker_683668d97e8244040f1127659883f57d.bindTooltip(
+                `<div>
+                     San Pedro de los Pinos ($302/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_52e7c5cc0335d468da873a617a6ef03b = L.circleMarker(
+                [19.4495, -99.1575],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_90fcd57b89f9cbe9c8f1f9329884ec3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72d4686673bc772c0e5459709d02e93a = $(`<div id="html_72d4686673bc772c0e5459709d02e93a" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Santa María la Ribera<br><b>AGEB Ref (INEGI):</b> 090150001012A<br><b>Precio Promedio:</b> $249.74 MXN/m²<br><b>Yield Bruto Anual:</b> 7.25%<br><b>Unidades DENUE (500m):</b> 308<br><b>Dist. Transporte OSM:</b> 607 m<br><b>Índice Accesibilidad:</b> 64.5/100</div>`)[0];
+                popup_90fcd57b89f9cbe9c8f1f9329884ec3b.setContent(html_72d4686673bc772c0e5459709d02e93a);
+            
+        
+
+        circle_marker_52e7c5cc0335d468da873a617a6ef03b.bindPopup(popup_90fcd57b89f9cbe9c8f1f9329884ec3b)
+        ;
+
+        
+    
+    
+            circle_marker_52e7c5cc0335d468da873a617a6ef03b.bindTooltip(
+                `<div>
+                     Santa María la Ribera ($250/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0da4e2b9cf6b61b39eef7c61a67f69c4 = L.circleMarker(
+                [19.4035, -99.1805],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_eeddec94ad75f011e92d1df990afbb06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c285fa7f866c2d92a13bd76af439cde7 = $(`<div id="html_c285fa7f866c2d92a13bd76af439cde7" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Escandón I Sección<br><b>AGEB Ref (INEGI):</b> 090160001077A<br><b>Precio Promedio:</b> $247.67 MXN/m²<br><b>Yield Bruto Anual:</b> 7.26%<br><b>Unidades DENUE (500m):</b> 325<br><b>Dist. Transporte OSM:</b> 383 m<br><b>Índice Accesibilidad:</b> 68.4/100</div>`)[0];
+                popup_eeddec94ad75f011e92d1df990afbb06.setContent(html_c285fa7f866c2d92a13bd76af439cde7);
+            
+        
+
+        circle_marker_0da4e2b9cf6b61b39eef7c61a67f69c4.bindPopup(popup_eeddec94ad75f011e92d1df990afbb06)
+        ;
+
+        
+    
+    
+            circle_marker_0da4e2b9cf6b61b39eef7c61a67f69c4.bindTooltip(
+                `<div>
+                     Escandón I Sección ($248/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_625118266fc17854e886cc0bc650ee2b = L.circleMarker(
+                [19.4375, -99.162],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_408a8bd2f3001b3953d3196558fb79ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12484691a1e8ea18090a983136d08c25 = $(`<div id="html_12484691a1e8ea18090a983136d08c25" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> San Rafael<br><b>AGEB Ref (INEGI):</b> 090150001029A<br><b>Precio Promedio:</b> $246.82 MXN/m²<br><b>Yield Bruto Anual:</b> 7.14%<br><b>Unidades DENUE (500m):</b> 305<br><b>Dist. Transporte OSM:</b> 504 m<br><b>Índice Accesibilidad:</b> 64.7/100</div>`)[0];
+                popup_408a8bd2f3001b3953d3196558fb79ee.setContent(html_12484691a1e8ea18090a983136d08c25);
+            
+        
+
+        circle_marker_625118266fc17854e886cc0bc650ee2b.bindPopup(popup_408a8bd2f3001b3953d3196558fb79ee)
+        ;
+
+        
+    
+    
+            circle_marker_625118266fc17854e886cc0bc650ee2b.bindTooltip(
+                `<div>
+                     San Rafael ($247/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0bf8a549e2f66e9f2f660f05df910e9d = L.circleMarker(
+                [19.5095, -99.234],
+                {"bubblingMouseEvents": true, "color": "#B91C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EF4444", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11, "stroke": true, "weight": 3}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+        var popup_58879286770960a6e463b509ff808696 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ef943c40c3131f881cd5d4e6023e0d62 = $(`<div id="html_ef943c40c3131f881cd5d4e6023e0d62" style="width: 100.0%; height: 100.0%;"><b>Colonia:</b> Ciudad Satélite<br><b>AGEB Ref (INEGI):</b> 150570001104A<br><b>Precio Promedio:</b> $249.37 MXN/m²<br><b>Yield Bruto Anual:</b> 7.20%<br><b>Unidades DENUE (500m):</b> 289<br><b>Dist. Transporte OSM:</b> 217 m<br><b>Índice Accesibilidad:</b> 73.4/100</div>`)[0];
+                popup_58879286770960a6e463b509ff808696.setContent(html_ef943c40c3131f881cd5d4e6023e0d62);
+            
+        
+
+        circle_marker_0bf8a549e2f66e9f2f660f05df910e9d.bindPopup(popup_58879286770960a6e463b509ff808696)
+        ;
+
+        
+    
+    
+            circle_marker_0bf8a549e2f66e9f2f660f05df910e9d.bindTooltip(
+                `<div>
+                     Ciudad Satélite ($249/m²)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_30913e894f66e299168f21dcbd7e8eb7 = L.marker(
+                [19.4334, -99.1912],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_3583dc97ae0a87592e41b4a2960b1e09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_30913e894f66e299168f21dcbd7e8eb7.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Polanco (Línea 7) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_30913e894f66e299168f21dcbd7e8eb7.setIcon(icon_3583dc97ae0a87592e41b4a2960b1e09);
+            
+    
+            var marker_49a66d7c65183d61075f7bc7f590e861 = L.marker(
+                [19.4459, -99.1918],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_fd634ae75708790c7a0a7c371e471de1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_49a66d7c65183d61075f7bc7f590e861.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro San Joaquín (Línea 7) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_49a66d7c65183d61075f7bc7f590e861.setIcon(icon_fd634ae75708790c7a0a7c371e471de1);
+            
+    
+            var marker_0be0c15988782f89b2e7748707e6125d = L.marker(
+                [19.4262, -99.181],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_1276cbd55cb4bddc11351f620cc5357f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0be0c15988782f89b2e7748707e6125d.bindTooltip(
+                `<div>
+                     Transporte OSM: Metrobús Reforma / Gandhi (Metrobús L7)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0be0c15988782f89b2e7748707e6125d.setIcon(icon_1276cbd55cb4bddc11351f620cc5357f);
+            
+    
+            var marker_179851c6ed751c97f1a773449acf607b = L.marker(
+                [19.4234, -99.1628],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_57d8c9f03aa7647050d7f384956683f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_179851c6ed751c97f1a773449acf607b.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Insurgentes (Línea 1) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_179851c6ed751c97f1a773449acf607b.setIcon(icon_57d8c9f03aa7647050d7f384956683f8);
+            
+    
+            var marker_109302723e6b78a80d5e53876bdca47b = L.marker(
+                [19.4061, -99.1685],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_b73a21ed71dc29b47c3ce2e13dd986a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_109302723e6b78a80d5e53876bdca47b.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Chilpancingo / MB Campeche (STC Metro / MB L1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_109302723e6b78a80d5e53876bdca47b.setIcon(icon_b73a21ed71dc29b47c3ce2e13dd986a6);
+            
+    
+            var marker_dbbc513b3df2aa594b2c570e59eb591c = L.marker(
+                [19.4259, -99.1547],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_7176d2a5c96f0e216dad15cb4f046b2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_dbbc513b3df2aa594b2c570e59eb591c.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Cuauhtémoc (Línea 1) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dbbc513b3df2aa594b2c570e59eb591c.setIcon(icon_7176d2a5c96f0e216dad15cb4f046b2b);
+            
+    
+            var marker_e30601c2847f40d8c2bbc0ed427bc284 = L.marker(
+                [19.372, -99.1711],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_c6765e467920027f57bedde6a67fc699 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e30601c2847f40d8c2bbc0ed427bc284.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Hospital 20 de Noviembre (Línea 12) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e30601c2847f40d8c2bbc0ed427bc284.setIcon(icon_c6765e467920027f57bedde6a67fc699);
+            
+    
+            var marker_7b9fe7b52d816db9b9db099c3b955378 = L.marker(
+                [19.3854, -99.1574],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_b69a3470397ff7d0f665cc7516b9f651 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7b9fe7b52d816db9b9db099c3b955378.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Eugenia (Línea 3) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7b9fe7b52d816db9b9db099c3b955378.setIcon(icon_b69a3470397ff7d0f665cc7516b9f651);
+            
+    
+            var marker_11473321b9c04ea1f5b6104a54e5e4d2 = L.marker(
+                [19.3934, -99.1731],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_23a55475563117aa0e98ba6122e1d663 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_11473321b9c04ea1f5b6104a54e5e4d2.bindTooltip(
+                `<div>
+                     Transporte OSM: Metrobús Polifórum / Nápoles (Línea 1) (Metrobús L1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_11473321b9c04ea1f5b6104a54e5e4d2.setIcon(icon_23a55475563117aa0e98ba6122e1d663);
+            
+    
+            var marker_7a4b467e64dac87852bf8190f43a2afa = L.marker(
+                [19.3913, -99.1861],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_7ba5b20d98bdd85f9b21b0b212dff5a8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7a4b467e64dac87852bf8190f43a2afa.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro San Pedro de los Pinos (Línea 7) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7a4b467e64dac87852bf8190f43a2afa.setIcon(icon_7ba5b20d98bdd85f9b21b0b212dff5a8);
+            
+    
+            var marker_1f0ffaded37f5efd5f28c3276a4786a2 = L.marker(
+                [19.4465, -99.1531],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_0ff40c435eca87a4bdd20e4e765a0645 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_1f0ffaded37f5efd5f28c3276a4786a2.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Buenavista / Suburbano (STC Metro / Suburbano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f0ffaded37f5efd5f28c3276a4786a2.setIcon(icon_0ff40c435eca87a4bdd20e4e765a0645);
+            
+    
+            var marker_c01aae095a819df83eea33386b6a5974 = L.marker(
+                [19.4062, -99.1789],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_b41cb42b5ba7693a395e20ec03f56cae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_c01aae095a819df83eea33386b6a5974.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro Patriotismo (Línea 9) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c01aae095a819df83eea33386b6a5974.setIcon(icon_b41cb42b5ba7693a395e20ec03f56cae);
+            
+    
+            var marker_8a248b29fa9f0f0e599a0eb3e96a68bb = L.marker(
+                [19.4418, -99.161],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_736fecb66cbdcafedc4a27ce72bc19f1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8a248b29fa9f0f0e599a0eb3e96a68bb.bindTooltip(
+                `<div>
+                     Transporte OSM: Metro San Cosme (Línea 2) (STC Metro)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8a248b29fa9f0f0e599a0eb3e96a68bb.setIcon(icon_736fecb66cbdcafedc4a27ce72bc19f1);
+            
+    
+            var marker_9de52b59f2b695163e4e129e6c2355d9 = L.marker(
+                [19.5105, -99.2345],
+                {
+}
+            ).addTo(map_6241ce9bae6d98420f13ec3672619aa3);
+        
+    
+            var icon_3f27df12780a7502d4b1e637972d62f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9de52b59f2b695163e4e129e6c2355d9.bindTooltip(
+                `<div>
+                     Transporte OSM: Nodo Periférico / Plaza Satélite (Corredor Toreo-Satélite)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9de52b59f2b695163e4e129e6c2355d9.setIcon(icon_3f27df12780a7502d4b1e637972d62f8);
+            
+</script>
+</html>

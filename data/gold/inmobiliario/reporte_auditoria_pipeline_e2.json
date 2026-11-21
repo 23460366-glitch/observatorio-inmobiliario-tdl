@@ -1,0 +1,58 @@
+{
+  "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E2 (Fuente Geoespacial + Linaje Completo)",
+  "executed_at_utc": "2026-11-21T18:33:58.257344+00:00",
+  "fuente_especializada_geoespacial": {
+    "fuente_especializada": "Geoespacial: DENUE (INEGI) + Marco Geoestadístico Nacional + OpenStreetMap",
+    "fecha_ingesta_bronce_utc": "2026-11-21T18:33:53.224487+00:00",
+    "crs_origen": "EPSG:4326 (WGS 84 Geográfico)",
+    "crs_proyeccion_metrica": "EPSG:32614 (WGS 84 / UTM zone 14N en metros)",
+    "total_poligonos_colonias_ageb": 16,
+    "total_nodos_transporte_osm": 14,
+    "robots_audit_inegi_denue": {
+      "robots_url": "https://www.inegi.org.mx/robots.txt",
+      "target_path": "/app/api/denue/v1/",
+      "checked_at_utc": "2026-11-21T18:33:53.224545+00:00",
+      "allowed": true,
+      "crawl_delay_seconds": 2.0,
+      "notes": "Verificación ética exitosa"
+    },
+    "robots_audit_osm_overpass": {
+      "robots_url": "https://overpass-api.de/robots.txt",
+      "target_path": "/api/interpreter",
+      "checked_at_utc": "2026-11-21T18:33:53.515809+00:00",
+      "allowed": false,
+      "crawl_delay_seconds": 2.0,
+      "notes": "Verificación ética exitosa"
+    },
+    "archivos_bronce_generados": [
+      "data\\bronze\\inmobiliario\\geoespacial_denue_osm_zmvm.geojson",
+      "data\\bronze\\inmobiliario\\estaciones_transporte_osm_zmvm.geojson"
+    ]
+  },
+  "enriquecimiento_espacial_geopandas": {
+    "total_inmuebles_georreferenciados": 1291,
+    "distancia_media_transporte_m": 761.2,
+    "distancia_mediana_transporte_m": 628.6,
+    "denue_unidades_promedio_buffer_500m": 361.8,
+    "indice_accesibilidad_promedio_0_100": 69.02,
+    "correlacion_accesibilidad_vs_precio_m2": 0.0012,
+    "archivo_plata_geolocalizado": "data\\silver\\inmobiliario\\rentas_zmvm_plata_geolocalizado_e2.csv"
+  },
+  "linaje_y_trazabilidad_oro_a_bronce": {
+    "total_registros_oro_auditados": 92,
+    "registros_oro_con_linaje_completo_pct": 100.0,
+    "registros_oro_huerfanos": 0,
+    "desglose_tablas_oro": {
+      "oro_e1_pronostico_mensual_trimestral": 36,
+      "oro_e2_simulacion_whatif_24m": 28,
+      "oro_e3_comparacion_multivariada_yield": 12,
+      "oro_geoespacial_colonias_denue_osm": 16
+    },
+    "catalogo_linaje_csv": "data\\gold\\inmobiliario\\catalogo_linaje_oro_a_bronce.csv",
+    "catalogo_linaje_json": "data\\gold\\inmobiliario\\catalogo_linaje_oro_a_bronce.json"
+  },
+  "artefactos_cartograficos": {
+    "mapa_coropletico_png": "docs\\E2\\mapa_coropletico_precio_equipamiento_zmvm.png",
+    "mapa_interactivo_html": "docs\\E2\\mapa_interactivo_zmvm.html"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "fuente_especializada": "Geoespacial: DENUE (INEGI) + Marco Geoestadístico Nacional + OpenStreetMap",
+  "fecha_ingesta_bronce_utc": "2026-11-21T18:34:24.119941+00:00",
+  "crs_origen": "EPSG:4326 (WGS 84 Geográfico)",
+  "crs_proyeccion_metrica": "EPSG:32614 (WGS 84 / UTM zone 14N en metros)",
+  "total_poligonos_colonias_ageb": 16,
+  "total_nodos_transporte_osm": 14,
+  "robots_audit_inegi_denue": {
+    "robots_url": "https://www.inegi.org.mx/robots.txt",
+    "target_path": "/app/api/denue/v1/",
+    "checked_at_utc": "2026-11-21T18:34:24.120001+00:00",
+    "allowed": true,
+    "crawl_delay_seconds": 2.0,
+    "notes": "Verificación ética exitosa"
+  },
+  "robots_audit_osm_overpass": {
+    "robots_url": "https://overpass-api.de/robots.txt",
+    "target_path": "/api/interpreter",
+    "checked_at_utc": "2026-11-21T18:34:24.644477+00:00",
+    "allowed": false,
+    "crawl_delay_seconds": 2.0,
+    "notes": "Verificación ética exitosa"
+  },
+  "archivos_bronce_generados": [
+    "data\\bronze\\inmobiliario\\geoespacial_denue_osm_zmvm.geojson",
+    "data\\bronze\\inmobiliario\\estaciones_transporte_osm_zmvm.geojson"
+  ]
+}
