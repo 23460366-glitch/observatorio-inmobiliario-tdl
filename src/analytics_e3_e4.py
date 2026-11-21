@@ -75,9 +75,10 @@ GOLD_DIR = BASE_DIR / "data" / "gold" / "inmobiliario"
 # 1. PRONÓSTICO DE SERIES DE TIEMPO (E1: SES, HOLT, HOLT-WINTERS, ARIMA/SARIMA)
 # ==============================================================================
 
-def run_time_series_forecasting_e1(horizon_months: int = 12) -> Dict[str, Any]:
+def run_time_series_forecasting_e1(horizon_months: int = 12, region: str = "ZMVM") -> Dict[str, Any]:
     """
-    Ejecuta el análisis completo de series de tiempo sobre los 36 meses de Capa Oro (`oro_e1`):
+    Ejecuta el análisis completo de series de tiempo sobre los 36 meses de Capa Oro (`oro_e1` para ZMVM
+    o la serie mensual validada de `rentas_colima_plata_limpio.csv` para Colima – Villa de Álvarez):
       - Prueba ADF de estacionariedad (nivel y primera diferencia).
       - Descomposición aditiva y multiplicativa (`period=12`).
       - ACF y PACF hasta 15 rezagos.
@@ -85,8 +86,28 @@ def run_time_series_forecasting_e1(horizon_months: int = 12) -> Dict[str, Any]:
         Simple (SES), Holt, Holt-Winters y ARIMA(1,1,1), reportando MAE, RMSE, MAPE y Ljung-Box p-value.
       - Pronóstico final a `horizon_months` (12 meses = 4 trimestres) con intervalos al 95%.
     """
-    df_e1 = pd.read_csv(GOLD_DIR / "oro_e1_pronostico_mensual_trimestral.csv", encoding="utf-8")
-    df_e1 = df_e1.sort_values("periodo_mensual").reset_index(drop=True)
+    if region.upper().startswith("COLIMA") and (SILVER_DIR / "rentas_colima_plata_limpio.csv").exists():
+        df_col_s = pd.read_csv(SILVER_DIR / "rentas_colima_plata_limpio.csv", encoding="utf-8")
+        df_e1 = (
+            df_col_s.groupby(["periodo_mensual", "trimestre", "anio"], as_index=False)
+            .agg(
+                n_propiedades_validadas=("id_propiedad", "count"),
+                precio_m2_media_mxn=("precio_m2_winsor_mxn", "mean"),
+                precio_m2_mediana_mxn=("precio_m2_winsor_mxn", "median"),
+                precio_m2_std_mxn=("precio_m2_winsor_mxn", "std"),
+                renta_efectiva_mediana_mxn=("renta_efectiva_winsor_mxn", "median"),
+                yield_bruto_medio_pct=("yield_bruto_anual_pct", "mean"),
+                dias_vacancia_medio=("dias_vacancia_observados", "mean"),
+                inpc_vivienda_zmvm=("inpc_vivienda_zmvm", "first"),
+                inflacion_anual_vivienda_pct=("inflacion_anual_vivienda_pct", "first"),
+                tiie_28d_pct=("tiie_28d_pct", "first"),
+            )
+            .sort_values("periodo_mensual")
+            .reset_index(drop=True)
+        )
+    else:
+        df_e1 = pd.read_csv(GOLD_DIR / "oro_e1_pronostico_mensual_trimestral.csv", encoding="utf-8")
+        df_e1 = df_e1.sort_values("periodo_mensual").reset_index(drop=True)
 
     dates = pd.date_range(start="2023-11-01", periods=len(df_e1), freq="MS")
     y = pd.Series(df_e1["precio_m2_media_mxn"].values, index=dates, name="precio_m2_media_mxn")
@@ -443,11 +464,11 @@ def run_factorial_experiment_2k() -> Dict[str, Any]:
 # 3. ANÁLISIS MULTIVARIADO: NORMALIDAD, PCA CON BIPLOT Y MANOVA (E3)
 # ==============================================================================
 
-def run_multivariate_pca_manova_e3() -> Dict[str, Any]:
+def run_multivariate_pca_manova_e3(region: str = "ZMVM") -> Dict[str, Any]:
     """
     Ejecuta el análisis multivariado completo de la Entrega E3 sobre los cubos de Capa Oro
-    (`oro_e3_comparacion_multivariada_yield.csv` y `oro_geoespacial_colonias_denue_osm.csv`)
-    y los microdatos geolocalizados de Capa Plata:
+    (`oro_e3_comparacion_multivariada_yield.csv` y `oro_geoespacial_colonias_denue_osm.csv` para ZMVM,
+    o `oro_colima_zm.csv` y `rentas_colima_plata_limpio.csv` para Colima – Villa de Álvarez):
       1. Matriz de correlación multivariada.
       2. Prueba de normalidad multivariada (Asimetría y Curtosis de Mardia + Distancias de Mahalanobis).
       3. PCA (Componentes Principales): autovalores, varianza explicada, cargas (loadings) y scores
@@ -456,9 +477,27 @@ def run_multivariate_pca_manova_e3() -> Dict[str, Any]:
          respuesta [precio_m2_winsor_mxn, yield_bruto_anual_pct, dias_vacancia_observados,
          indice_accesibilidad_urbana_0_100] según Sub-zona y Tipología.
     """
-    df_e3 = pd.read_csv(GOLD_DIR / "oro_e3_comparacion_multivariada_yield.csv", encoding="utf-8")
-    df_geo = pd.read_csv(GOLD_DIR / "oro_geoespacial_colonias_denue_osm.csv", encoding="utf-8")
-    df_silver = pd.read_csv(SILVER_DIR / "rentas_zmvm_plata_geolocalizado_e2.csv", encoding="utf-8")
+    is_colima = region.upper().startswith("COLIMA") and (GOLD_DIR / "oro_colima_zm.csv").exists()
+    if is_colima:
+        df_geo = pd.read_csv(GOLD_DIR / "oro_colima_zm.csv", encoding="utf-8")
+        df_silver = pd.read_csv(SILVER_DIR / "rentas_colima_plata_limpio.csv", encoding="utf-8")
+        df_e3 = (
+            df_silver.groupby(["subzona_id", "subzona_nombre", "tipo_inmueble"], as_index=False)
+            .agg(
+                n_inmuebles=("id_propiedad", "count"),
+                superficie_m2_promedio=("superficie_m2", "mean"),
+                precio_m2_promedio_mxn=("precio_m2_winsor_mxn", "mean"),
+                yield_bruto_promedio_pct=("yield_bruto_anual_pct", "mean"),
+                dias_vacancia_promedio=("dias_vacancia_observados", "mean"),
+                denue_unidades_promedio_500m=("denue_unidades_buffer_500m", "mean"),
+                indice_accesibilidad_promedio=("indice_accesibilidad_urbana_0_100", "mean"),
+            )
+            .round(2)
+        )
+    else:
+        df_e3 = pd.read_csv(GOLD_DIR / "oro_e3_comparacion_multivariada_yield.csv", encoding="utf-8")
+        df_geo = pd.read_csv(GOLD_DIR / "oro_geoespacial_colonias_denue_osm.csv", encoding="utf-8")
+        df_silver = pd.read_csv(SILVER_DIR / "rentas_zmvm_plata_geolocalizado_e2.csv", encoding="utf-8")
 
     # Variables continuas multivariadas a nivel colonia (16 colonias en Capa Oro Geoespacial)
     mv_cols = [
@@ -527,6 +566,10 @@ def run_multivariate_pca_manova_e3() -> Dict[str, Any]:
         "SZ2_CENTRAL_CORREDOR": "Clúster 2: Hub Cosmopolita Alta Densidad DENUE",
         "SZ3_CONSOLIDADA_SUR": "Clúster 3: Residencial Equilibrado (Yield-Equipamiento)",
         "SZ4_EMERGENTE_METROPOLITANA": "Clúster 4: Expansión Conurbada & Máximo Yield Anual",
+        "COL_SZ1_NORTE_RESIDENCIAL": "Clúster 1 Colima: Norte Plusvalía Prime (Esmeralda/Vista Hermosa)",
+        "COL_SZ2_CENTRAL_COMERCIAL": "Clúster 2 Colima: Corredor Comercial & Servicios (Constitución/Centro)",
+        "COL_SZ3_UNIVERSITARIO_ESTUDIANTIL": "Clúster 3 Colima: Hub Estudiantil UdeC (Máximo Yield Anual)",
+        "COL_SZ4_VILLA_ALVAREZ_EXPANSION": "Clúster 4 Villa de Álvarez: Expansión Residencial Norponiente",
     }
 
     pca_scores_df = pd.DataFrame(

@@ -45,6 +45,7 @@ from src.pipeline_e1 import (
     transform_scale_discretize_and_hierarchies,
 )
 from src.pipeline_e2 import (
+    build_colima_geospatial_gold_and_map,
     compute_sha256_short,
     create_colonia_polygon,
     enrich_silver_with_geopandas_and_lineage,
@@ -155,6 +156,7 @@ def test_geospatial_and_full_lineage_e2():
     lin_sum = update_gold_layer_with_full_lineage(gdf_silver_geo)
     assert lin_sum["registros_oro_con_linaje_completo_pct"] == 100.0
     assert lin_sum["registros_oro_huerfanos"] == 0
+    build_colima_geospatial_gold_and_map()
 
     cart_out = generate_cartographic_visualizations(gdf_col, gdf_est)
     html_content = (BASE_DIR / cart_out["mapa_interactivo_zmvm_html" if "mapa_interactivo_zmvm_html" in cart_out else "mapa_interactivo_html"]).read_text(encoding="utf-8")
@@ -187,6 +189,58 @@ def test_statistical_analytics_e1_e2_e3_e4():
     sim_res = simulate_live_ingestion_batch(n_valid=6, n_dirty=4, persist_to_quarantine=False)
     assert sim_res["reporte_puerta_calidad"]["total_aprobados_plata"] == 6
     assert sim_res["reporte_puerta_calidad"]["total_enviados_cuarentena"] == 4
+
+
+def test_colima_villa_de_alvarez_expansion_and_lineage():
+    """
+    Verifica la extracción, validación Pandera, Capa Oro (`oro_colima_zm.csv` y `oro_geoespacial_colima.geojson`),
+    completitud ISO/IEC 25012 (>= 95%), linaje en `catalogo_linaje_oro_a_bronce.csv`, pronóstico y PCA/MANOVA
+    para la Zona Metropolitana de Colima – Villa de Álvarez sin alterar los datos de la ZMVM.
+    """
+    oro_colima_csv = BASE_DIR / "data/gold/inmobiliario/oro_colima_zm.csv"
+    oro_colima_geojson = BASE_DIR / "data/gold/inmobiliario/oro_geoespacial_colima.geojson"
+    mapa_colima_html = BASE_DIR / "docs/E2/mapa_interactivo_colima.html"
+    reporte_cliente_md = BASE_DIR / "docs/E4/reporte_inteligencia_cliente.md"
+
+    assert oro_colima_csv.exists()
+    assert oro_colima_geojson.exists()
+    assert mapa_colima_html.exists()
+    assert reporte_cliente_md.exists()
+
+    df_col_gold = pd.read_csv(oro_colima_csv, encoding="utf-8")
+    assert len(df_col_gold) == 8
+    expected_colonias = {
+        "Esmeralda Norte",
+        "Esmeralda Sur",
+        "Lomas de Vista Hermosa",
+        "Jardines de las Lomas",
+        "Zona Centro Colima",
+        "Zona Universidad / Las Víboras",
+        "Real Bugambilias",
+        "La Comarca / Bosque Real",
+    }
+    assert set(df_col_gold["colonia"].tolist()) == expected_colonias
+
+    # Completitud ISO/IEC 25012 >= 95% (100% real)
+    completeness_colima = (1.0 - float(df_col_gold.isna().sum().sum()) / float(df_col_gold.size)) * 100.0
+    assert completeness_colima >= 95.0
+
+    # Verificar trazabilidad en catalogo_linaje_oro_a_bronce.csv
+    df_lineage = pd.read_csv(BASE_DIR / "data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv", encoding="utf-8")
+    colima_lineage = df_lineage[df_lineage["tabla_capa_oro"] == "data/gold/inmobiliario/oro_colima_zm.csv"]
+    assert len(colima_lineage) == 8
+    assert colima_lineage["hash_lote_bronce"].str.startswith("SHA256:").all()
+
+    # Verificar que los datos de la ZMVM siguen intactos
+    df_zmvm_gold = pd.read_csv(BASE_DIR / "data/gold/inmobiliario/oro_geoespacial_colonias_denue_osm.csv", encoding="utf-8")
+    assert len(df_zmvm_gold) == 16
+
+    # Verificar motor de pronóstico y PCA/MANOVA en modo Colima
+    ts_col = run_time_series_forecasting_e1(horizon_months=12, region="COLIMA")
+    assert len(ts_col["pronostico_12_meses_df"]) == 12
+    mv_col = run_multivariate_pca_manova_e3(region="COLIMA")
+    assert len(mv_col["pca"]["scores_colonias_df"]) == 8
+    assert mv_col["pca"]["varianza_acumulada_2pc_pct"] > 70.0
 
 
 def test_entrypoints_and_zero_hardcoded_secrets():

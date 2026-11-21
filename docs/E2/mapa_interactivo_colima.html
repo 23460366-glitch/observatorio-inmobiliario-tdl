@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4397631b726cdba982ec1249cce255c1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: rgba(15, 23, 42, 0.94); color: #F8FAFC; font-family: 'Segoe UI', sans-serif; font-size: 11.5px; padding: 8px 10px; border-radius: 6px; border: 1px solid #10B981;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    
+                    <style>
+                        .foliumpopup {
+                            margin: auto;
+                        }
+                       .foliumpopup table{
+                            margin: auto;
+                        }
+                        .foliumpopup tr{
+                            text-align: left;
+                        }
+                        .foliumpopup th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4397631b726cdba982ec1249cce255c1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4397631b726cdba982ec1249cce255c1 = L.map(
+                "map_4397631b726cdba982ec1249cce255c1",
+                {
+                    center: [19.258, -103.718],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_4397631b726cdba982ec1249cce255c1);
+
+            
+
+        
+    
+            var tile_layer_ac625ae419e772af8bef947be9d4df09 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, Maxar, Earthstar Geographics",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ac625ae419e772af8bef947be9d4df09.addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+            var tile_layer_bf1869461a76434d8c587b66d7a372e4 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; INEGI, Esri World Topo Map",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            var tile_layer_ac7f3f804f1d9ecfe850f7ae3c93973b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            var tile_layer_530e7b72f32c5f4d0022f120248a02f4 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Labels \u0026copy; Esri \u0026mdash; World Boundaries and Places Reference",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_530e7b72f32c5f4d0022f120248a02f4.addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+            var tile_layer_c0ad92e1cf05eab2420628f84c22d9c5 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Roads \u0026copy; Esri \u0026mdash; World Transportation Reference",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c0ad92e1cf05eab2420628f84c22d9c5.addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Pantalla Completa",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": true,
+}
+            ).addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+        function geo_json_e3f107e8d456bcefd475acdf5cf4fe90_styler(feature) {
+            switch(feature.properties.colonia) {
+                case "Esmeralda Norte": case "Lomas de Vista Hermosa": case "Jardines de las Lomas": 
+                    return {"color": "#FFFFFF", "fillColor": "#EF4444", "fillOpacity": 0.45, "weight": 2.2};
+                case "Esmeralda Sur": case "Zona Centro Colima": case "Real Bugambilias": 
+                    return {"color": "#FFFFFF", "fillColor": "#EAB308", "fillOpacity": 0.45, "weight": 2.2};
+                case "La Comarca / Bosque Real": 
+                    return {"color": "#FFFFFF", "fillColor": "#F97316", "fillOpacity": 0.45, "weight": 2.2};
+                default:
+                    return {"color": "#FFFFFF", "fillColor": "#10B981", "fillOpacity": 0.45, "weight": 2.2};
+            }
+        }
+        function geo_json_e3f107e8d456bcefd475acdf5cf4fe90_highlighter(feature) {
+            switch(feature.properties.colonia) {
+                case "Esmeralda Norte": case "Lomas de Vista Hermosa": case "Jardines de las Lomas": 
+                    return {"color": "#FDE047", "fillColor": "#EF4444", "fillOpacity": 0.68, "weight": 3.8};
+                case "Esmeralda Sur": case "Zona Centro Colima": case "Real Bugambilias": 
+                    return {"color": "#FDE047", "fillColor": "#EAB308", "fillOpacity": 0.68, "weight": 3.8};
+                case "La Comarca / Bosque Real": 
+                    return {"color": "#FDE047", "fillColor": "#F97316", "fillOpacity": 0.68, "weight": 3.8};
+                default:
+                    return {"color": "#FDE047", "fillColor": "#10B981", "fillOpacity": 0.68, "weight": 3.8};
+            }
+        }
+
+        function geo_json_e3f107e8d456bcefd475acdf5cf4fe90_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_e3f107e8d456bcefd475acdf5cf4fe90.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_e3f107e8d456bcefd475acdf5cf4fe90_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_e3f107e8d456bcefd475acdf5cf4fe90 = L.geoJson(null, {
+                onEachFeature: geo_json_e3f107e8d456bcefd475acdf5cf4fe90_onEachFeature,
+            
+                style: geo_json_e3f107e8d456bcefd475acdf5cf4fe90_styler,
+            ...{
+}
+        });
+
+        function geo_json_e3f107e8d456bcefd475acdf5cf4fe90_add (data) {
+            geo_json_e3f107e8d456bcefd475acdf5cf4fe90
+                .addData(data);
+        }
+            geo_json_e3f107e8d456bcefd475acdf5cf4fe90_add({"features": [{"geometry": {"coordinates": [[[-103.709859, 19.2665], [-103.710036, 19.267747], [-103.710882, 19.268771], [-103.712157, 19.269347], [-103.71323, 19.269849], [-103.714157, 19.27077], [-103.7155, 19.271705], [-103.717146, 19.271733], [-103.718383, 19.270754], [-103.719084, 19.269553], [-103.719746, 19.268588], [-103.72042, 19.267623], [-103.720659, 19.2665], [-103.720468, 19.265366], [-103.720235, 19.264171], [-103.719794, 19.262842], [-103.71863, 19.261882], [-103.716952, 19.261883], [-103.7155, 19.262505], [-103.714351, 19.262846], [-103.712983, 19.262786], [-103.711447, 19.263047], [-103.710393, 19.263988], [-103.709988, 19.265242], [-103.709859, 19.2665]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Esmeralda Norte", "fill_color": "#EF4444", "perfil_negocio": "Plusval\u00eda Prime \u0026 Comercial Norte", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EF4444;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Esmeralda Norte\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Plusval\u00eda Prime \u0026 Comercial Norte\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$231.02 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.17% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+16.0%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e215 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Constituci\u00f3n / Tercer Anillo Perif\u00e9rico\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001028A (SHA256:3e43)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$231.02 MXN/m\u00b2", "search_label": "Esmeralda Norte (Colima)", "yield_str": "7.17%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.71135, 19.2575], [-103.711325, 19.258909], [-103.712538, 19.259941], [-103.714045, 19.260443], [-103.715163, 19.260947], [-103.716194, 19.261651], [-103.7175, 19.262081], [-103.718907, 19.261972], [-103.720286, 19.26161], [-103.721705, 19.261082], [-103.722763, 19.260088], [-103.722824, 19.258715], [-103.72215, 19.2575], [-103.721757, 19.256528], [-103.721891, 19.255341], [-103.721682, 19.253938], [-103.720563, 19.25298], [-103.718989, 19.252765], [-103.7175, 19.252881], [-103.716112, 19.253086], [-103.714886, 19.253643], [-103.714068, 19.254576], [-103.71341, 19.255488], [-103.712392, 19.256334], [-103.71135, 19.2575]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Esmeralda Sur", "fill_color": "#EAB308", "perfil_negocio": "Corredor Corporativo y Servicios M\u00e9dicos", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EAB308;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Esmeralda Sur\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Corredor Corporativo y Servicios M\u00e9dicos\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$171.95 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.68% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+14.2%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e240 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Constituci\u00f3n / Calz. Pedro A. Galv\u00e1n\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001034A (SHA256:4645)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$171.95 MXN/m\u00b2", "search_label": "Esmeralda Sur (Colima)", "yield_str": "7.68%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.703455, 19.261], [-103.703793, 19.262074], [-103.704095, 19.263166], [-103.704834, 19.264123], [-103.705911, 19.264819], [-103.707082, 19.265509], [-103.7085, 19.266163], [-103.710116, 19.266136], [-103.7113, 19.265131], [-103.71181, 19.26382], [-103.712338, 19.262888], [-103.713365, 19.26211], [-103.714255, 19.261], [-103.714225, 19.259693], [-103.713448, 19.258566], [-103.712471, 19.257617], [-103.711311, 19.256852], [-103.709877, 19.256623], [-103.7085, 19.256963], [-103.70732, 19.25725], [-103.7059, 19.257164], [-103.704174, 19.257315], [-103.702985, 19.258288], [-103.702933, 19.259729], [-103.703455, 19.261]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Lomas de Vista Hermosa", "fill_color": "#EF4444", "perfil_negocio": "Residencial Consolidado Alto Patrimonio", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EF4444;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Lomas de Vista Hermosa\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Residencial Consolidado Alto Patrimonio\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$229.37 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.17% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+17.9%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e175 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Ignacio Sandoval / Tercer Anillo Perif\u00e9rico\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001041A (SHA256:cb47)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$229.37 MXN/m\u00b2", "search_label": "Lomas de Vista Hermosa (Colima)", "yield_str": "7.17%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.700695, 19.2545], [-103.700968, 19.255649], [-103.701515, 19.256706], [-103.702506, 19.257476], [-103.703578, 19.258074], [-103.704617, 19.258898], [-103.706, 19.259734], [-103.70765, 19.259746], [-103.70885, 19.258704], [-103.709399, 19.257395], [-103.709963, 19.256449], [-103.71086, 19.255609], [-103.711495, 19.2545], [-103.7114, 19.253268], [-103.710868, 19.252106], [-103.710143, 19.250971], [-103.708978, 19.250107], [-103.707412, 19.250011], [-103.706, 19.250534], [-103.704855, 19.250859], [-103.70345, 19.250737], [-103.701762, 19.25089], [-103.70061, 19.251849], [-103.700428, 19.253228], [-103.700695, 19.2545]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Jardines de las Lomas", "fill_color": "#EF4444", "perfil_negocio": "Residencial Familiar Media-Alta", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EF4444;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Jardines de las Lomas\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Residencial Familiar Media-Alta\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$219.12 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.13% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+16.3%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e165 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Ignacio Sandoval / Av. Ni\u00f1os H\u00e9roes\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001049A (SHA256:5c98)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$219.12 MXN/m\u00b2", "search_label": "Jardines de las Lomas (Colima)", "yield_str": "7.13%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.719926, 19.2433], [-103.720143, 19.244409], [-103.720304, 19.24561], [-103.720681, 19.246979], [-103.721843, 19.247958], [-103.723539, 19.247946], [-103.725, 19.247324], [-103.726159, 19.246985], [-103.727514, 19.24701], [-103.728993, 19.246702], [-103.730013, 19.245766], [-103.730485, 19.244552], [-103.730726, 19.2433], [-103.730575, 19.242027], [-103.729657, 19.24101], [-103.728318, 19.240474], [-103.727243, 19.239991], [-103.726334, 19.23906], [-103.725, 19.238124], [-103.723364, 19.238099], [-103.722114, 19.239042], [-103.721357, 19.240196], [-103.72066, 19.241166], [-103.720053, 19.242171], [-103.719926, 19.2433]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Zona Centro Colima", "fill_color": "#EAB308", "perfil_negocio": "Comercial Hist\u00f3rico \u0026 Renta Ejecutiva/Temporal", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EAB308;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Zona Centro Colima\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Comercial Hist\u00f3rico \u0026 Renta Ejecutiva/Temporal\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$171.06 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.61% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+20.9%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e385 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Francisco I. Madero / Calz. Galv\u00e1n\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001001A (SHA256:24d9)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$171.06 MXN/m\u00b2", "search_label": "Zona Centro Colima (Colima)", "yield_str": "7.61%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.692392, 19.2485], [-103.692401, 19.249892], [-103.69361, 19.250905], [-103.695159, 19.251346], [-103.696261, 19.251804], [-103.697199, 19.252638], [-103.6985, 19.253311], [-103.699998, 19.253263], [-103.701339, 19.252689], [-103.702549, 19.251949], [-103.703498, 19.250958], [-103.703694, 19.249686], [-103.703192, 19.2485], [-103.702833, 19.247511], [-103.702963, 19.246305], [-103.702796, 19.24484], [-103.701661, 19.243837], [-103.699994, 19.243751], [-103.6985, 19.244111], [-103.697203, 19.244377], [-103.695939, 19.244722], [-103.694912, 19.245444], [-103.694145, 19.246358], [-103.693262, 19.247304], [-103.692392, 19.2485]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Colima", "colonia": "Zona Universidad / Las V\u00edboras", "fill_color": "#10B981", "perfil_negocio": "Hub Estudiantil UdeC (M\u00e1xima Ocupaci\u00f3n \u0026 Yield %)", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #10B981;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Zona Universidad / Las V\u00edboras\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Colima, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Hub Estudiantil UdeC (M\u00e1xima Ocupaci\u00f3n \u0026 Yield %)\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$161.71 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e8.46% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+20.3%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e260 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Universidad / Av. Gonzalo de Sandoval\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060020001063A (SHA256:0fb7)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$161.71 MXN/m\u00b2", "search_label": "Zona Universidad / Las V\u00edboras (Colima)", "yield_str": "8.46%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.73158, 19.2725], [-103.731848, 19.273562], [-103.731882, 19.274771], [-103.732153, 19.276203], [-103.733309, 19.277208], [-103.735023, 19.277196], [-103.7365, 19.276609], [-103.73769, 19.276282], [-103.739017, 19.276214], [-103.740367, 19.275794], [-103.741312, 19.274866], [-103.74192, 19.273737], [-103.74238, 19.2725], [-103.74228, 19.271181], [-103.741235, 19.270171], [-103.73979, 19.269697], [-103.738709, 19.26924], [-103.737818, 19.268309], [-103.7365, 19.267409], [-103.734894, 19.267395], [-103.733617, 19.268246], [-103.73273, 19.269289], [-103.731959, 19.270266], [-103.731488, 19.271356], [-103.73158, 19.2725]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Villa de \u00c1lvarez", "colonia": "Real Bugambilias", "fill_color": "#EAB308", "perfil_negocio": "Expansi\u00f3n Residencial Joven (Villa de \u00c1lvarez)", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #EAB308;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 Real Bugambilias\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Villa de \u00c1lvarez, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Expansi\u00f3n Residencial Joven (Villa de \u00c1lvarez)\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$180.35 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e8.02% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+19.2%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e190 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eTercer Anillo Perif\u00e9rico / Av. Benito Ju\u00e1rez\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060100001052A (SHA256:e4bd)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$180.35 MXN/m\u00b2", "search_label": "Real Bugambilias (Villa de \u00c1lvarez)", "yield_str": "8.02%"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-103.72616, 19.2815], [-103.726541, 19.282518], [-103.726638, 19.283645], [-103.727151, 19.284778], [-103.728239, 19.285573], [-103.729551, 19.286108], [-103.731, 19.286525], [-103.732556, 19.286446], [-103.73374, 19.285543], [-103.734289, 19.284302], [-103.734823, 19.28338], [-103.735913, 19.282621], [-103.73696, 19.2815], [-103.736973, 19.280137], [-103.735991, 19.279045], [-103.734788, 19.278273], [-103.733639, 19.277606], [-103.732346, 19.277221], [-103.731, 19.277325], [-103.729761, 19.27756], [-103.72834, 19.277576], [-103.726652, 19.277796], [-103.72547, 19.27878], [-103.725481, 19.28024], [-103.72616, 19.2815]]], "type": "Polygon"}, "properties": {"alcaldia_municipio": "Villa de \u00c1lvarez", "colonia": "La Comarca / Bosque Real", "fill_color": "#F97316", "perfil_negocio": "Desarrollo Nuevo Alta Plusval\u00eda Norponiente", "popup_html": "\n        \u003cdiv style=\"font-family: \u0027Segoe UI\u0027, system-ui, sans-serif; width: 325px; padding: 2px;\"\u003e\n            \u003cdiv style=\"background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid #F97316;\"\u003e\n                \u003cdiv style=\"font-size: 15px; font-weight: 800;\"\u003e\ud83c\udf34 La Comarca / Bosque Real\u003c/div\u003e\n                \u003cdiv style=\"font-size: 11.5px; color: #CBD5E1; margin-top: 2px;\"\u003e\ud83c\udfdb\ufe0f \u003cb\u003eMunicipio:\u003c/b\u003e Villa de \u00c1lvarez, Colima\u003c/div\u003e\n                \u003cdiv style=\"display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;\"\u003e\n                    \u2b50 Desarrollo Nuevo Alta Plusval\u00eda Norponiente\n                \u003c/div\u003e\n            \u003c/div\u003e\n            \u003cdiv style=\"border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;\"\u003e\n                \u003ctable style=\"width: 100%; font-size: 12px; border-collapse: collapse;\"\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eRenta Promedio ($/m\u00b2):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626;\"\u003e$195.74 MXN/m\u00b2\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eYield Bruto Anual:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 800; color: #059669;\"\u003e7.98% anual\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003ePlusval\u00eda Acumulada (36m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700; color: #0284C7;\"\u003e+17.4%\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eComercios DENUE (500m):\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-weight: 700;\"\u003e155 unidades\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr style=\"border-bottom: 1px solid #F1F5F9;\"\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #475569;\"\u003e\u003cb\u003eVialidad Primaria OSM:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-size: 11px;\"\u003eAv. Pablo Silva Garc\u00eda / Tercer Anillo Norte\u003c/td\u003e\n                    \u003c/tr\u003e\n                    \u003ctr\u003e\n                        \u003ctd style=\"padding: 5px 0; color: #64748B; font-size: 10.5px;\"\u003e\u003cb\u003eAGEB INEGI / Linaje:\u003c/b\u003e\u003c/td\u003e\n                        \u003ctd style=\"padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;\"\u003e060100001078A (SHA256:b280)\u003c/td\u003e\n                    \u003c/tr\u003e\n                \u003c/table\u003e\n            \u003c/div\u003e\n        \u003c/div\u003e\n        ", "precio_str": "$195.74 MXN/m\u00b2", "search_label": "La Comarca / Bosque Real (Villa de \u00c1lvarez)", "yield_str": "7.98%"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e3f107e8d456bcefd475acdf5cf4fe90.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"];
+    let aliases = ["\ud83d\udccd Zona/Colonia:", "\ud83c\udfdb\ufe0f Municipio:", "\ud83d\udcb0 Renta Promedio:", "\ud83d\udcc8 Yield Anual:", "\ud83c\udff7\ufe0f Perfil:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "permanent": false,
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+    geo_json_e3f107e8d456bcefd475acdf5cf4fe90.bindPopup(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["popup_html"];
+    let aliases = ["popup_html"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "maxWidth": 350,
+  "className": "foliumpopup",
+});
+                     
+    
+            geo_json_e3f107e8d456bcefd475acdf5cf4fe90.addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+            var geo_json_e3f107e8d456bcefd475acdf5cf4fe90searchControl = new L.Control.Search({
+                layer: geo_json_e3f107e8d456bcefd475acdf5cf4fe90,
+                
+                propertyName: 'search_label',
+                
+                collapsed: false,
+                textPlaceholder: '🔍 Buscar zona en Colima o Villa de Álvarez (ej. Esmeralda, Comarca, UdeC)...',
+                position:'topleft',
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_e3f107e8d456bcefd475acdf5cf4fe90searchControl.on('search:locationfound', function(e) {
+                    geo_json_e3f107e8d456bcefd475acdf5cf4fe90.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_e3f107e8d456bcefd475acdf5cf4fe90searchControl.on('search:collapsed', function(e) {
+                        geo_json_e3f107e8d456bcefd475acdf5cf4fe90.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_4397631b726cdba982ec1249cce255c1.addControl( geo_json_e3f107e8d456bcefd475acdf5cf4fe90searchControl );
+
+        
+    
+            var marker_cluster_fca89f1f35446792dcb9f80edef68c71 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_6e63951336a0110c5b8dad24b3193df4 = L.circleMarker(
+                [19.2492, -103.6995],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_6e63951336a0110c5b8dad24b3193df4.bindTooltip(
+                `<div>
+                     📍 Campus Central Universidad de Colima (UdeC) (Universidad / Hub Educativo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e26d65b7c7bc0cf5ef3ef67931d37f8 = L.circleMarker(
+                [19.265, -103.716],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_7e26d65b7c7bc0cf5ef3ef67931d37f8.bindTooltip(
+                `<div>
+                     📍 Corredor Comercial Av. Constitución Norte (Vialidad Primaria / Comercio)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_41b43c58cf741b81c824f933888b7202 = L.circleMarker(
+                [19.2685, -103.7095],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_41b43c58cf741b81c824f933888b7202.bindTooltip(
+                `<div>
+                     📍 Glorieta Tercer Anillo Periférico & Ignacio Sandoval (Nodo Vial Metropolitano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8681373a2a558cc721bb2a81b2c31743 = L.circleMarker(
+                [19.2435, -103.7248],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_8681373a2a558cc721bb2a81b2c31743.bindTooltip(
+                `<div>
+                     📍 Jardín Libertad / Centro Histórico Colima (Centro Urbano / Servicios)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9dbf8a1f860ae438cbbbb48ebb0c936f = L.circleMarker(
+                [19.277, -103.734],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_9dbf8a1f860ae438cbbbb48ebb0c936f.bindTooltip(
+                `<div>
+                     📍 Corredor Av. Pablo Silva García (Villa de Álvarez) (Vialidad Primaria / Expansión)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f63133b4880fe594bbda1c5d542d21cd = L.circleMarker(
+                [19.2515, -103.7035],
+                {"bubblingMouseEvents": true, "color": "#0F172A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#38BDF8", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(marker_cluster_fca89f1f35446792dcb9f80edef68c71);
+        
+    
+            circle_marker_f63133b4880fe594bbda1c5d542d21cd.bindTooltip(
+                `<div>
+                     📍 Nodo Av. Niños Héroes / Oriente Colima (Vialidad Primaria)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_fca89f1f35446792dcb9f80edef68c71.addTo(map_4397631b726cdba982ec1249cce255c1);
+        
+    
+            var layer_control_d0e4dfedea48000c42fc839e95ac819c_layers = {
+                base_layers : {
+                    "\ud83d\udef0\ufe0f Sat\u00e9lite Google Earth Style (Esri WorldImagery)" : tile_layer_ac625ae419e772af8bef947be9d4df09,
+                    "\ud83d\uddfa\ufe0f Mapa Topogr\u00e1fico y Divisi\u00f3n Municipal (Esri / INEGI)" : tile_layer_bf1869461a76434d8c587b66d7a372e4,
+                    "\ud83c\udfd9\ufe0f OpenStreetMap Urbano Colima" : tile_layer_ac7f3f804f1d9ecfe850f7ae3c93973b,
+                },
+                overlays :  {
+                    "\ud83c\udff7\ufe0f Etiquetas H\u00edbridas de Calles y Colonias (Esri Overlay)" : tile_layer_530e7b72f32c5f4d0022f120248a02f4,
+                    "\ud83d\udee3\ufe0f Vialidades Primarias H\u00edbridas (Anillo Perif\u00e9rico / Constituci\u00f3n)" : tile_layer_c0ad92e1cf05eab2420628f84c22d9c5,
+                    "\ud83c\udfd8\ufe0f Zonas de Plusval\u00eda Colima \u2013 Villa de \u00c1lvarez ($/m\u00b2 y Yield)" : geo_json_e3f107e8d456bcefd475acdf5cf4fe90,
+                    "\ud83d\udee3\ufe0f Nodos Viales, Comerciales y Campus UdeC (OSM)" : marker_cluster_fca89f1f35446792dcb9f80edef68c71,
+                },
+            };
+            let layer_control_d0e4dfedea48000c42fc839e95ac819c = L.control.layers(
+                layer_control_d0e4dfedea48000c42fc839e95ac819c_layers.base_layers,
+                layer_control_d0e4dfedea48000c42fc839e95ac819c_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_4397631b726cdba982ec1249cce255c1);
+
+        
+</script>
+</html>

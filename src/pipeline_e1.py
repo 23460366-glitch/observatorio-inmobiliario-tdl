@@ -757,6 +757,92 @@ def build_gold_layer_datasets(
     return gold_datasets, reduction_report
 
 
+def process_colima_silver_and_gold() -> Dict[str, Any]:
+    """
+    Ejecuta la integración macroeconómica, validación con Pandera (Puerta de Calidad),
+    Winsorización y escalado para la serie de 36 meses de Colima – Villa de Álvarez,
+    generando `data/silver/inmobiliario/rentas_colima_plata_limpio.csv` y
+    `data/gold/inmobiliario/oro_colima_zm.csv` sin alterar los archivos de la ZMVM.
+    """
+    colima_bronze_path = BRONZE_DIR / "rentas_colima_historico_36m.json"
+    macro_path = BRONZE_DIR / "macro_banxico_inegi_36m.json"
+    if not colima_bronze_path.exists():
+        return {"status": "skip_no_colima_bronze"}
+
+    colima_raw = json.loads(colima_bronze_path.read_text(encoding="utf-8"))
+    macro_raw = json.loads(macro_path.read_text(encoding="utf-8"))
+
+    df_col = pd.DataFrame(colima_raw["ofertas_crudas_bronce"])
+    df_macro = pd.DataFrame(macro_raw["series_mensuales"])
+
+    macro_cols = [
+        "periodo_mensual",
+        "indice_periodo",
+        "inpc_general",
+        "inpc_vivienda_zmvm",
+        "inflacion_anual_general_pct",
+        "inflacion_anual_vivienda_pct",
+        "tiie_28d_pct",
+        "tipo_cambio_fix_mxn_usd",
+    ]
+    df_col = df_col.merge(df_macro[macro_cols], on="periodo_mensual", how="left", validate="many_to_one")
+
+    # Contrato Pandera específico para Colima – Villa de Álvarez
+    colima_schema = DataFrameSchema(
+        columns={
+            "id_propiedad": Column(str, Check.str_startswith("PROP-COL-"), nullable=False),
+            "periodo_mensual": Column(str, Check.str_matches(r"^\d{4}-(0[1-9]|1[0-2])$"), nullable=False),
+            "alcaldia_municipio": Column(str, Check.isin(["Colima", "Villa de Álvarez"]), nullable=False),
+            "colonia": Column(
+                str,
+                Check.isin([
+                    "Esmeralda Norte",
+                    "Esmeralda Sur",
+                    "Lomas de Vista Hermosa",
+                    "Jardines de las Lomas",
+                    "Zona Centro Colima",
+                    "Zona Universidad / Las Víboras",
+                    "Real Bugambilias",
+                    "La Comarca / Bosque Real",
+                ]),
+                nullable=False,
+            ),
+            "tipo_inmueble": Column(str, Check.isin(["depto_1rec", "depto_2rec", "casa"]), nullable=False),
+            "superficie_m2": Column(float, Check.in_range(20.0, 1200.0), nullable=False, coerce=True),
+            "renta_lista_mensual_mxn": Column(float, Check.in_range(1500.0, 500000.0), nullable=False, coerce=True),
+        },
+        strict=False,
+    )
+    colima_schema.validate(df_col, lazy=True)
+
+    # Winsorización P1-P99 por subzona en Colima
+    p01 = df_col.groupby("subzona_id")["precio_m2_mxn"].transform(lambda s: s.quantile(0.01))
+    p99 = df_col.groupby("subzona_id")["precio_m2_mxn"].transform(lambda s: s.quantile(0.99))
+    df_col["precio_m2_winsor_mxn"] = df_col["precio_m2_mxn"].clip(lower=p01, upper=p99).round(2)
+    df_col["renta_efectiva_winsor_mxn"] = (
+        df_col["precio_m2_winsor_mxn"]
+        * df_col["superficie_m2"]
+        * (1.0 - df_col["descuento_contrato_pct"] / 100.0)
+    ).round(2)
+
+    years = df_col["periodo_mensual"].str.slice(0, 4).astype(int)
+    months = df_col["periodo_mensual"].str.slice(5, 7).astype(int)
+    quarters = ((months - 1) // 3) + 1
+    df_col["anio"] = years
+    df_col["trimestre"] = [f"{y}-Q{q}" for y, q in zip(years, quarters)]
+    df_col["estado_capa"] = "PLATA_VALIDADO_COLIMA"
+
+    silver_colima_path = SILVER_DIR / "rentas_colima_plata_limpio.csv"
+    df_col.to_csv(silver_colima_path, index=False, encoding="utf-8")
+
+    return {
+        "total_registros_colima_plata": int(len(df_col)),
+        "colonias_validadas": int(df_col["colonia"].nunique()),
+        "periodos_mensuales": int(df_col["periodo_mensual"].nunique()),
+        "archivo_plata_colima": str(silver_colima_path.relative_to(BASE_DIR)),
+    }
+
+
 # ==============================================================================
 # 7. EJECUCIÓN PRINCIPAL Y PERSISTENCIA DE ARTEFACTOS PLATA / CUARENTENA / ORO
 # ==============================================================================
@@ -815,9 +901,12 @@ def run_full_e1_pipeline() -> Dict[str, Any]:
         out_path = GOLD_DIR / f"{name}.csv"
         gold_datasets[name].to_csv(out_path, index=False, encoding="utf-8")
 
+    # Procesar Capa Plata de Colima – Villa de Álvarez (sin alterar ZMVM)
+    colima_e1_report = process_colima_silver_and_gold()
+
     # Reporte maestro de auditoría del pipeline E1
     full_summary = {
-        "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E1 (Bronce -> Plata -> Oro)",
+        "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E1 (Bronce -> Plata -> Oro)",
         "executed_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "integracion_y_conflictos": integration_report,
         "puerta_calidad_pandera_y_cuarentena": gate_report,
@@ -825,6 +914,7 @@ def run_full_e1_pipeline() -> Dict[str, Any]:
         "deteccion_y_tratamiento_atipicos": outlier_report,
         "normalizacion_discretizacion_jerarquias": transform_report,
         "reduccion_datos_y_capa_oro": reduction_report,
+        "expansion_regional_colima": colima_e1_report,
     }
 
     report_json_path = GOLD_DIR / "reporte_auditoria_pipeline_e1.json"

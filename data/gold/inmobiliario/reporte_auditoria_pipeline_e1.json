@@ -1,6 +1,6 @@
 {
-  "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E1 (Bronce -> Plata -> Oro)",
-  "executed_at_utc": "2026-11-21T19:23:14.839017+00:00",
+  "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E1 (Bronce -> Plata -> Oro)",
+  "executed_at_utc": "2026-11-21T19:56:31.771645+00:00",
   "integracion_y_conflictos": {
     "total_registros_bronce": 1299,
     "total_periodos_macro": 36,
@@ -109,5 +109,11 @@
     "filas_oro_e1_series_tiempo": 36,
     "filas_oro_e2_experimento_whatif": 28,
     "filas_oro_e3_multivariado_yield": 12
+  },
+  "expansion_regional_colima": {
+    "total_registros_colima_plata": 864,
+    "colonias_validadas": 8,
+    "periodos_mensuales": 36,
+    "archivo_plata_colima": "data\\silver\\inmobiliario\\rentas_colima_plata_limpio.csv"
   }
 }
