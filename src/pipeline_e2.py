@@ -1068,23 +1068,58 @@ def generate_cartographic_visualizations(
     gdf_unified = colima_data["gdf_unified"]
     gdf_nodos_unified = colima_data["gdf_nodos_unified"]
 
-    features_colonias: List[Dict[str, Any]] = []
+    # 1) Primero agregamos la Capa de Radios de 500m DENUE (en el fondo, con interactive=False para NO bloquear clics)
+    fg_buffers_denue = folium.FeatureGroup(
+        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI - ZMVM & Colima)", show=True
+    )
+    for _, row in gdf_unified.iterrows():
+        folium.Circle(
+            location=[row["lat_centroide"], row["lon_centroide"]],
+            radius=500,
+            color="#38BDF8",
+            weight=1.3,
+            dash_array="5, 5",
+            fill=True,
+            fill_color="#0284C7",
+            fill_opacity=0.08,
+            interactive=False,
+        ).add_to(fg_buffers_denue)
+    fg_buffers_denue.add_to(m)
+
+    # 2) Capa de Polígonos Coropléticos Unificados (Por encima de los radios DENUE para recibir todos los clics)
+    #    con Etiqueta Fija de Precio (`permanent=True, direction="center"`) y Tarjeta Popup Completa al hacer clic
+    fg_poligonos_unificados = folium.FeatureGroup(
+        name="🏘️ Polígonos Coropléticos Unificados ZMVM + Colima-VdeA ($/m² y Yield)", show=True
+    )
+    features_colonias_search: List[Dict[str, Any]] = []
+
     for _, row in gdf_unified.iterrows():
         region_val = str(row["region"])
+        colonia_name = str(row["colonia"])
         precio_val = float(row["precio_m2_promedio_mxn"])
+        renta_70m2_val = round(precio_val * 70.0, 2)
         yield_val = float(row["yield_bruto_promedio_pct"])
         col_color = get_choropleth_color(precio_val, region_val)
         perfil_negocio = get_business_profile_label(
             str(row["subzona_id"]), yield_val, row.get("perfil_comercial")
         )
-        hover_title = f"[{region_val}] {row['colonia']} (${precio_val:,.0f}/m²)"
         transporte_nombre = str(row.get("estacion_transporte_principal", "Nodo Vial Principal"))
+        poly_coords = [(lat, lon) for lon, lat in row["geometry"].exterior.coords]
 
+        # Etiqueta permanente fija en el centroide de cada polígono: "Nombre de la Zona | $XXX/m²"
+        permanent_label_html = (
+            f"<span class='tdl-price-tag'>"
+            f"{colonia_name} <span style='color:#94A3B8;'>|</span> "
+            f"<span style='color:#FDE047;font-weight:800;'>${precio_val:,.0f}/m²</span>"
+            f"</span>"
+        )
+
+        # Tarjeta Popup HTML limpia y completa al hacer clic en cualquier zona
         popup_card = f"""
-        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 330px; padding: 2px;">
+        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 335px; padding: 2px;">
             <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid {col_color};">
                 <div style="font-size: 11px; color: #38BDF8; font-weight: 700; text-transform: uppercase;">🌎 Región: {region_val}</div>
-                <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.2px;">📍 {row['colonia']}</div>
+                <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.2px;">📍 {colonia_name}</div>
                 <div style="font-size: 11.5px; color: #CBD5E1; margin-top: 2px;">🏛️ <b>Alcaldía/Municipio:</b> {row['alcaldia_municipio']}</div>
                 <div style="display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">
                     ⭐ {perfil_negocio}
@@ -1093,24 +1128,24 @@ def generate_cartographic_visualizations(
             <div style="border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;">
                 <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Renta Promedio ($/m²):</b></td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Renta Promedio:</b></td>
                         <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626; font-size: 13px;">${precio_val:,.2f} MXN/m²</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Yield Anual Estimado:</b></td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Renta Mensual Estimada (dept. 70 m²):</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #0F172A; font-size: 12.5px;">${renta_70m2_val:,.0f} MXN/mes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #F1F5F9;">
+                        <td style="padding: 5px 0; color: #475569;"><b>Yield Bruto Anual (%):</b></td>
                         <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #059669; font-size: 13px;">{yield_val:.2f}% anual</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Comercios DENUE (500m):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} unidades</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Densidad DENUE (comercios a 500m):</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} comercios</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Transporte / Vialidad OSM:</b></td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Transporte / Vialidad Cercana:</b></td>
                         <td style="padding: 5px 0; text-align: right; color: #0284C7; font-weight: 600;">{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Índice Accesibilidad Urbana:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 700;">{row['indice_accesibilidad_urbana_0_100']:.1f} / 100</td>
                     </tr>
                     <tr>
                         <td style="padding: 5px 0; color: #64748B; font-size: 10.5px;"><b>AGEB INEGI / Linaje Bronce:</b></td>
@@ -1121,109 +1156,62 @@ def generate_cartographic_visualizations(
         </div>
         """
 
-        features_colonias.append(
+        folium.Polygon(
+            locations=poly_coords,
+            color="#FFFFFF",
+            weight=2.2,
+            fill=True,
+            fill_color=col_color,
+            fill_opacity=0.45,
+            tooltip=folium.Tooltip(
+                permanent_label_html,
+                permanent=True,
+                direction="center",
+                sticky=False,
+                class_name="tdl-zone-tooltip",
+            ),
+            popup=folium.Popup(popup_card, max_width=360),
+        ).add_to(fg_poligonos_unificados)
+
+        features_colonias_search.append(
             {
                 "type": "Feature",
                 "geometry": json.loads(gpd.GeoSeries([row["geometry"]], crs="EPSG:4326").to_json())["features"][0]["geometry"],
                 "properties": {
                     "region": region_val,
-                    "colonia": str(row["colonia"]),
-                    "search_label": f"[{region_val}] {row['colonia']} ({row['alcaldia_municipio']})",
-                    "alcaldia_municipio": str(row["alcaldia_municipio"]),
-                    "precio_str": f"${precio_val:,.2f} MXN/m²",
-                    "yield_str": f"{yield_val:.2f}%",
-                    "denue_str": f"{int(row['denue_unidades_buffer_500m'])} comercios",
-                    "transporte_str": f"{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)",
-                    "perfil_negocio": perfil_negocio,
-                    "fill_color": col_color,
-                    "hover_title": hover_title,
-                    "popup_html": popup_card,
+                    "colonia": colonia_name,
+                    "search_label": f"[{region_val}] {colonia_name} (${precio_val:,.0f}/m² - {row['alcaldia_municipio']})",
                 },
             }
         )
 
-    geojson_colonias_data = {"type": "FeatureCollection", "features": features_colonias}
+    fg_poligonos_unificados.add_to(m)
 
-    # Capa Coroplética Suavizada Unificada (24 colonias: 16 ZMVM + 8 Colima-VdeA)
-    geojson_layer = folium.GeoJson(
-        geojson_colonias_data,
-        name="🏘️ Polígonos Coropléticos Unificados ZMVM + Colima-VdeA ($/m² y Yield)",
-        style_function=lambda feat: {
-            "fillColor": feat["properties"]["fill_color"],
-            "color": "#FFFFFF",
-            "weight": 2.2,
-            "fillOpacity": 0.45,
+    # Capa invisible auxiliar únicamente para el buscador de colonias (interactive=False para no interceptar clics)
+    search_geojson_layer = folium.GeoJson(
+        {"type": "FeatureCollection", "features": features_colonias_search},
+        name="🔎 Índice de Búsqueda de Colonias",
+        control=False,
+        style_function=lambda _feat: {
+            "fillOpacity": 0.0,
+            "opacity": 0.0,
+            "weight": 0,
+            "interactive": False,
         },
-        highlight_function=lambda feat: {
-            "fillColor": feat["properties"]["fill_color"],
-            "color": "#FDE047",
-            "weight": 3.8,
-            "fillOpacity": 0.68,
-        },
-        tooltip=folium.GeoJsonTooltip(
-            fields=["region", "colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"],
-            aliases=["🌎 Región:", "📍 Colonia:", "🏛️ Alcaldía/Mun.:", "💰 Renta Promedio:", "📈 Yield Anual:", "🏷️ Perfil:"],
-            localize=True,
-            sticky=True,
-            labels=True,
-            permanent=False,
-            style=(
-                "background-color: rgba(15, 23, 42, 0.94); color: #F8FAFC; "
-                "font-family: 'Segoe UI', sans-serif; font-size: 11.5px; "
-                "padding: 8px 10px; border-radius: 6px; border: 1px solid #38BDF8; "
-                "box-shadow: 0 4px 12px rgba(0,0,0,0.4);"
-            ),
-        ),
-        popup=folium.GeoJsonPopup(
-            fields=["popup_html"],
-            labels=False,
-            localize=True,
-            max_width=355,
-        ),
     ).add_to(m)
 
     # Buscador interactivo de colonias de ambas regiones (folium.plugins.Search)
     Search(
-        layer=geojson_layer,
+        layer=search_geojson_layer,
         geom_type="Polygon",
         placeholder="🔍 Buscar colonia en ZMVM o Colima (ej. Polanco, Roma, Esmeralda Norte, La Comarca)...",
         collapsed=False,
         search_label="search_label",
-        weight=4,
+        weight=3,
         position="topleft",
     ).add_to(m)
 
-    # Capa de Radios de 500m y Puntos de Equipamiento Económico DENUE (INEGI) en ambas regiones
-    fg_buffers_denue = folium.FeatureGroup(
-        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI - ZMVM & Colima)", show=True
-    )
-    for _, row in gdf_unified.iterrows():
-        reg_c = str(row["region"])
-        folium.Circle(
-            location=[row["lat_centroide"], row["lon_centroide"]],
-            radius=500,
-            color="#38BDF8",
-            weight=1.4,
-            dash_array="5, 5",
-            fill=True,
-            fill_color="#0284C7",
-            fill_opacity=0.10,
-            tooltip=f"🏪 [{reg_c}] Buffer 500m DENUE — {row['colonia']}: {int(row['denue_unidades_buffer_500m'])} comercios",
-        ).add_to(fg_buffers_denue)
-
-        folium.CircleMarker(
-            location=[row["lat_centroide"], row["lon_centroide"]],
-            radius=5,
-            color="#FFFFFF",
-            weight=1.5,
-            fill=True,
-            fill_color=get_choropleth_color(float(row["precio_m2_promedio_mxn"]), reg_c),
-            fill_opacity=0.95,
-            tooltip=f"[{reg_c}] Centroide AGEB {row['colonia']} ({int(row['denue_unidades_buffer_500m'])} unidades DENUE)",
-        ).add_to(fg_buffers_denue)
-    fg_buffers_denue.add_to(m)
-
-    # Cluster Unificado de Estaciones de Transporte Masivo y Nodos Viales (OpenStreetMap)
+    # 3) Cluster Unificado de Estaciones de Transporte Masivo y Nodos Viales (OpenStreetMap)
     fg_transporte_cluster = MarkerCluster(
         name="🚇 Estaciones de Transporte y Nodos Viales (OSM - ZMVM & Colima)",
         options={"maxClusterRadius": 28, "disableClusteringAtZoom": 13},
@@ -1231,7 +1219,7 @@ def generate_cartographic_visualizations(
     for _, est in gdf_nodos_unified.iterrows():
         folium.CircleMarker(
             location=[est["lat"], est["lon"]],
-            radius=8,
+            radius=7,
             color="#0F172A",
             weight=2,
             fill=True,
@@ -1252,9 +1240,51 @@ def generate_cartographic_visualizations(
 
     folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
-    # Control Flotante de Navegación Rápida (`flyTo` / `fitBounds`) en la esquina superior izquierda (debajo del zoom)
-    # + Panel flotante compacto estilo Google Earth Pro en la esquina inferior izquierda
+    # Estilos CSS para las etiquetas fijas (`permanent=True`) + Script JS que las oculta automáticamente cuando zoom < 11
+    # + Control Flotante de Navegación Rápida (`flyTo` / `fitBounds`)
     dashboard_overlay_html = f"""
+    <style>
+        .leaflet-tooltip.tdl-zone-tooltip {{
+            background-color: rgba(17, 24, 39, 0.88) !important;
+            color: #F8FAFC !important;
+            border: 1px solid rgba(253, 224, 71, 0.65) !important;
+            border-radius: 6px !important;
+            padding: 2px 6px !important;
+            font-family: 'Segoe UI', system-ui, sans-serif !important;
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
+            white-space: nowrap !important;
+            pointer-events: none !important;
+            transition: opacity 0.22s ease-in-out;
+        }}
+        .leaflet-tooltip.tdl-zone-tooltip::before {{
+            display: none !important;
+        }}
+        .tdl-hide-tooltips .leaflet-tooltip.tdl-zone-tooltip {{
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }}
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {{
+            setTimeout(function() {{
+                var mapObj = {map_js_var};
+                if (!mapObj) return;
+                function syncZoneTooltipsWithZoom() {{
+                    var z = mapObj.getZoom();
+                    var container = mapObj.getContainer();
+                    if (z < 11) {{
+                        container.classList.add("tdl-hide-tooltips");
+                    }} else {{
+                        container.classList.remove("tdl-hide-tooltips");
+                    }}
+                }}
+                mapObj.on("zoomend", syncZoneTooltipsWithZoom);
+                syncZoneTooltipsWithZoom();
+            }}, 250);
+        }});
+    </script>
     <div style="
         position: fixed;
         top: 128px;
@@ -1322,7 +1352,7 @@ def generate_cartographic_visualizations(
             <div><span style="display:inline-block;width:12px;height:12px;background:#06B6D4;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Alto Yield (&lt;$290 ZMVM | UdeC Colima):</b> Sta. María, Zona Universidad</div>
         </div>
         <div style="border-top: 1px solid #334155; padding-top: 6px; font-size: 10px; color: #CBD5E1;">
-            💡 <i>Usa los botones de <b>Navegación Rápida (Fly-To)</b> arriba a la izquierda para volar entre ZMVM, Colima–Villa de Álvarez o Vista Nacional.</i>
+            💡 <i>Haz clic en cualquier polígono para abrir su tarjeta completa (incluyendo renta estimada de depto. 70 m²). Las etiquetas se ocultan automáticamente en zoom lejano (&lt;11).</i>
         </div>
     </div>
     """

@@ -10,8 +10,8 @@
       "oro_geoespacial_colonias_denue_osm": 16,
       "oro_colima_zm": 8
     },
-    "catalogo_linaje_csv": "data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv",
-    "catalogo_linaje_json": "data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.json"
+    "catalogo_linaje_csv": "data\\gold\\inmobiliario\\catalogo_linaje_oro_a_bronce.csv",
+    "catalogo_linaje_json": "data\\gold\\inmobiliario\\catalogo_linaje_oro_a_bronce.json"
   },
   "registros_linaje_oro": [
     {
@@ -25,9 +25,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2023-11-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0261220668a27953",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-002",
@@ -40,9 +40,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2023-12-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:67905948bb44bdb7",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-003",
@@ -55,9 +55,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-01-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-01-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:58838d656837a8d5",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-004",
@@ -70,9 +70,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-02-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-02-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:f40a75db781549de",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-005",
@@ -85,9 +85,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-03-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-03-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1cd43a9017d06857",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-006",
@@ -100,9 +100,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-04-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-04-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a2c42e43f597aa04",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-007",
@@ -115,9 +115,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-05-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-05-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:7c626496c9e56859",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-008",
@@ -130,9 +130,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-06-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-06-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a2525d9799093753",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-009",
@@ -145,9 +145,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-07-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-07-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:e18e03102f83dbd0",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-010",
@@ -160,9 +160,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-08-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:00927099ef72cc9d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-011",
@@ -175,9 +175,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-09-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:9a85117e3eac1da8",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-012",
@@ -190,9 +190,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-10-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:b823889023bd142d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-013",
@@ -205,9 +205,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-11-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1e1f5908d7dd64c8",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-014",
@@ -220,9 +220,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2024-12-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1e19e9e1d9ea8842",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-015",
@@ -235,9 +235,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-01-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-01-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a866340d6da33b4d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-016",
@@ -250,9 +250,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-02-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-02-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:2086b082cd8baeb3",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-017",
@@ -265,9 +265,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-03-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-03-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0b17e18d20e630e0",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-018",
@@ -280,9 +280,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-04-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-04-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0f8816789e3e0ba7",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-019",
@@ -295,9 +295,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-05-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-05-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:af1462de891e936f",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-020",
@@ -310,9 +310,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-06-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-06-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:49569d6f1454180b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-021",
@@ -325,9 +325,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-07-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-07-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d51ddce269e274f2",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-022",
@@ -340,9 +340,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-08-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:43865cca659fccd5",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-023",
@@ -355,9 +355,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-09-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:ae971d4a964149ac",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-024",
@@ -370,9 +370,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-10-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:33aad5ee1707de63",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-025",
@@ -385,9 +385,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-11-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:c650f98a6cb2c8ff",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-026",
@@ -400,9 +400,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2025-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2025-12-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:b580edf5b84017a0",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-027",
@@ -415,9 +415,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-01-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-01-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:8751a6c3aa632f77",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-028",
@@ -430,9 +430,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-02-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-02-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:5cb086a046397149",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-029",
@@ -445,9 +445,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-03-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-03-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:8a146585ccd05a2e",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-030",
@@ -460,9 +460,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-04-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-04-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:22e6890bf5f1378b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-031",
@@ -475,9 +475,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-05-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-05-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:cb15a39652e51d60",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-032",
@@ -490,9 +490,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-06-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-06-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:6c1c3ecc133e04e1",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-033",
@@ -505,9 +505,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-07-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-07-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:66a62d35376b3fe6",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-034",
@@ -520,9 +520,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-08-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:49c50cff11f603ca",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-035",
@@ -535,9 +535,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-09-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d14511e9152263d2",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E1-036",
@@ -550,9 +550,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2026-10-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:ad3c667ef45a29fe",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-001",
@@ -565,9 +565,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a01d098338e3fe9e",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-002",
@@ -580,9 +580,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0b60362838e47a68",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-003",
@@ -595,9 +595,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:3a62dc1da429e00b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-004",
@@ -610,9 +610,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:20078c81d138b3b4",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-005",
@@ -625,9 +625,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1aaa51ff32e2a2aa",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-006",
@@ -640,9 +640,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:47bc7ab616bc16e0",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-007",
@@ -655,9 +655,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-03-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:e534dd0e1535c828",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-008",
@@ -670,9 +670,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-01-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-06-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:172a531972b13bfb",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-009",
@@ -685,9 +685,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-01-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a3f92d1b6bcd8c14",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-010",
@@ -700,9 +700,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1ca9f0a5f7495d46",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-011",
@@ -715,9 +715,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-06-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-07-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:57a0e01537628564",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-012",
@@ -730,9 +730,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-02-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d587fb4056d9c486",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-013",
@@ -745,9 +745,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:7127ace5ec5047e5",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-014",
@@ -760,9 +760,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-08-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a24b8d5ad35fb95b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-015",
@@ -775,9 +775,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2024-02-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:2d29e9577ab0ccb6",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-016",
@@ -790,9 +790,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-07-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:bbd752bc304bb960",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-017",
@@ -805,9 +805,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:f73656561e898d4b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-018",
@@ -820,9 +820,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:7e1b9665e35bc68b",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-019",
@@ -835,9 +835,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a74fec71e24b10f8",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-020",
@@ -850,9 +850,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:dd0617c9bed75352",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-021",
@@ -865,9 +865,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0a32f325ccef288d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-022",
@@ -880,9 +880,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:c7427355a426ca56",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-023",
@@ -895,9 +895,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:93a8c4a8d6d33ed5",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-024",
@@ -910,9 +910,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:cf2dbf107f0abceb",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-025",
@@ -925,9 +925,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:29f6c9faccf9e2ad",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-026",
@@ -940,9 +940,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a59f6213455bd0ce",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-027",
@@ -955,9 +955,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:146a7726a7684283",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E2-028",
@@ -970,9 +970,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:f49efb6e426e2913",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-001",
@@ -985,9 +985,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:ba5c8cfae5e3c08a",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-002",
@@ -1000,9 +1000,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:6fef287f847f916d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-003",
@@ -1015,9 +1015,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:6045eab02c30bec4",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-004",
@@ -1030,9 +1030,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:9be5f6fe45ccfb02",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-005",
@@ -1045,9 +1045,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:a393b443201deef3",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-006",
@@ -1060,9 +1060,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:59b54f3ef31dfff3",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-007",
@@ -1075,9 +1075,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:9687eabc4f0c2cf2",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-008",
@@ -1090,9 +1090,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:89daa39631f06d57",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-009",
@@ -1105,9 +1105,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d49336be0b020e56",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-010",
@@ -1120,9 +1120,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1f6a3e5866c7c103",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-011",
@@ -1135,9 +1135,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:37bfc60709c73e81",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_E3-012",
@@ -1150,9 +1150,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:e3604866e1e18d66",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-001",
@@ -1165,9 +1165,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:414243a245c4c553",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-002",
@@ -1180,9 +1180,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:1ea501a3692ae617",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-003",
@@ -1195,9 +1195,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:065e4327609548a2",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-004",
@@ -1210,9 +1210,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:932a5a34051a321d",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-005",
@@ -1225,9 +1225,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:eb36bdd9ca832b65",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-006",
@@ -1240,9 +1240,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:cd548457a42a2939",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-007",
@@ -1255,9 +1255,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:0e5d1f93f0a81ad2",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-008",
@@ -1270,9 +1270,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:84a0e1f47559ad0a",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-009",
@@ -1285,9 +1285,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:59e0c972972ad69f",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-010",
@@ -1300,9 +1300,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:c551a7a350acf3cb",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-011",
@@ -1315,9 +1315,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:eb0a758c9b6412bb",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-012",
@@ -1330,9 +1330,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d1607d58b9fecb86",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-013",
@@ -1345,9 +1345,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-12-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:c1ab5d48e69e95d0",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-014",
@@ -1360,9 +1360,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:3b506d1307762362",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-015",
@@ -1375,9 +1375,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-09-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:81adf4d69301f46c",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-ORO_GE-016",
@@ -1390,9 +1390,9 @@
       "archivos_bronce_origen": "rentas_zmvm_historico_36m.json+macro_banxico_inegi_36m.json+geoespacial_denue_osm_zmvm.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:28.061595+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:18.077506+00:00",
       "hash_lote_bronce": "SHA256:d69816e8841145f4",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:29.170598+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:19.961731+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-001",
@@ -1405,9 +1405,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:3e4386d3700d9441",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-002",
@@ -1420,9 +1420,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:464525e51ba61548",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-003",
@@ -1435,9 +1435,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:cb478242604d3ea4",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-004",
@@ -1450,9 +1450,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:5c982d7e2b8b2045",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-005",
@@ -1465,9 +1465,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:24d9b231ae17992a",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-006",
@@ -1480,9 +1480,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:0fb7f906a4d8a833",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-007",
@@ -1495,9 +1495,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:e4bd92bee9d731a4",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     },
     {
       "id_linaje_oro": "LIN-ORO-COLIMA-008",
@@ -1510,9 +1510,9 @@
       "archivos_bronce_origen": "rentas_colima_historico_36m.json+macro_banxico_inegi_36m.json+oro_geoespacial_colima.geojson",
       "fecha_captura_bronce_min_utc": "2023-11-15T06:00:00Z",
       "fecha_captura_bronce_max_utc": "2026-10-15T06:00:00Z",
-      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:09:30.591285+00:00",
+      "fecha_ingesta_geoespacial_utc": "2026-11-21T20:24:27.150889+00:00",
       "hash_lote_bronce": "SHA256:b28012aa353730c8",
-      "timestamp_promocion_oro_utc": "2026-11-21T20:09:30.591285+00:00"
+      "timestamp_promocion_oro_utc": "2026-11-21T20:24:27.150889+00:00"
     }
   ]
 }

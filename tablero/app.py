@@ -404,10 +404,22 @@ with tab2:
         "#### 🏙️ Mapa Maestro Unificado: Vista 3D Extruida (`PyDeck`) y Satelital Híbrida (`Folium` con botones `Fly-To`)"
     )
 
+    text_labels_data = []
     for feat in geojson_unified["features"]:
         p_v = float(feat["properties"].get("precio_m2_promedio_mxn", 250.0))
         reg_f = str(feat["properties"].get("region", "ZMVM"))
-        feat["properties"]["elevation_m"] = round(p_v * 5.5, 1) if reg_f == "ZMVM" else round(p_v * 9.5, 1)
+        col_n = str(feat["properties"].get("colonia", ""))
+        lat_c = float(feat["properties"].get("lat_centroide", 19.4))
+        lon_c = float(feat["properties"].get("lon_centroide", -99.1))
+        elev = round(p_v * 5.5, 1) if reg_f == "ZMVM" else round(p_v * 9.5, 1)
+        feat["properties"]["elevation_m"] = elev
+        feat["properties"]["renta_70m2_str"] = f"${p_v * 70.0:,.0f} MXN/mes"
+        text_labels_data.append(
+            {
+                "position": [lon_c, lat_c, elev + 120.0],
+                "label": f"{col_n} | ${p_v:,.0f}/m²",
+            }
+        )
         if (reg_f == "ZMVM" and p_v >= 500) or (reg_f == "Colima-VdeA" and p_v >= 210):
             feat["properties"]["fill_rgb"] = [239, 68, 68, 190]
         elif (reg_f == "ZMVM" and p_v >= 430) or (reg_f == "Colima-VdeA" and p_v >= 185):
@@ -454,20 +466,43 @@ with tab2:
         get_line_color=[255, 255, 255, 255],
         pickable=True,
     )
+    text_3d_layer = pdk.Layer(
+        "TextLayer",
+        text_labels_data,
+        pickable=False,
+        get_position="position",
+        get_text="label",
+        get_size=12,
+        get_color=[253, 224, 71, 255],
+        get_angle=0,
+        background=True,
+        get_background_color=[17, 24, 39, 225],
+        background_padding=[4, 2, 4, 2],
+        get_text_anchor="'middle'",
+        get_alignment_baseline="'center'",
+    )
+
+    pdk_layers = (
+        [tile_layer_sat, geojson_3d_layer]
+        if is_all_regions_mode
+        else [tile_layer_sat, geojson_3d_layer, text_3d_layer]
+    )
 
     col_3d, col_2d = st.columns([1.0, 1.25])
     with col_3d:
         st.caption("##### 🧊 Cámara 3D Sincronizada (`PyDeck` Unificado: 24 Zonas ZMVM + Colima)")
         st.pydeck_chart(
             pdk.Deck(
-                layers=[tile_layer_sat, geojson_3d_layer],
+                layers=pdk_layers,
                 initial_view_state=active_view_state,
                 map_style=None,
                 tooltip={
                     "html": "<b>🌎 [{region}] {colonia}</b> ({alcaldia_municipio})<br/>"
-                    "Renta: <b>${precio_m2_promedio_mxn} MXN/m²</b><br/>"
-                    "Yield Anual: <b>{yield_bruto_promedio_pct}%</b><br/>"
-                    "Comercios DENUE (500m): <b>{denue_unidades_buffer_500m}</b>",
+                    "Renta Promedio: <b>${precio_m2_promedio_mxn} MXN/m²</b><br/>"
+                    "Renta Est. (70 m²): <b>{renta_70m2_str}</b><br/>"
+                    "Yield Bruto Anual: <b>{yield_bruto_promedio_pct}%</b><br/>"
+                    "Comercios DENUE (500m): <b>{denue_unidades_buffer_500m}</b><br/>"
+                    "Transporte/Vialidad: <b>{estacion_transporte_principal}</b>",
                     "style": {"backgroundColor": "#0F172A", "color": "white", "fontSize": "12px"},
                 },
             )

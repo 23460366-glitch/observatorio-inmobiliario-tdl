@@ -218,11 +218,14 @@ def test_colima_villa_de_alvarez_expansion_and_lineage():
     regions_set = {f["properties"]["region"] for f in unified_data["features"]}
     assert regions_set == {"ZMVM", "Colima-VdeA"}
 
-    # Verificar que el mapa maestro HTML contiene los 3 botones flyTo/fitBounds y ambas regiones
+    # Verificar que el mapa maestro HTML contiene los 3 botones flyTo/fitBounds, etiquetas permanent=True y renta 70 m²
     master_html_text = mapa_maestro_html.read_text(encoding="utf-8")
     assert "flyTo([19.415, -99.165], 12" in master_html_text
     assert "flyTo([19.245, -103.725], 13" in master_html_text
     assert "fitBounds([[19.20, -103.80], [19.55, -99.10]]" in master_html_text
+    assert "tdl-zone-tooltip" in master_html_text
+    assert "syncZoneTooltipsWithZoom" in master_html_text
+    assert "Renta Mensual Estimada (dept. 70 m²):" in master_html_text
     assert "Esmeralda Norte" in master_html_text
     assert "Polanco" in master_html_text
 
