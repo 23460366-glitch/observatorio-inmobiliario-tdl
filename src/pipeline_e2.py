@@ -45,6 +45,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import folium
+from folium.plugins import Fullscreen, MarkerCluster, Search
 import geopandas as gpd
 import matplotlib
 matplotlib.use("Agg")
@@ -266,13 +267,21 @@ ESTACIONES_TRANSPORTE_OSM: List[Dict[str, Any]] = [
 ]
 
 
-def create_colonia_polygon(lat: float, lon: float, dlat: float = 0.0055, dlon: float = 0.0065) -> Polygon:
-    """Construye un polígono hexagonal/octagonal representativo del AGEB/colonia alrededor de su centroide."""
-    angles = [i * (2.0 * math.pi / 6.0) for i in range(6)]
-    coords = [
-        (round(lon + dlon * math.cos(a), 6), round(lat + dlat * math.sin(a), 6))
-        for a in angles
-    ]
+def create_colonia_polygon(lat: float, lon: float, dlat: float = 0.0052, dlon: float = 0.0062) -> Polygon:
+    """Construye un polígono orgánico suavizado de 24 vértices representativo del contorno urbano de la colonia/AGEB."""
+    n_vertices = 24
+    seed_angle = (abs(hash(f"{lat:.4f},{lon:.4f}")) % 360) * (math.pi / 180.0)
+    coords = []
+    for i in range(n_vertices):
+        theta = i * (2.0 * math.pi / n_vertices)
+        # Variación radial armónica suave para simular manzanas/traza urbana real (sin polígonos cuadrados rígidos)
+        radial_mod = 1.0 + 0.12 * math.sin(3.0 * theta + seed_angle) + 0.07 * math.cos(5.0 * theta - seed_angle)
+        coords.append(
+            (
+                round(lon + dlon * radial_mod * math.cos(theta), 6),
+                round(lat + dlat * radial_mod * math.sin(theta), 6),
+            )
+        )
     coords.append(coords[0])
     return Polygon(coords)
 
@@ -952,9 +961,7 @@ def generate_cartographic_visualizations(
     plt.savefig(png_path, dpi=180)
     plt.close(fig)
 
-    # --- 2. Mapa Interactivo Profesional Folium HTML (Sin bloqueo 403 de OSM en file://) ---
-    # Usamos tiles=None al inicializar y agregamos URLs directas de CARTO y Esri ArcGIS Online
-    # que funcionan sin error 403 Access Blocked al abrir el HTML localmente y sin warnings de API key.
+    # --- 2. Mapa Interactivo Estilo "Google Earth" (Esri WorldImagery + Hybrid Labels, Cero CARTO API Key) ---
     m = folium.Map(
         location=[19.432, -99.182],
         zoom_start=12,
@@ -962,286 +969,300 @@ def generate_cartographic_visualizations(
         control_scale=True,
     )
 
+    # Capa Base 1 (Activa por defecto): Vista Satelital de Alta Resolución Esri.WorldImagery (Costo $0, sin API key)
     folium.TileLayer(
-        tiles="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-        attr="&copy; OpenStreetMap contributors &copy; CARTO Voyager",
-        name="1. Mapa Urbano Detallado (CARTO Voyager - Recomendado)",
-        max_zoom=20,
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, GIS User Community",
+        name="🛰️ Satélite Google Earth Style (Esri WorldImagery)",
+        max_zoom=19,
+        control=True,
+        show=True,
+    ).add_to(m)
+
+    # Capa Base 2 (Opción Secundaria Limpia): Esri.WorldTopoMap
+    folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+        attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, INEGI",
+        name="🗺️ Mapa Topográfico y División Política (Esri WorldTopoMap)",
+        max_zoom=19,
+        control=True,
+        show=False,
+    ).add_to(m)
+
+    # Capa Base 3 (Opción Secundaria Limpia): OpenStreetMap Estándar
+    folium.TileLayer(
+        tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        attr="&copy; OpenStreetMap contributors",
+        name="🏙️ OpenStreetMap Urbano",
+        max_zoom=19,
+        control=True,
+        show=False,
+    ).add_to(m)
+
+    # Capa Superpuesta Híbrida (Overlay Activo): Etiquetas de Calles, Colonias y Límites (Efecto Google Earth Hybrid)
+    folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+        attr="Labels &copy; Esri &mdash; World Boundaries and Places Reference",
+        name="🏷️ Etiquetas Híbridas de Calles y Colonias (Esri Reference Overlay)",
+        max_zoom=19,
+        overlay=True,
         control=True,
         show=True,
     ).add_to(m)
 
     folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-        attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, INEGI",
-        name="2. Mapa Topográfico y División Política (Esri / INEGI)",
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
+        attr="Roads &copy; Esri &mdash; World Transportation Reference",
+        name="🛣️ Red Vial Híbrida Superpuesta (Esri Transportation Overlay)",
         max_zoom=19,
+        overlay=True,
         control=True,
-        show=False,
+        show=True,
     ).add_to(m)
 
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
-        attr="Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, INEGI",
-        name="3. Mapa Vial y Autopistas (Esri Street Map)",
-        max_zoom=19,
-        control=True,
-        show=False,
+    # --- Plugins Interactivos: Pantalla Completa (Fullscreen) ---
+    Fullscreen(
+        position="topleft",
+        title="Ver en Pantalla Completa",
+        title_cancel="Salir de Pantalla Completa",
+        force_separate_button=True,
     ).add_to(m)
 
-    folium.TileLayer(
-        tiles="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-        attr="&copy; OpenStreetMap contributors &copy; CARTO Positron",
-        name="4. Mapa Analítico Claro (CARTO Positron)",
-        max_zoom=20,
-        control=True,
-        show=False,
-    ).add_to(m)
-
-    folium.TileLayer(
-        tiles="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        attr="&copy; OpenStreetMap contributors &copy; CARTO Dark Matter",
-        name="5. Modo Oscuro Ejecutivo (CARTO Dark Matter)",
-        max_zoom=20,
-        control=True,
-        show=False,
-    ).add_to(m)
-
-    folium.TileLayer(
-        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics",
-        name="6. Vista Satelital Alta Resolución (Esri World Imagery)",
-        max_zoom=19,
-        control=True,
-        show=False,
-    ).add_to(m)
-
-    # --- Grupos de Capas Interactivas ---
-    fg_demarcaciones = folium.FeatureGroup(
-        name="🗺️ Zonas Metropolitanas y Alcaldías/Municipios (CDMX / Edomex)", show=True
-    )
-    fg_poligonos_colonias = folium.FeatureGroup(
-        name="🏘️ Polígonos AGEB / Colonias Coroplético (Precio MXN/m²)", show=True
-    )
-    fg_buffers_denue = folium.FeatureGroup(
-        name="🏪 Radios 500m de Equipamiento Económico DENUE (INEGI)", show=True
-    )
-    fg_transporte_osm = folium.FeatureGroup(
-        name="🚇 Red y Estaciones de Transporte Masivo (OpenStreetMap)", show=True
-    )
-
-    # 1) Dibujar las 4 grandes Zonas / Demarcaciones de la ZMVM (CDMX y Estado de México)
-    for _, alc in gdf_alcaldias.iterrows():
-        coords_latlon = [(lat, lon) for lon, lat in alc["geometry"].exterior.coords]
-        folium.Polygon(
-            locations=coords_latlon,
-            color=alc["color_borde"],
-            weight=2.8,
-            dash_array="8, 6",
-            fill=True,
-            fill_color=alc["color_relleno"],
-            fill_opacity=0.18,
-            tooltip=f"<b>{alc['demarcacion']}</b><br>Entidad: {alc['entidad']}",
-        ).add_to(fg_demarcaciones)
-
-    # Función auxiliar de color coroplético según Precio por m2 (MXN/m2)
+    # Función auxiliar de color coroplético y clasificación de perfil de negocio según Precio por m2 (MXN/m2)
     def get_choropleth_color(precio_m2: float) -> str:
         if precio_m2 >= 500:
-            return "#991B1B"  # Rojo intenso (Prime > $500/m2)
+            return "#EF4444"  # Rojo coral brillante sobre satélite (Prime >= $500/m2)
         elif precio_m2 >= 430:
-            return "#DC2626"  # Rojo medio-alto ($430 - $500/m2)
+            return "#F97316"  # Naranja intenso ($430 - $499/m2)
         elif precio_m2 >= 340:
-            return "#F97316"  # Naranja ($340 - $430/m2)
+            return "#EAB308"  # Ámbar dorado ($340 - $429/m2)
         elif precio_m2 >= 290:
-            return "#FACC15"  # Amarillo cálido ($290 - $340/m2)
+            return "#22C55E"  # Verde brillante ($290 - $339/m2)
         else:
-            return "#10B981"  # Verde esmeralda (< $290/m2 - Alta rentabilidad Yield %)
+            return "#06B6D4"  # Turquesa alto contraste (< $290/m2 - Alto Yield %)
 
-    # 2) Dibujar Polígonos AGEB/Colonia, Marcadores con etiqueta permanente y Buffers de 500m DENUE
+    def get_business_profile_label(subzona_id: str, yield_pct: float) -> str:
+        if subzona_id == "SZ1_PRIME_PONIENTE":
+            return "Perfil Prime Corporativo & Lujo Patrimonial"
+        elif subzona_id == "SZ2_CENTRAL_CORREDOR":
+            return "Perfil Cosmopolita Alta Demanda & Movilidad"
+        elif subzona_id == "SZ3_CONSOLIDADA_SUR":
+            return "Perfil Familiar Consolidado & Balance Yield/Riesgo"
+        return f"Perfil Emergente Alto Rendimiento (Yield {yield_pct:.1f}%)"
+
+    # Construir GeoJSON enriquecido de colonias para usar folium.GeoJson + Search Plugin + Hover limpio (permanent=False)
+    features_colonias: List[Dict[str, Any]] = []
     for _, row in gdf_map.iterrows():
-        col_color = get_choropleth_color(float(row["precio_m2_promedio_mxn"]))
-        poly_coords = [(lat, lon) for lon, lat in row["geometry"].exterior.coords]
+        precio_val = float(row["precio_m2_promedio_mxn"])
+        yield_val = float(row["yield_bruto_promedio_pct"])
+        col_color = get_choropleth_color(precio_val)
+        perfil_negocio = get_business_profile_label(str(row["subzona_id"]), yield_val)
+        hover_title = f"{row['colonia']} (${precio_val:,.0f}/m²)"
 
         popup_card = f"""
-        <div style="font-family: 'Segoe UI', Arial, sans-serif; width: 310px; padding: 4px;">
-            <div style="background: #0F172A; color: white; padding: 8px 10px; border-radius: 6px 6px 0 0;">
-                <div style="font-size: 14px; font-weight: 700;">📍 {row['colonia']}</div>
-                <div style="font-size: 11px; color: #94A3B8;">{row['alcaldia_municipio']} • {row['subzona_nombre']}</div>
+        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 325px; padding: 2px;">
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid {col_color};">
+                <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.2px;">📍 {row['colonia']}</div>
+                <div style="font-size: 11.5px; color: #CBD5E1; margin-top: 2px;">🏛️ <b>Alcaldía/Municipio:</b> {row['alcaldia_municipio']}</div>
+                <div style="display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">
+                    ⭐ {perfil_negocio}
+                </div>
             </div>
-            <div style="border: 1px solid #E2E8F0; border-top: none; padding: 10px; border-radius: 0 0 6px 6px; background: #FFFFFF;">
+            <div style="border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;">
                 <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Clave AGEB (INEGI):</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-family: monospace;">{row['cve_ageb_ref']}</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Renta Promedio ($/m²):</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626; font-size: 13px;">${precio_val:,.2f} MXN/m²</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Precio Renta Promedio:</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-weight: 700; color: #B91C1C;">${row['precio_m2_promedio_mxn']:,.2f} MXN/m²</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Yield Anual Estimado:</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #059669; font-size: 13px;">{yield_val:.2f}% anual</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Rendimiento (Yield Anual):</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-weight: 700; color: #047857;">{row['yield_bruto_promedio_pct']:.2f}%</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Comercios DENUE (500m):</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} unidades</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Vacancia Promedio:</b></td>
-                        <td style="padding: 4px 0; text-align: right;">{row['dias_vacancia_promedio']:.1f} días</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Estación Transporte Cercana:</b></td>
+                        <td style="padding: 5px 0; text-align: right; color: #0284C7; font-weight: 600;">{row['estacion_transporte_principal']} ({row['dist_transporte_masivo_m']:.0f} m)</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Unidades DENUE (500m):</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-weight: 600;">{int(row['denue_unidades_buffer_500m'])} establecimientos</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Salud y Educación (SCIAN):</b></td>
-                        <td style="padding: 4px 0; text-align: right;">{int(row['denue_salud_educacion_scian61_62'])} unidades</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Transporte OSM Cercano:</b></td>
-                        <td style="padding: 4px 0; text-align: right;">{row['estacion_transporte_principal']} ({row['dist_transporte_masivo_m']:.0f} m)</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 4px 0; color: #475569;"><b>Índice Accesibilidad:</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-weight: 700; color: #0284C7;">{row['indice_accesibilidad_urbana_0_100']:.1f} / 100</td>
+                        <td style="padding: 5px 0; color: #475569;"><b>Índice Accesibilidad Urbana:</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-weight: 700;">{row['indice_accesibilidad_urbana_0_100']:.1f} / 100</td>
                     </tr>
                     <tr>
-                        <td style="padding: 4px 0; color: #64748B; font-size: 10.5px;"><b>Linaje Capa Bronce:</b></td>
-                        <td style="padding: 4px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{int(row['linaje_n_registros_bronce'])} regs ({row['linaje_hash_lote_bronce'][:13]})</td>
+                        <td style="padding: 5px 0; color: #64748B; font-size: 10.5px;"><b>AGEB INEGI / Linaje Bronce:</b></td>
+                        <td style="padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{row['cve_ageb_ref']} ({row['linaje_hash_lote_bronce'][:11]})</td>
                     </tr>
                 </table>
             </div>
         </div>
         """
 
-        # Polígono coroplético de la colonia
-        folium.Polygon(
-            locations=poly_coords,
-            color="#0F172A",
-            weight=1.8,
-            fill=True,
-            fill_color=col_color,
-            fill_opacity=0.58,
-            popup=folium.Popup(popup_card, max_width=340),
-            tooltip=(
-                f"<b>{row['colonia']}</b> ({row['alcaldia_municipio']})<br>"
-                f"Precio: <b>${row['precio_m2_promedio_mxn']:,.0f} MXN/m²</b> | "
-                f"Yield: <b>{row['yield_bruto_promedio_pct']:.2f}%</b><br>"
-                f"DENUE (500m): <b>{int(row['denue_unidades_buffer_500m'])}</b> | "
-                f"Accesibilidad: <b>{row['indice_accesibilidad_urbana_0_100']:.1f}/100</b>"
-            ),
-        ).add_to(fg_poligonos_colonias)
+        features_colonias.append(
+            {
+                "type": "Feature",
+                "geometry": json.loads(gpd.GeoSeries([row["geometry"]], crs="EPSG:4326").to_json())["features"][0]["geometry"],
+                "properties": {
+                    "colonia": str(row["colonia"]),
+                    "search_label": f"{row['colonia']} ({row['alcaldia_municipio']})",
+                    "alcaldia_municipio": str(row["alcaldia_municipio"]),
+                    "precio_str": f"${precio_val:,.2f} MXN/m²",
+                    "yield_str": f"{yield_val:.2f}%",
+                    "denue_str": f"{int(row['denue_unidades_buffer_500m'])} comercios",
+                    "transporte_str": f"{row['estacion_transporte_principal']} ({row['dist_transporte_masivo_m']:.0f} m)",
+                    "perfil_negocio": perfil_negocio,
+                    "fill_color": col_color,
+                    "hover_title": hover_title,
+                    "popup_html": popup_card,
+                },
+            }
+        )
 
-        # Etiqueta flotante con el nombre de la colonia y precio/m2
-        folium.Marker(
-            location=[row["lat_centroide"], row["lon_centroide"]],
-            icon=folium.DivIcon(
-                html=f"""
-                <div style="
-                    display: inline-block;
-                    white-space: nowrap;
-                    transform: translate(-50%, -50%);
-                    background: rgba(15, 23, 42, 0.86);
-                    color: #FFFFFF;
-                    padding: 2px 6px;
-                    border-radius: 4px;
-                    border: 1px solid {col_color};
-                    font-family: 'Segoe UI', Arial, sans-serif;
-                    font-size: 10.5px;
-                    font-weight: 600;
-                    box-shadow: 0 1px 4px rgba(0,0,0,0.35);
-                ">
-                    {row['colonia']} <span style="color: #FDE047;">${row['precio_m2_promedio_mxn']:.0f}/m²</span>
-                </div>
-                """
-            ),
-            popup=folium.Popup(popup_card, max_width=340),
-        ).add_to(fg_poligonos_colonias)
+    geojson_colonias_data = {"type": "FeatureCollection", "features": features_colonias}
 
-        # Radio real de 500 metros (buffer espacial en metros) del equipamiento DENUE
+    # Capa Coroplética Suavizada (fill_opacity=0.45 para apreciar el relieve satelital debajo, permanent=False sin etiquetas encimadas)
+    geojson_layer = folium.GeoJson(
+        geojson_colonias_data,
+        name="🏘️ Polígonos Coropléticos AGEB/Colonias (Renta $/m² y Yield)",
+        style_function=lambda feat: {
+            "fillColor": feat["properties"]["fill_color"],
+            "color": "#FFFFFF",
+            "weight": 2.2,
+            "fillOpacity": 0.45,
+        },
+        highlight_function=lambda feat: {
+            "fillColor": feat["properties"]["fill_color"],
+            "color": "#FDE047",
+            "weight": 3.8,
+            "fillOpacity": 0.68,
+        },
+        tooltip=folium.GeoJsonTooltip(
+            fields=["colonia", "alcaldia_municipio", "precio_str", "yield_str", "perfil_negocio"],
+            aliases=["📍 Colonia:", "🏛️ Alcaldía/Mun.:", "💰 Renta Promedio:", "📈 Yield Anual:", "🏷️ Perfil:"],
+            localize=True,
+            sticky=True,
+            labels=True,
+            permanent=False,
+            style=(
+                "background-color: rgba(15, 23, 42, 0.94); color: #F8FAFC; "
+                "font-family: 'Segoe UI', sans-serif; font-size: 11.5px; "
+                "padding: 8px 10px; border-radius: 6px; border: 1px solid #38BDF8; "
+                "box-shadow: 0 4px 12px rgba(0,0,0,0.4);"
+            ),
+        ),
+        popup=folium.GeoJsonPopup(
+            fields=["popup_html"],
+            labels=False,
+            localize=True,
+            max_width=350,
+        ),
+    ).add_to(m)
+
+    # Buscador interactivo de colonias (folium.plugins.Search)
+    Search(
+        layer=geojson_layer,
+        geom_type="Polygon",
+        placeholder="🔍 Buscar colonia o alcaldía (ej. Polanco, Roma, Del Valle, Satélite)...",
+        collapsed=False,
+        search_label="search_label",
+        weight=4,
+        position="topleft",
+    ).add_to(m)
+
+    # Capa de Radios de 500m y Puntos de Equipamiento Económico DENUE (INEGI)
+    fg_buffers_denue = folium.FeatureGroup(
+        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI)", show=True
+    )
+    for _, row in gdf_map.iterrows():
         folium.Circle(
             location=[row["lat_centroide"], row["lon_centroide"]],
             radius=500,
-            color="#2563EB",
-            weight=1.3,
-            dash_array="4, 4",
+            color="#38BDF8",
+            weight=1.4,
+            dash_array="5, 5",
             fill=True,
-            fill_color="#3B82F6",
-            fill_opacity=0.12,
-            tooltip=(
-                f"Buffer 500m DENUE — <b>{row['colonia']}</b>: "
-                f"{int(row['denue_unidades_buffer_500m'])} unidades económicas INEGI"
-            ),
+            fill_color="#0284C7",
+            fill_opacity=0.10,
+            tooltip=f"🏪 Buffer 500m DENUE — {row['colonia']}: {int(row['denue_unidades_buffer_500m'])} comercios",
         ).add_to(fg_buffers_denue)
 
-    # 3) Dibujar Estaciones y Corredores de Transporte Masivo (OpenStreetMap)
+        folium.CircleMarker(
+            location=[row["lat_centroide"], row["lon_centroide"]],
+            radius=5,
+            color="#FFFFFF",
+            weight=1.5,
+            fill=True,
+            fill_color=get_choropleth_color(float(row["precio_m2_promedio_mxn"])),
+            fill_opacity=0.95,
+            tooltip=f"Centroide AGEB {row['colonia']} ({int(row['denue_unidades_buffer_500m'])} unidades DENUE)",
+        ).add_to(fg_buffers_denue)
+    fg_buffers_denue.add_to(m)
+
+    # Cluster / Capa de Estaciones de Transporte Masivo (OpenStreetMap)
+    fg_transporte_cluster = MarkerCluster(
+        name="🚇 Estaciones de Transporte Masivo (Metro / Metrobús OSM)",
+        options={"maxClusterRadius": 28, "disableClusteringAtZoom": 13},
+    )
     for _, est in gdf_estaciones.iterrows():
         folium.CircleMarker(
             location=[est["lat"], est["lon"]],
-            radius=7,
-            color="#FFFFFF",
+            radius=8,
+            color="#0F172A",
             weight=2,
             fill=True,
-            fill_color="#0284C7",
+            fill_color="#38BDF8",
             fill_opacity=0.95,
-            tooltip=f"🚇 <b>{est['nombre']}</b> ({est['sistema']} - OpenStreetMap)",
+            tooltip=f"🚇 {est['nombre']} ({est['sistema']})",
             popup=folium.Popup(
-                f"<b>Estación:</b> {est['nombre']}<br>"
+                f"<div style='font-family:Segoe UI,sans-serif;width:220px;'>"
+                f"<b>🚇 {est['nombre']}</b><br>"
                 f"<b>Sistema:</b> {est['sistema']}<br>"
                 f"<b>ID Nodo OSM:</b> {est['id_estacion']}<br>"
-                f"<b>Coordenadas:</b> {est['lat']:.4f}, {est['lon']:.4f}",
-                max_width=250,
+                f"<b>Coords:</b> {est['lat']:.4f}, {est['lon']:.4f}</div>",
+                max_width=240,
             ),
-        ).add_to(fg_transporte_osm)
-
-    fg_demarcaciones.add_to(m)
-    fg_buffers_denue.add_to(m)
-    fg_poligonos_colonias.add_to(m)
-    fg_transporte_osm.add_to(m)
+        ).add_to(fg_transporte_cluster)
+    fg_transporte_cluster.add_to(m)
 
     folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
-    # Panel flotante HTML/CSS con Título, KPIs del Observatorio y Leyenda Coroplética
+    # Panel flotante compacto estilo Google Earth Pro en la esquina inferior izquierda
     dashboard_overlay_html = """
     <div style="
         position: fixed;
-        bottom: 24px;
-        left: 20px;
-        width: 345px;
-        background: rgba(255, 255, 255, 0.96);
-        border: 1px solid #CBD5E1;
+        bottom: 22px;
+        left: 18px;
+        width: 330px;
+        background: rgba(15, 23, 42, 0.92);
+        color: #F8FAFC;
+        border: 1px solid #334155;
         border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.22);
-        padding: 14px 16px;
-        font-family: 'Segoe UI', Arial, sans-serif;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+        padding: 12px 15px;
+        font-family: 'Segoe UI', system-ui, sans-serif;
         z-index: 9999;
+        backdrop-filter: blur(6px);
     ">
-        <div style="font-size: 13.5px; font-weight: 800; color: #0F172A; margin-bottom: 3px;">
-            🏢 Observatorio Inmobiliario ZMVM (Entrega E2)
+        <div style="font-size: 13px; font-weight: 800; color: #38BDF8; margin-bottom: 2px;">
+            🛰️ Observatorio Inmobiliario ZMVM — Vista Híbrida
         </div>
-        <div style="font-size: 11px; color: #475569; margin-bottom: 10px;">
-            Integración Geoespacial: <b>DENUE (INEGI) + MGN AGEB + OpenStreetMap</b>
-        </div>
-
-        <div style="font-size: 11.5px; font-weight: 700; color: #1E293B; margin-bottom: 5px;">
-            📊 Escala Coroplética — Precio de Renta (MXN / m²)
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; margin-bottom: 10px;">
-            <div><span style="display:inline-block;width:14px;height:14px;background:#991B1B;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Prime Poniente (&ge; $500 / m²):</b> Polanco, Granada, Anzures</div>
-            <div><span style="display:inline-block;width:14px;height:14px;background:#DC2626;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Central Corporativo ($430 – $499 / m²):</b> Roma, Condesa, Juárez, Lomas</div>
-            <div><span style="display:inline-block;width:14px;height:14px;background:#F97316;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Consolidado Sur ($340 – $429 / m²):</b> Del Valle, Nápoles</div>
-            <div><span style="display:inline-block;width:14px;height:14px;background:#FACC15;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Medio-Alto ($290 – $339 / m²):</b> Narvarte, San Pedro de los Pinos</div>
-            <div><span style="display:inline-block;width:14px;height:14px;background:#10B981;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Emergente Alto Yield (&lt; $290 / m²):</b> Sta. María, Escandón, Satélite</div>
+        <div style="font-size: 10.5px; color: #94A3B8; margin-bottom: 8px;">
+            Esri WorldImagery + DENUE (INEGI) + OpenStreetMap
         </div>
 
-        <div style="border-top: 1px solid #E2E8F0; padding-top: 8px; font-size: 11px; color: #334155;">
-            <div><b>🗺️ Demarcaciones (Borde Punteado):</b></div>
-            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; font-size:10.5px;">
-                <span style="color:#7C3AED;font-weight:700;">■ Miguel Hidalgo</span>
-                <span style="color:#0284C7;font-weight:700;">■ Cuauhtémoc</span>
-                <span style="color:#059669;font-weight:700;">■ Benito Juárez</span>
-                <span style="color:#D97706;font-weight:700;">■ Naucalpan (Edomex)</span>
-            </div>
-            <div style="margin-top:6px; font-size:10px; color:#64748B;">
-                💡 <i>Haz clic en cualquier polígono o usa el selector superior derecho para cambiar entre mapa urbano, topográfico, modo oscuro o vista satelital.</i>
-            </div>
+        <div style="font-size: 11px; font-weight: 700; color: #E2E8F0; margin-bottom: 5px;">
+            📊 Escala Coroplética — Renta Promedio ($/m²)
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 10.5px; margin-bottom: 8px;">
+            <div><span style="display:inline-block;width:12px;height:12px;background:#EF4444;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Prime Corporativo (&ge; $500/m²):</b> Polanco, Granada, Anzures</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#F97316;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Cosmopolita Central ($430–$499/m²):</b> Roma, Condesa, Juárez</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#EAB308;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Consolidado Sur ($340–$429/m²):</b> Del Valle, Nápoles</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#22C55E;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Residencial Medio ($290–$339/m²):</b> Narvarte, S. Pedro Pinos</div>
+            <div><span style="display:inline-block;width:12px;height:12px;background:#06B6D4;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Emergente Alto Yield (&lt; $290/m²):</b> Sta. María, Escandón, Satélite</div>
+        </div>
+        <div style="border-top: 1px solid #334155; padding-top: 6px; font-size: 10px; color: #CBD5E1;">
+            💡 <i>Pasa el cursor sobre un polígono para ver el resumen o haz clic para abrir su ficha completa. Usa la barra superior para buscar por colonia.</i>
         </div>
     </div>
     """

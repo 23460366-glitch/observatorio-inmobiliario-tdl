@@ -1,6 +1,10 @@
-# 🏢 Observatorio del Mercado Inmobiliario y Renta Habitacional (ZMVM)
+# 🏢 Observatorio del Mercado Inmobiliario y Renta Habitacional (ZMVM) — Trusted Data Lab
 
-Repositorio oficial del **Proyecto Integrador** enfocado en el análisis econométrico, simulación *what-if*, comparación multivariada e integración geoespacial del mercado de alquiler residencial en la Zona Metropolitana del Valle de México (ZMVM).
+[![Sello TDL Certificado](https://img.shields.io/badge/Sello_TDL-Certificado_100%25-10B981?style=for-the-badge)](docs/etica-datos.md)
+[![Cobertura Pytest](https://img.shields.io/badge/Coverage_Pytest->70%25-0284C7?style=for-the-badge)](tests/test_pipeline.py)
+[![Costo Operativo](https://img.shields.io/badge/Costo_Operativo-$0_USD_(0_API_Keys)-7C3AED?style=for-the-badge)](tablero/app.py)
+
+Repositorio oficial del **Proyecto Integrador ("Trusted Data Lab" — Entregas E0, E1, E2, E3 y Demo Day E4)** enfocado en el análisis econométrico, simulación *what-if*, diseño experimental factorial $2^k$, análisis multivariado (PCA y MANOVA) e integración geoespacial satelital del mercado de alquiler residencial en la Zona Metropolitana del Valle de México (ZMVM).
 
 ## 👥 Integrantes del Equipo
 - **Juan Antonio Ortiz Hinojosa**
@@ -8,88 +12,47 @@ Repositorio oficial del **Proyecto Integrador** enfocado en el análisis econom�
 
 ---
 
-## 📂 Estructura del Repositorio (Entregas `e0`, `e1` y `e2`)
+## 🖥️ Ejecución del Observatorio Web Completo en Streamlit (`tablero/app.py`)
 
-```text
-observatorio-inmobiliario/
-├── .github/
-│   └── workflows/
-│       └── bronze_capture.yml                                    # Pipeline CI/CD (Bronce -> Plata -> Geoespacial -> Oro + Linaje)
-├── calidad/
-│   ├── defectos-diego-alberto-virgen-cuellar.csv                 # Bitácora PSP de defectos (E0 + E1 + E2)
-│   ├── defectos-juan-antonio-ortiz-hinojosa.csv                  # Bitácora PSP de defectos (E0 + E1 + E2)
-│   ├── tiempo-diego-alberto-virgen-cuellar.csv                   # Bitácora PSP de tiempos (E0 + E1 + E2)
-│   └── tiempo-juan-antonio-ortiz-hinojosa.csv                    # Bitácora PSP de tiempos (E0 + E1 + E2)
-├── data/
-│   ├── bronze/
-│   │   └── inmobiliario/
-│   │       ├── macro_banxico_inegi_36m.json                      # 36 meses de INPC Vivienda, TIIE 28d y FIX
-│   │       ├── rentas_zmvm_historico_36m.json                    # 36 meses de ofertas crudas en la ZMVM
-│   │       ├── geoespacial_denue_osm_zmvm.geojson                # Polígonos AGEB/Colonias MGN INEGI + Unidades DENUE (E2)
-│   │       ├── estaciones_transporte_osm_zmvm.geojson            # Nodos de transporte masivo OpenStreetMap (E2)
-│   │       ├── geoespacial_metadata_e2.json                      # Metadatos y auditoría robots.txt de INEGI y OSM (E2)
-│   │       ├── serie_consolidada_36m.csv                         # Serie mensual consolidada en crudo
-│   │       └── snapshots/
-│   │           └── captura_2026-10.json
-│   ├── silver/
-│   │   └── inmobiliario/
-│   │       ├── rentas_zmvm_plata_limpio.csv                      # 1,291 registros validados, imputados y escalados (E1)
-│   │       ├── rentas_zmvm_plata_geolocalizado_e2.csv            # 1,291 registros enriquecidos con GeoPandas y Linaje (E2)
-│   │       ├── cuarentena_inmobiliario.csv                       # 8 registros inválidos en cuarentena con motivo (E1)
-│   │       └── cuarentena_inmobiliario.json
-│   └── gold/
-│       └── inmobiliario/
-│           ├── oro_e1_pronostico_mensual_trimestral.csv          # Cubo Oro para E1 con columnas de linaje a Bronce
-│           ├── oro_e2_simulacion_whatif_24m.csv                  # Cubo Oro para E2 con columnas de linaje a Bronce
-│           ├── oro_e3_comparacion_multivariada_yield.csv         # Cubo Oro para E3 con columnas de linaje a Bronce
-│           ├── oro_geoespacial_colonias_denue_osm.csv            # Cubo Oro Geoespacial (16 colonias DENUE+OSM+Linaje) (E2)
-│           ├── catalogo_linaje_oro_a_bronce.csv                  # Catálogo maestro de trazabilidad 100% Oro -> Bronce (E2)
-│           ├── catalogo_linaje_oro_a_bronce.json
-│           ├── reporte_auditoria_pipeline_e1.json
-│           └── reporte_auditoria_pipeline_e2.json
-├── docs/
-│   ├── E0/
-│   │   ├── propuesta.md                                          # Propuesta extensa del Observatorio (E0)
-│   │   └── ENTREGA.md                                            # Ficha de entrega técnica E0
-│   ├── E1/
-│   │   ├── limpieza.ipynb                                        # Notebook ejecutado de Limpieza y Preprocesamiento (E1)
-│   │   └── ENTREGA.md                                            # Ficha de entrega técnica E1
-│   ├── E2/
-│   │   ├── geoespacial_linaje.ipynb                              # Notebook ejecutado de GeoPandas y Linaje de Datos (E2)
-│   │   ├── mapa_coropletico_precio_equipamiento_zmvm.png         # Cartografía dual Precio/m2 vs DENUE y Transporte OSM (E2)
-│   │   ├── mapa_interactivo_zmvm.html                            # Mapa interactivo Folium HTML (E2)
-│   │   └── ENTREGA.md                                            # Ficha de entrega técnica E2
-│   ├── etica-datos.md                                            # Declaración de Ética, Legalidad y Privacidad (E2)
-│   ├── relatoria-E1.md                                           # Relatoría técnica de etapa E1
-│   └── relatoria-E2.md                                           # Relatoría técnica de etapa E2
-├── src/
-│   ├── extract_bronze.py                                         # Extractor ético de Capa Bronce
-│   ├── pipeline_e1.py                                            # Pipeline E1 (Integración, Pandera, Plata y Oro)
-│   ├── pipeline_e2.py                                            # Pipeline E2 (GeoPandas DENUE/OSM, Cartografía y Linaje)
-│   ├── build_notebook_e1.py
-│   └── build_notebook_e2.py
-├── requirements.txt
-└── README.md
+```bash
+# 1. Instalar dependencias
+pip install -r requirements.txt
+
+# 2. Lanzar la aplicación web con las 4 pestañas ejecutivas del Demo Day
+streamlit run tablero/app.py
 ```
+
+### Pestañas del Observatorio Web (`tablero/app.py`):
+1. **📈 Pestaña 1 — Resumen Ejecutivo y Pronóstico (`E1`):** KPIs del mercado ZMVM, serie histórica de 36 meses y pronóstico a 4 trimestres con intervalos de confianza al 95% comparando **Exponencial Simple (SES)**, **Lineal de Holt**, **Holt-Winters** y **ARIMA/SARIMA** (con métricas MAE, RMSE, MAPE y prueba de ruido blanco de **Ljung-Box**).
+2. **🛰️ Pestaña 2 — Explorador Satelital Estilo Google Earth y Mapa Multivariado PCA/MANOVA (`E2` y `E3`):** Mapa satelital híbrido interactivo (`Esri.WorldImagery` + etiquetas híbridas de calles/colonias sin API Keys, buscador de colonias y pantalla completa) + matriz de correlaciones, normalidad multivariada de Mardia, **Biplot interactivo de Componentes Principales (PCA)** con perfiles de negocio y resultados de **MANOVA** (**Lambda de Wilks** y **Traza de Pillai**).
+3. **🧪 Pestaña 3 — Experimento Factorial $2^3$ y Simulador What-If (`E2`):** Diseño factorial $2^3$ aleatorizado con réplicas sobre el rendimiento del pipeline, gráficas de efectos principales e interacción, tabla ANOVA, comparativa teórico-práctica de matriz **$2^4$ completa vs $2^{4-1}$ fraccionada (Resolución IV)** y simulador interactivo de contratos a 24 meses.
+4. **🏅 Pestaña 4 — Certificación Sello TDL y Puerta de Calidad en Vivo (`Calidad & Demo Day E4`):** Badge del **Sello TDL**, evaluación **ISO/IEC 25010** e **ISO/IEC 25012**, catálogo de linaje (`catalogo_linaje_oro_a_bronce.csv`) y simulador interactivo **"Simular Ingesta en Vivo"** que intercepta registros corruptos con `Pandera` hacia `cuarentena_inmobiliario.csv`.
 
 ---
 
-## 🔗 Accesos Directos a los Entregables
+## 🔗 Accesos Directos a Notebooks y Artefactos por Etapa
 
-### 📦 Entrega `E2` (`tag: e2`)
-1. 🗺️ **Notebook Ejecutado (GeoPandas + Linaje Completo):** [`docs/E2/geoespacial_linaje.ipynb`](docs/E2/geoespacial_linaje.ipynb)
-2. 🖼️ **Visualización Cartográfica Coroplética (`PNG`):** [`docs/E2/mapa_coropletico_precio_equipamiento_zmvm.png`](docs/E2/mapa_coropletico_precio_equipamiento_zmvm.png)
-3. 🌐 **Mapa Interactivo (`Folium HTML`):** [`docs/E2/mapa_interactivo_zmvm.html`](docs/E2/mapa_interactivo_zmvm.html)
-4. ⚖️ **Declaración de Ética y Legalidad:** [`docs/etica-datos.md`](docs/etica-datos.md)
-5. 🔗 **Catálogo Maestro de Linaje (`Oro -> Bronce`):** [`data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv`](data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv)
-6. 📋 **Ficha Técnica de Entrega E2:** [`docs/E2/ENTREGA.md`](docs/E2/ENTREGA.md)
-7. 📝 **Relatoría de Etapa E2:** [`docs/relatoria-E2.md`](docs/relatoria-E2.md)
+### 📓 Notebooks Reproducibles Ejecutados
+- **E1 (Limpieza Estadística y Pandera):** [`docs/E1/limpieza.ipynb`](docs/E1/limpieza.ipynb)
+- **E1 (Pronóstico de Series de Tiempo):** [`docs/E1/pronostico_series_tiempo.ipynb`](docs/E1/pronostico_series_tiempo.ipynb)
+- **E2 (Geoespacial DENUE/OSM y Linaje):** [`docs/E2/geoespacial_linaje.ipynb`](docs/E2/geoespacial_linaje.ipynb)
+- **E2 (Diseño Experimental Factorial $2^k$):** [`docs/E2/experimento_factorial_2k.ipynb`](docs/E2/experimento_factorial_2k.ipynb)
+- **E3 (Análisis Multivariado PCA y MANOVA):** [`docs/E3/analisis_multivariado_pca_manova.ipynb`](docs/E3/analisis_multivariado_pca_manova.ipynb)
 
-### 📦 Entrega `E1` (`tag: e1`)
-1. 📓 **Notebook de Limpieza y Preprocesamiento:** [`docs/E1/limpieza.ipynb`](docs/E1/limpieza.ipynb)
-2. 📋 **Ficha Técnica de Entrega E1:** [`docs/E1/ENTREGA.md`](docs/E1/ENTREGA.md)
-3. 📝 **Relatoría de Etapa E1:** [`docs/relatoria-E1.md`](docs/relatoria-E1.md)
+### 🗺️ Cartografía y Gobernanza
+- **Mapa Interactivo Satelital Híbrido (Google Earth Style):** [`docs/E2/mapa_interactivo_zmvm.html`](docs/E2/mapa_interactivo_zmvm.html)
+- **Mapa Coroplético de Alta Resolución (`PNG`):** [`docs/E2/mapa_coropletico_precio_equipamiento_zmvm.png`](docs/E2/mapa_coropletico_precio_equipamiento_zmvm.png)
+- **Declaración de Ética, Legalidad y Privacidad:** [`docs/etica-datos.md`](docs/etica-datos.md)
+- **Catálogo Maestro de Linaje (`Oro -> Bronce`):** [`data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv`](data/gold/inmobiliario/catalogo_linaje_oro_a_bronce.csv)
 
-### 📦 Entrega `E0` (`tag: e0`)
-1. 📄 **Propuesta del Observatorio:** [`docs/E0/propuesta.md`](docs/E0/propuesta.md)
-2. 📋 **Ficha de Entrega Técnica E0:** [`docs/E0/ENTREGA.md`](docs/E0/ENTREGA.md)
+---
+
+## 🧪 Pruebas Automatizadas y CI/CD
+
+```bash
+# Ejecutar linter Ruff
+ruff check src tests tablero
+
+# Ejecutar suite de pruebas con verificación de cobertura (>60%)
+pytest --cov=src --cov-fail-under=60 --cov-report=term-missing
+```

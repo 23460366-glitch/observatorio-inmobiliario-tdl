@@ -1,0 +1,47 @@
+name: "Captura Automática Diaria / Programada - Capa Bronce"
+
+on:
+  schedule:
+    # Ejecución diaria automatizada a las 06:00 UTC (00:00 CST)
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  captura-diaria-bronce:
+    name: "Ejecutar Extractor Ético en Capa Bronce (Costo $0)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "1. Checkout del repositorio"
+        uses: actions/checkout@v4
+
+      - name: "2. Configurar Python 3.11"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: "3. Instalar dependencias"
+        run: |
+          pip install -r requirements.txt
+
+      - name: "4. Ejecutar Extractor Ético de Capa Bronce"
+        env:
+          BANXICO_TOKEN: ${{ secrets.BANXICO_TOKEN }}
+        run: |
+          python src/extract_bronze.py
+
+      - name: "5. Commit y Push si existen actualizaciones en Capa Bronce"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bronze/inmobiliario/
+          if git diff --cached --quiet; then
+            echo "Sin cambios en Capa Bronce."
+          else
+            git commit -m "chore(bronze-daily): captura programada de Capa Bronce [skip ci]"
+            git push
+          fi

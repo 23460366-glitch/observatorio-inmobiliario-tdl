@@ -48,7 +48,7 @@
       "tiie_28d_pct": 11.5,
       "tipo_cambio_fix_mxn_usd": 17.15,
       "motivo_cuarentena": "DUPLICADO_ID_PERIODO: Registro duplicado por republicación en el mismo mes",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-C3DE9C8393",
@@ -84,7 +84,7 @@
       "tiie_28d_pct": 11.2477,
       "tipo_cambio_fix_mxn_usd": 16.7349,
       "motivo_cuarentena": "PANDERA_FAIL[superficie_m2]: superficie_m2_menor_20m2 (valor=-25.0)",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-63EC2E6AF5",
@@ -120,7 +120,7 @@
       "tiie_28d_pct": 10.6403,
       "tipo_cambio_fix_mxn_usd": 18.5385,
       "motivo_cuarentena": "DUPLICADO_ID_PERIODO: Registro duplicado por republicación en el mismo mes",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-32AEE09250",
@@ -156,7 +156,7 @@
       "tiie_28d_pct": 10.6403,
       "tipo_cambio_fix_mxn_usd": 18.5385,
       "motivo_cuarentena": "PANDERA_FAIL[superficie_m2]: superficie_m2_mayor_1200m2 (valor=9850.0)",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-8BC19A09A2",
@@ -192,7 +192,7 @@
       "tiie_28d_pct": 10.3424,
       "tipo_cambio_fix_mxn_usd": 19.0035,
       "motivo_cuarentena": "PANDERA_FAIL[renta_lista_mensual_mxn]: renta_lista_invalida_o_negativa (valor=-15000.0)",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-D3D02319DE",
@@ -228,7 +228,7 @@
       "tiie_28d_pct": 9.9261,
       "tipo_cambio_fix_mxn_usd": 19.202,
       "motivo_cuarentena": "DUPLICADO_ID_PERIODO: Registro duplicado por republicación en el mismo mes",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-AF3AB2A700",
@@ -264,7 +264,7 @@
       "tiie_28d_pct": 9.8315,
       "tipo_cambio_fix_mxn_usd": 19.3654,
       "motivo_cuarentena": "PANDERA_FAIL[renta_lista_mensual_mxn]: not_nullable (valor=nan)",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     },
     {
       "id_propiedad": "PROP-DD88349678",
@@ -300,7 +300,7 @@
       "tiie_28d_pct": 9.4718,
       "tipo_cambio_fix_mxn_usd": 19.7854,
       "motivo_cuarentena": "PANDERA_FAIL[superficie_m2]: superficie_m2_menor_20m2 (valor=4.5)",
-      "timestamp_cuarentena_utc": "2026-11-21T18:54:04.363775+00:00"
+      "timestamp_cuarentena_utc": "2026-11-21T19:21:06.062175+00:00"
     }
   ]
 }
