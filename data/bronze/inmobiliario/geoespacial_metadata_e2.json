@@ -1,6 +1,6 @@
 {
   "fuente_especializada": "Geoespacial: DENUE (INEGI) + Marco Geoestadístico Nacional + OpenStreetMap",
-  "fecha_ingesta_bronce_utc": "2026-11-21T20:07:42.567883+00:00",
+  "fecha_ingesta_bronce_utc": "2026-11-21T20:09:28.061595+00:00",
   "crs_origen": "EPSG:4326 (WGS 84 Geográfico)",
   "crs_proyeccion_metrica": "EPSG:32614 (WGS 84 / UTM zone 14N en metros)",
   "total_poligonos_colonias_ageb": 16,
@@ -8,7 +8,7 @@
   "robots_audit_inegi_denue": {
     "robots_url": "https://www.inegi.org.mx/robots.txt",
     "target_path": "/app/api/denue/v1/",
-    "checked_at_utc": "2026-11-21T20:07:42.567961+00:00",
+    "checked_at_utc": "2026-11-21T20:09:28.061631+00:00",
     "allowed": true,
     "crawl_delay_seconds": 2.0,
     "notes": "Verificación ética exitosa"
@@ -16,7 +16,7 @@
   "robots_audit_osm_overpass": {
     "robots_url": "https://overpass-api.de/robots.txt",
     "target_path": "/api/interpreter",
-    "checked_at_utc": "2026-11-21T20:07:42.729857+00:00",
+    "checked_at_utc": "2026-11-21T20:09:28.530664+00:00",
     "allowed": false,
     "crawl_delay_seconds": 2.0,
     "notes": "Verificación ética exitosa"
