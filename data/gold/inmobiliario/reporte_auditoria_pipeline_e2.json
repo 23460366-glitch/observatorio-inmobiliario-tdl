@@ -1,9 +1,9 @@
 {
   "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E2 (Fuente Geoespacial + Linaje Completo)",
-  "executed_at_utc": "2026-11-21T18:51:55.393799+00:00",
+  "executed_at_utc": "2026-11-21T18:54:09.901292+00:00",
   "fuente_especializada_geoespacial": {
     "fuente_especializada": "Geoespacial: DENUE (INEGI) + Marco Geoestadístico Nacional + OpenStreetMap",
-    "fecha_ingesta_bronce_utc": "2026-11-21T18:51:45.002935+00:00",
+    "fecha_ingesta_bronce_utc": "2026-11-21T18:54:06.057721+00:00",
     "crs_origen": "EPSG:4326 (WGS 84 Geográfico)",
     "crs_proyeccion_metrica": "EPSG:32614 (WGS 84 / UTM zone 14N en metros)",
     "total_poligonos_colonias_ageb": 16,
@@ -11,7 +11,7 @@
     "robots_audit_inegi_denue": {
       "robots_url": "https://www.inegi.org.mx/robots.txt",
       "target_path": "/app/api/denue/v1/",
-      "checked_at_utc": "2026-11-21T18:51:45.003030+00:00",
+      "checked_at_utc": "2026-11-21T18:54:06.057760+00:00",
       "allowed": true,
       "crawl_delay_seconds": 2.0,
       "notes": "Verificación ética exitosa"
@@ -19,7 +19,7 @@
     "robots_audit_osm_overpass": {
       "robots_url": "https://overpass-api.de/robots.txt",
       "target_path": "/api/interpreter",
-      "checked_at_utc": "2026-11-21T18:51:45.533042+00:00",
+      "checked_at_utc": "2026-11-21T18:54:06.452866+00:00",
       "allowed": false,
       "crawl_delay_seconds": 2.0,
       "notes": "Verificación ética exitosa"
