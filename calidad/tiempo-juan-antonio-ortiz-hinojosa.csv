@@ -11,3 +11,5 @@ fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,t
 2026-11-19,Juan Antonio Ortiz Hinojosa,E2,fuente_geoespacial_denue_osm,Diseno,16:00,17:05,5,55,60,9.09,Seleccion de AGEBs del Marco Geoestadistico INEGI unidades DENUE y estaciones de transporte OSM
 2026-11-20,Juan Antonio Ortiz Hinojosa,E2,geopandas_proyeccion_utm,Codificacion,18:00,19:30,5,80,85,6.25,Implementacion de reproyeccion EPSG:32614 calculo de distancias a transporte e indice de accesibilidad
 2026-11-21,Juan Antonio Ortiz Hinojosa,E2,cartografia_y_notebook_e2,Codificacion,09:30,11:15,5,100,100,0.00,Generacion de mapa coropletico PNG mapa interactivo Folium HTML y notebook geoespacial_linaje.ipynb
+2026-11-21,Juan Antonio Ortiz Hinojosa,E3,motor_estadistico_pca_manova,Codificacion,11:20,12:35,5,70,70,0.00,Implementacion de normalidad Mardia PCA Biplot MANOVA Wilks/Pillai y experimento factorial 2^3 en analytics_e3_e4.py
+2026-11-21,Juan Antonio Ortiz Hinojosa,E3,tablero_streamlit_y_notebooks,Codificacion,12:40,13:30,5,45,45,0.00,Desarrollo del Observatorio Web en tablero/app.py (4 pestanas Demo Day) y notebooks E1/E2/E3

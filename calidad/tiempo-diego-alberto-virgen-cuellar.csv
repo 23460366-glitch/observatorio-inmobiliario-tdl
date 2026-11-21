@@ -11,3 +11,5 @@ fecha,integrante,entrega,modulo,fase_psp,hora_inicio,hora_fin,interrupcion_min,t
 2026-11-19,Diego Alberto Virgen Cuéllar,E2,declaracion_etica_datos,Diseno,17:00,18:15,5,65,70,7.69,Redaccion de docs/etica-datos.md con analisis de licencias ODbL/CC-BY/INEGI robots.txt LFPDPPP y sesgos
 2026-11-20,Diego Alberto Virgen Cuéllar,E2,linaje_bronce_plata_oro,Codificacion,19:00,20:35,5,90,90,0.00,Implementacion de trazabilidad criptografica SHA-256 y catalogo_linaje_oro_a_bronce.csv para las 92 filas Oro
 2026-11-21,Diego Alberto Virgen Cuéllar,E2,relatoria_y_entrega_e2,Pruebas_Revision,11:00,12:20,5,75,75,0.00,Documentacion de docs/E2/ENTREGA.md docs/relatoria-E2.md y actualizacion del workflow CI/CD
+2026-11-21,Diego Alberto Virgen Cuéllar,E3,suite_pytest_cov_y_ci,Codificacion,12:25,13:15,5,45,45,0.00,Creacion de tests/test_pipeline.py (89.54% cobertura) y workflows ci.yml y captura_diaria.yml
+2026-11-21,Diego Alberto Virgen Cuéllar,E3,normativa_iso_sqa_sello_tdl,Documentacion,13:15,14:10,5,50,50,0.00,Elaboracion de plan-sqa.md evaluacion-iso-E2.md auditoria-cruzada-E2.md calidad-sello-E3.md y DATASHEET.md
