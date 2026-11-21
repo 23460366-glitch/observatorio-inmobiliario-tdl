@@ -1,6 +1,6 @@
 {
   "pipeline": "Observatorio Inmobiliario ZMVM — Pipeline E1 (Bronce -> Plata -> Oro)",
-  "executed_at_utc": "2026-11-16T19:56:00.156220+00:00",
+  "executed_at_utc": "2026-11-21T18:38:53.972392+00:00",
   "integracion_y_conflictos": {
     "total_registros_bronce": 1299,
     "total_periodos_macro": 36,
