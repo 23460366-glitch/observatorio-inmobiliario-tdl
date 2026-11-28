@@ -1,6 +1,6 @@
 {
   "pipeline": "Observatorio Inmobiliario ZMVM & Colima — Pipeline E1 (Bronce -> Plata -> Oro)",
-  "executed_at_utc": "2026-11-28T06:17:08.636469+00:00",
+  "executed_at_utc": "2026-11-28T06:20:00.478035+00:00",
   "integracion_y_conflictos": {
     "total_registros_bronce": 1299,
     "total_periodos_macro": 36,
