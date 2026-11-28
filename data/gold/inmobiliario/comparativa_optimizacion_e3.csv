@@ -1,0 +1,6 @@
+dimension,antes_pipeline_base,despues_pipeline_optimizado_e3,unidad,mejora_absoluta,mejora_relativa_pct,factor_mejora
+Tiempo de Ejecución Medio (ms),6534.47,1005.46,ms,5529.01,84.61,6.5x más rápido
+Latencia P95 del Lote Completo (ms),6741.63,1057.88,ms,5683.75,84.31,6.37x menor P95
+Memoria Dinámica Pico (tracemalloc Heap),9.494,2.561,MiB,6.933,73.03,-73.03% pico Heap
+Huella en RAM del Dataset Procesado,4110.08,222.61,KiB,3887.47,94.58,-94.58% huella RAM
+Errores y Defectos Infiltrados a Capa Analítica,207.0,0.0,defectos,207.0,100.0,100% interceptados / imputados

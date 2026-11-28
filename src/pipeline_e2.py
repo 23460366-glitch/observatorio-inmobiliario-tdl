@@ -973,11 +973,33 @@ def generate_cartographic_visualizations(
     )
     map_js_var = m.get_name()
 
+    # Catálogo de íconos vectoriales SVG limpios (Sistema de Diseño Figma TDL PropTech — 0 Emojis)
+    svg_icons = {
+        "satellite": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13 7L9 3 5 7l4 4 4-4z'/><path d='m17 11 4 4-4 4-4-4 4-4z'/><path d='m8 12 4 4'/><path d='m16 8 4-4'/><path d='M9 21a7 7 0 0 1-7-7'/></svg>",
+        "topo": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#94A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21'/><line x1='9' y1='3' x2='9' y2='18'/><line x1='15' y1='6' x2='15' y2='21'/></svg>",
+        "city": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='2' width='16' height='20' rx='2'/><path d='M9 22v-4h6v4'/><path d='M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01'/></svg>",
+        "labels": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#F59E0B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z'/><line x1='7' y1='7' x2='7.01' y2='7'/></svg>",
+        "road": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#CBD5E1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 19L8 5'/><path d='M16 5l4 14'/><line x1='12' y1='6' x2='12' y2='8'/><line x1='12' y1='11' x2='12' y2='13'/><line x1='12' y1='16' x2='12' y2='18'/></svg>",
+        "store": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7'/><path d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'/><path d='M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4'/><path d='M2 7h20'/></svg>",
+        "layers": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#10B981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>",
+        "globe": "<svg class='tdl-ico' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='2' y1='12' x2='22' y2='12'/><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/></svg>",
+        "pin": "<svg class='tdl-ico' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='#10B981' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/><circle cx='12' cy='10' r='3'/></svg>",
+        "landmark": "<svg class='tdl-ico' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#94A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='22' x2='21' y2='22'/><line x1='6' y1='18' x2='6' y2='11'/><line x1='10' y1='18' x2='10' y2='11'/><line x1='14' y1='18' x2='14' y2='11'/><line x1='18' y1='18' x2='18' y2='11'/><polygon points='12 2 20 7 4 7'/></svg>",
+        "award": "<svg class='tdl-ico' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='#FBBF24' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='6'/><path d='M15.477 12.89 17 22l-5-3-5 3 1.523-9.11'/></svg>",
+        "transit": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='16' height='16' x='4' y='3' rx='2'/><path d='M4 11h16'/><path d='M12 3v8'/><path d='m8 19-2 3'/><path d='m18 22-2-3'/><path d='M8 15h.01'/><path d='M16 15h.01'/></svg>",
+        "compass": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/></svg>",
+        "nav_sky": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'><polygon points='3 11 22 2 13 21 11 13 3 11'/></svg>",
+        "nav_emerald": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#34D399' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'><polygon points='3 11 22 2 13 21 11 13 3 11'/></svg>",
+        "nav_indigo": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#A5B4FC' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M2 12h20'/><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/></svg>",
+        "bar_chart": "<svg class='tdl-ico' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='12' y1='20' x2='12' y2='10'/><line x1='18' y1='20' x2='18' y2='4'/><line x1='6' y1='20' x2='6' y2='16'/></svg>",
+        "info": "<svg class='tdl-ico' width='13' height='13' viewBox='0 0 24 24' fill='none' stroke='#38BDF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><path d='M12 16v-4'/><path d='M12 8h.01'/></svg>",
+    }
+
     # Capa Base 1 (Activa por defecto): Vista Satelital de Alta Resolución Esri.WorldImagery (Costo $0, sin API key)
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         attr="Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, GIS User Community",
-        name="🛰️ Satélite Google Earth Style (Esri WorldImagery)",
+        name=f"{svg_icons['satellite']} Satélite Google Earth Style (Esri WorldImagery)",
         max_zoom=19,
         control=True,
         show=True,
@@ -987,7 +1009,7 @@ def generate_cartographic_visualizations(
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
         attr="Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, INEGI",
-        name="🗺️ Mapa Topográfico y División Política (Esri WorldTopoMap)",
+        name=f"{svg_icons['topo']} Mapa Topográfico y División Política (Esri WorldTopoMap)",
         max_zoom=19,
         control=True,
         show=False,
@@ -997,7 +1019,7 @@ def generate_cartographic_visualizations(
     folium.TileLayer(
         tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
         attr="&copy; OpenStreetMap contributors",
-        name="🏙️ OpenStreetMap Urbano",
+        name=f"{svg_icons['city']} OpenStreetMap Urbano",
         max_zoom=19,
         control=True,
         show=False,
@@ -1007,7 +1029,7 @@ def generate_cartographic_visualizations(
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
         attr="Labels &copy; Esri &mdash; World Boundaries and Places Reference",
-        name="🏷️ Etiquetas Híbridas de Calles y Colonias (Esri Reference Overlay)",
+        name=f"{svg_icons['labels']} Etiquetas Híbridas de Calles y Colonias (Esri Reference)",
         max_zoom=19,
         overlay=True,
         control=True,
@@ -1017,7 +1039,7 @@ def generate_cartographic_visualizations(
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}",
         attr="Roads &copy; Esri &mdash; World Transportation Reference",
-        name="🛣️ Red Vial Híbrida Superpuesta (Esri Transportation Overlay)",
+        name=f"{svg_icons['road']} Red Vial Híbrida Superpuesta (Esri Transportation)",
         max_zoom=19,
         overlay=True,
         control=True,
@@ -1070,7 +1092,7 @@ def generate_cartographic_visualizations(
 
     # 1) Primero agregamos la Capa de Radios de 500m DENUE (en el fondo, con interactive=False para NO bloquear clics)
     fg_buffers_denue = folium.FeatureGroup(
-        name="🏪 Equipamiento Económico DENUE (Radios 500m INEGI - ZMVM & Colima)", show=True
+        name=f"{svg_icons['store']} Equipamiento Económico DENUE (Radios 500m INEGI - ZMVM & Colima)", show=True
     )
     for _, row in gdf_unified.iterrows():
         folium.Circle(
@@ -1089,7 +1111,7 @@ def generate_cartographic_visualizations(
     # 2) Capa de Polígonos Coropléticos Unificados (Por encima de los radios DENUE para recibir todos los clics)
     #    con Etiqueta Fija de Precio (`permanent=True, direction="center"`) y Tarjeta Popup Completa al hacer clic
     fg_poligonos_unificados = folium.FeatureGroup(
-        name="🏘️ Polígonos Coropléticos Unificados ZMVM + Colima-VdeA ($/m² y Yield)", show=True
+        name=f"{svg_icons['layers']} Polígonos Coropléticos Unificados ZMVM + Colima-VdeA ($/m² y Yield)", show=True
     )
     features_colonias_search: List[Dict[str, Any]] = []
 
@@ -1106,50 +1128,51 @@ def generate_cartographic_visualizations(
         transporte_nombre = str(row.get("estacion_transporte_principal", "Nodo Vial Principal"))
         poly_coords = [(lat, lon) for lon, lat in row["geometry"].exterior.coords]
 
-        # Etiqueta permanente fija en el centroide de cada polígono: "Nombre de la Zona | $XXX/m²"
+        # Etiqueta permanente fija en el centroide de cada polígono (Plus Jakarta Sans + JetBrains Mono)
         permanent_label_html = (
             f"<span class='tdl-price-tag'>"
-            f"{colonia_name} <span style='color:#94A3B8;'>|</span> "
-            f"<span style='color:#FDE047;font-weight:800;'>${precio_val:,.0f}/m²</span>"
+            f"<span class='tdl-zone-label'>{colonia_name}</span>"
+            f"<span class='tdl-zone-sep'>|</span>"
+            f"<span class='tdl-zone-price'>${precio_val:,.0f}/m²</span>"
             f"</span>"
         )
 
-        # Tarjeta Popup HTML limpia y completa al hacer clic en cualquier zona
+        # Tarjeta Popup HTML Ejecutiva (Diseño Figma TDL PropTech — 0 Emojis, Íconos SVG)
         popup_card = f"""
-        <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 335px; padding: 2px;">
-            <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 10px 12px; border-radius: 8px 8px 0 0; border-bottom: 3px solid {col_color};">
-                <div style="font-size: 11px; color: #38BDF8; font-weight: 700; text-transform: uppercase;">🌎 Región: {region_val}</div>
-                <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.2px;">📍 {colonia_name}</div>
-                <div style="font-size: 11.5px; color: #CBD5E1; margin-top: 2px;">🏛️ <b>Alcaldía/Municipio:</b> {row['alcaldia_municipio']}</div>
-                <div style="display: inline-block; margin-top: 6px; background: rgba(255,255,255,0.14); color: #FDE047; padding: 2px 8px; border-radius: 12px; font-size: 10.5px; font-weight: 700;">
-                    ⭐ {perfil_negocio}
+        <div class="tdl-popup-card">
+            <div class="tdl-popup-header" style="border-bottom: 3px solid {col_color};">
+                <div class="tdl-popup-region">{svg_icons['globe']} <span>REGIÓN {region_val}</span></div>
+                <div class="tdl-popup-title">{svg_icons['pin']} <span>{colonia_name}</span></div>
+                <div class="tdl-popup-muni">{svg_icons['landmark']} <span><b>Alcaldía / Municipio:</b> {row['alcaldia_municipio']}</span></div>
+                <div class="tdl-popup-badge">
+                    {svg_icons['award']} <span>{perfil_negocio}</span>
                 </div>
             </div>
-            <div style="border: 1px solid #CBD5E1; border-top: none; padding: 10px 12px; border-radius: 0 0 8px 8px; background: #FFFFFF;">
-                <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Renta Promedio:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #DC2626; font-size: 13px;">${precio_val:,.2f} MXN/m²</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Renta Mensual Estimada (dept. 70 m²):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #0F172A; font-size: 12.5px;">${renta_70m2_val:,.0f} MXN/mes</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Yield Bruto Anual (%):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 800; color: #059669; font-size: 13px;">{yield_val:.2f}% anual</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Densidad DENUE (comercios a 500m):</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-weight: 700; color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} comercios</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #F1F5F9;">
-                        <td style="padding: 5px 0; color: #475569;"><b>Transporte / Vialidad Cercana:</b></td>
-                        <td style="padding: 5px 0; text-align: right; color: #0284C7; font-weight: 600;">{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)</td>
+            <div class="tdl-popup-body">
+                <table class="tdl-popup-table">
+                    <tr>
+                        <td class="tdl-lbl">Renta Promedio:</td>
+                        <td class="tdl-val tdl-mono" style="color: #EF4444; font-weight: 700;">${precio_val:,.2f} MXN/m²</td>
                     </tr>
                     <tr>
-                        <td style="padding: 5px 0; color: #64748B; font-size: 10.5px;"><b>AGEB INEGI / Linaje Bronce:</b></td>
-                        <td style="padding: 5px 0; text-align: right; font-family: monospace; font-size: 10.5px;">{row['cve_ageb_ref']} ({str(row['linaje_hash_lote_bronce'])[:11]})</td>
+                        <td class="tdl-lbl"><b>Renta Mensual Estimada (dept. 70 m²):</b></td>
+                        <td class="tdl-val tdl-mono" style="color: #0F172A; font-weight: 700;">${renta_70m2_val:,.0f} MXN/mes</td>
+                    </tr>
+                    <tr>
+                        <td class="tdl-lbl">Yield Bruto Anual (%):</td>
+                        <td class="tdl-val tdl-mono" style="color: #059669; font-weight: 700;">{yield_val:.2f}% anual</td>
+                    </tr>
+                    <tr>
+                        <td class="tdl-lbl">Densidad DENUE (comercios a 500m):</td>
+                        <td class="tdl-val tdl-mono" style="color: #0F172A;">{int(row['denue_unidades_buffer_500m'])} comercios</td>
+                    </tr>
+                    <tr>
+                        <td class="tdl-lbl">Transporte / Vialidad Cercana:</td>
+                        <td class="tdl-val" style="color: #0284C7; font-weight: 600;">{transporte_nombre} ({row['dist_transporte_masivo_m']:.0f} m)</td>
+                    </tr>
+                    <tr class="tdl-last-row">
+                        <td class="tdl-lbl-muted">AGEB INEGI / Linaje Bronce:</td>
+                        <td class="tdl-val tdl-mono" style="font-size: 10.5px; color: #64748B;">{row['cve_ageb_ref']} ({str(row['linaje_hash_lote_bronce'])[:11]})</td>
                     </tr>
                 </table>
             </div>
@@ -1170,7 +1193,7 @@ def generate_cartographic_visualizations(
                 sticky=False,
                 class_name="tdl-zone-tooltip",
             ),
-            popup=folium.Popup(popup_card, max_width=360),
+            popup=folium.Popup(popup_card, max_width=365),
         ).add_to(fg_poligonos_unificados)
 
         features_colonias_search.append(
@@ -1190,7 +1213,7 @@ def generate_cartographic_visualizations(
     # Capa invisible auxiliar únicamente para el buscador de colonias (interactive=False para no interceptar clics)
     search_geojson_layer = folium.GeoJson(
         {"type": "FeatureCollection", "features": features_colonias_search},
-        name="🔎 Índice de Búsqueda de Colonias",
+        name="Índice de Búsqueda de Colonias",
         control=False,
         style_function=lambda _feat: {
             "fillOpacity": 0.0,
@@ -1200,11 +1223,11 @@ def generate_cartographic_visualizations(
         },
     ).add_to(m)
 
-    # Buscador interactivo de colonias de ambas regiones (folium.plugins.Search)
+    # Buscador interactivo de colonias de ambas regiones (folium.plugins.Search — texto limpio sin emojis)
     Search(
         layer=search_geojson_layer,
         geom_type="Polygon",
-        placeholder="🔍 Buscar colonia en ZMVM o Colima (ej. Polanco, Roma, Esmeralda Norte, La Comarca)...",
+        placeholder="Buscar colonia o municipio en ZMVM o Colima (ej. Polanco, Roma, Esmeralda Norte)...",
         collapsed=False,
         search_label="search_label",
         weight=3,
@@ -1213,7 +1236,7 @@ def generate_cartographic_visualizations(
 
     # 3) Cluster Unificado de Estaciones de Transporte Masivo y Nodos Viales (OpenStreetMap)
     fg_transporte_cluster = MarkerCluster(
-        name="🚇 Estaciones de Transporte y Nodos Viales (OSM - ZMVM & Colima)",
+        name=f"{svg_icons['transit']} Estaciones de Transporte y Nodos Viales (OSM - ZMVM & Colima)",
         options={"maxClusterRadius": 28, "disableClusteringAtZoom": 13},
     )
     for _, est in gdf_nodos_unified.iterrows():
@@ -1225,35 +1248,54 @@ def generate_cartographic_visualizations(
             fill=True,
             fill_color="#38BDF8",
             fill_opacity=0.95,
-            tooltip=f"🚇 [{est['region']}] {est['nombre']} ({est['sistema']})",
+            tooltip=f"<span style='font-family:Plus Jakarta Sans,sans-serif;font-weight:600;'>{svg_icons['transit']} [{est['region']}] {est['nombre']} ({est['sistema']})</span>",
             popup=folium.Popup(
-                f"<div style='font-family:Segoe UI,sans-serif;width:230px;'>"
-                f"<b>🚇 {est['nombre']}</b><br>"
+                f"<div style='font-family:Plus Jakarta Sans,system-ui,sans-serif;width:245px;padding:4px;color:#0F172A;'>"
+                f"<div style='font-weight:800;font-size:13px;display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#0B1120;'>{svg_icons['transit']} <span>{est['nombre']}</span></div>"
+                f"<div style='font-size:11.5px;color:#334155;line-height:1.55;'>"
                 f"<b>Región:</b> {est['region']}<br>"
-                f"<b>Sistema/Tipo:</b> {est['sistema']}<br>"
-                f"<b>ID Nodo OSM:</b> {est['id_estacion']}<br>"
-                f"<b>Coords:</b> {est['lat']:.4f}, {est['lon']:.4f}</div>",
-                max_width=245,
+                f"<b>Sistema / Tipo:</b> {est['sistema']}<br>"
+                f"<b>ID Nodo OSM:</b> <span style='font-family:JetBrains Mono,monospace;font-size:11px;'>{est['id_estacion']}</span><br>"
+                f"<b>Coordenadas:</b> <span style='font-family:JetBrains Mono,monospace;font-size:11px;'>{est['lat']:.4f}, {est['lon']:.4f}</span>"
+                f"</div></div>",
+                max_width=260,
             ),
         ).add_to(fg_transporte_cluster)
     fg_transporte_cluster.add_to(m)
 
     folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
-    # Estilos CSS para las etiquetas fijas (`permanent=True`) + Script JS que las oculta automáticamente cuando zoom < 11
-    # + Control Flotante de Navegación Rápida (`flyTo` / `fitBounds`)
+    # Tipografía Figma (Plus Jakarta Sans + JetBrains Mono), estilos ejecutivos de tarjetas/controles y script de zoom
+    fonts_head_html = """
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    """
+    m.get_root().header.add_child(folium.Element(fonts_head_html))
+
     dashboard_overlay_html = f"""
     <style>
+        .tdl-ico {{
+            display: inline-block;
+            vertical-align: -2.5px;
+            flex-shrink: 0;
+        }}
+        .tdl-mono {{
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
+        }}
+        /* Etiquetas permanentes de precio sobre polígonos */
         .leaflet-tooltip.tdl-zone-tooltip {{
-            background-color: rgba(17, 24, 39, 0.88) !important;
+            background: rgba(11, 17, 32, 0.90) !important;
             color: #F8FAFC !important;
-            border: 1px solid rgba(253, 224, 71, 0.65) !important;
-            border-radius: 6px !important;
-            padding: 2px 6px !important;
-            font-family: 'Segoe UI', system-ui, sans-serif !important;
-            font-size: 10px !important;
-            font-weight: 700 !important;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
+            border: 1px solid rgba(245, 158, 11, 0.72) !important;
+            border-radius: 7px !important;
+            padding: 3.5px 8px !important;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+            font-size: 10.5px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.1px !important;
+            box-shadow: 0 4px 12px rgba(2, 6, 23, 0.55) !important;
+            backdrop-filter: blur(6px);
             white-space: nowrap !important;
             pointer-events: none !important;
             transition: opacity 0.22s ease-in-out;
@@ -1261,9 +1303,226 @@ def generate_cartographic_visualizations(
         .leaflet-tooltip.tdl-zone-tooltip::before {{
             display: none !important;
         }}
+        .tdl-price-tag {{
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }}
+        .tdl-zone-label {{
+            color: #F8FAFC;
+            font-weight: 600;
+        }}
+        .tdl-zone-sep {{
+            color: #64748B;
+            font-weight: 400;
+        }}
+        .tdl-zone-price {{
+            font-family: 'JetBrains Mono', monospace;
+            color: #FBBF24;
+            font-weight: 700;
+        }}
         .tdl-hide-tooltips .leaflet-tooltip.tdl-zone-tooltip {{
             opacity: 0 !important;
             visibility: hidden !important;
+        }}
+        /* Estilizado ejecutivo de Popup Leaflet */
+        .leaflet-popup-content-wrapper {{
+            padding: 0 !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.36) !important;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }}
+        .leaflet-popup-content {{
+            margin: 0 !important;
+            width: 348px !important;
+        }}
+        .leaflet-popup-close-button {{
+            color: #CBD5E1 !important;
+            top: 8px !important;
+            right: 10px !important;
+        }}
+        .tdl-popup-card {{
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            width: 348px;
+            background: #FFFFFF;
+        }}
+        .tdl-popup-header {{
+            background: linear-gradient(135deg, #0B1120 0%, #1E293B 100%);
+            color: #F8FAFC;
+            padding: 13px 16px 12px 16px;
+        }}
+        .tdl-popup-region {{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            color: #38BDF8;
+            font-weight: 700;
+            letter-spacing: 0.65px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }}
+        .tdl-popup-title {{
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 15.5px;
+            font-weight: 800;
+            letter-spacing: -0.15px;
+            color: #FFFFFF;
+        }}
+        .tdl-popup-muni {{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            color: #CBD5E1;
+            margin-top: 4px;
+        }}
+        .tdl-popup-badge {{
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            background: rgba(30, 41, 59, 0.92);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            color: #FBBF24;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 10.5px;
+            font-weight: 600;
+        }}
+        .tdl-popup-body {{
+            padding: 11px 16px 13px 16px;
+            background: #FFFFFF;
+        }}
+        .tdl-popup-table {{
+            width: 100%;
+            font-size: 11.5px;
+            border-collapse: collapse;
+        }}
+        .tdl-popup-table tr {{
+            border-bottom: 1px solid #F1F5F9;
+        }}
+        .tdl-popup-table tr.tdl-last-row {{
+            border-bottom: none;
+        }}
+        .tdl-popup-table td {{
+            padding: 6px 0;
+        }}
+        .tdl-lbl {{
+            color: #475569;
+            font-weight: 500;
+        }}
+        .tdl-lbl-muted {{
+            color: #64748B;
+            font-size: 10.5px;
+            font-weight: 600;
+        }}
+        .tdl-val {{
+            text-align: right;
+            font-size: 12px;
+        }}
+        /* Selector de capas y barra de búsqueda Leaflet con estética Figma */
+        .leaflet-control-layers {{
+            background: rgba(11, 17, 32, 0.92) !important;
+            color: #E2E8F0 !important;
+            border: 1px solid rgba(148, 163, 184, 0.26) !important;
+            border-radius: 12px !important;
+            padding: 8px 12px !important;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+            font-size: 11.5px !important;
+            font-weight: 500 !important;
+            box-shadow: 0 10px 26px rgba(2, 6, 23, 0.45) !important;
+            backdrop-filter: blur(8px);
+        }}
+        .leaflet-control-layers-separator {{
+            border-top-color: rgba(148, 163, 184, 0.22) !important;
+        }}
+        .leaflet-control-search {{
+            background: rgba(11, 17, 32, 0.92) !important;
+            border: 1px solid rgba(56, 189, 248, 0.45) !important;
+            border-radius: 9px !important;
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35) !important;
+            padding: 2px 4px !important;
+        }}
+        .leaflet-control-search .search-input {{
+            background: transparent !important;
+            color: #F8FAFC !important;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 500 !important;
+            border: none !important;
+            outline: none !important;
+            min-width: 310px;
+        }}
+        .leaflet-control-search .search-input::placeholder {{
+            color: #94A3B8 !important;
+        }}
+        /* Tarjetas flotantes Fly-To y Leyenda */
+        .tdl-fly-panel {{
+            position: fixed;
+            top: 128px;
+            left: 12px;
+            width: 256px;
+            background: rgba(11, 17, 32, 0.94);
+            color: #F8FAFC;
+            border: 1px solid rgba(56, 189, 248, 0.38);
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.50);
+            padding: 12px 13px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }}
+        .tdl-fly-title {{
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10.5px;
+            font-weight: 800;
+            color: #38BDF8;
+            margin-bottom: 9px;
+            letter-spacing: 0.65px;
+            text-transform: uppercase;
+        }}
+        .tdl-fly-btn {{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            width: 100%;
+            background: rgba(30, 41, 59, 0.90);
+            color: #F8FAFC;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 8px;
+            padding: 8px 11px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.18s ease;
+        }}
+        .tdl-fly-btn:hover {{
+            background: rgba(51, 65, 85, 0.95);
+            border-color: #38BDF8;
+            transform: translateY(-1px);
+        }}
+        .tdl-legend-panel {{
+            position: fixed;
+            bottom: 22px;
+            left: 18px;
+            width: 358px;
+            background: rgba(11, 17, 32, 0.93);
+            color: #F8FAFC;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 13px;
+            box-shadow: 0 14px 32px rgba(2, 6, 23, 0.52);
+            padding: 14px 16px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
         }}
     </style>
     <script>
@@ -1285,74 +1544,43 @@ def generate_cartographic_visualizations(
             }}, 250);
         }});
     </script>
-    <div style="
-        position: fixed;
-        top: 128px;
-        left: 12px;
-        width: 245px;
-        background: rgba(15, 23, 42, 0.94);
-        color: #F8FAFC;
-        border: 1px solid #38BDF8;
-        border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
-        padding: 10px 12px;
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        z-index: 9999;
-        backdrop-filter: blur(6px);
-    ">
-        <div style="font-size: 11.5px; font-weight: 800; color: #38BDF8; margin-bottom: 6px; letter-spacing: 0.3px;">
-            🧭 NAVEGACIÓN RÁPIDA (FLY-TO)
+    <div class="tdl-fly-panel">
+        <div class="tdl-fly-title">
+            {svg_icons['compass']} <span>NAVEGACIÓN RÁPIDA (FLY-TO)</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 6px;">
-            <button onclick="{map_js_var}.flyTo([19.415, -99.165], 12, {{animate: true, duration: 1.6}});"
-                style="cursor: pointer; background: linear-gradient(135deg, #0284C7, #0369A1); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
-                🏙️ ZMVM (CDMX / Edomex)
+            <button class="tdl-fly-btn" onclick="{map_js_var}.flyTo([19.415, -99.165], 12, {{animate: true, duration: 1.6}});">
+                {svg_icons['nav_sky']} <span>ZMVM (CDMX / Edomex)</span>
             </button>
-            <button onclick="{map_js_var}.flyTo([19.245, -103.725], 13, {{animate: true, duration: 1.6}});"
-                style="cursor: pointer; background: linear-gradient(135deg, #059669, #047857); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
-                🌴 Colima – Villa de Álvarez
+            <button class="tdl-fly-btn" onclick="{map_js_var}.flyTo([19.245, -103.725], 13, {{animate: true, duration: 1.6}});">
+                {svg_icons['nav_emerald']} <span>Colima – Villa de Álvarez</span>
             </button>
-            <button onclick="{map_js_var}.fitBounds([[19.20, -103.80], [19.55, -99.10]], {{animate: true, duration: 1.6}});"
-                style="cursor: pointer; background: linear-gradient(135deg, #4F46E5, #4338CA); color: white; border: none; border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 700; text-align: left; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
-                🇲🇽 Vista Nacional (Ambas)
+            <button class="tdl-fly-btn" onclick="{map_js_var}.fitBounds([[19.20, -103.80], [19.55, -99.10]], {{animate: true, duration: 1.6}});">
+                {svg_icons['nav_indigo']} <span>Vista Nacional (Ambas)</span>
             </button>
         </div>
     </div>
 
-    <div style="
-        position: fixed;
-        bottom: 22px;
-        left: 18px;
-        width: 340px;
-        background: rgba(15, 23, 42, 0.92);
-        color: #F8FAFC;
-        border: 1px solid #334155;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-        padding: 12px 15px;
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        z-index: 9999;
-        backdrop-filter: blur(6px);
-    ">
-        <div style="font-size: 13px; font-weight: 800; color: #38BDF8; margin-bottom: 2px;">
-            🛰️ Observatorio Maestro Unificado (ZMVM & Colima)
+    <div class="tdl-legend-panel">
+        <div style="display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 800; color: #F8FAFC; margin-bottom: 2px;">
+            {svg_icons['satellite']} <span>Observatorio Maestro Unificado (ZMVM &amp; Colima)</span>
         </div>
-        <div style="font-size: 10.5px; color: #94A3B8; margin-bottom: 8px;">
-            Esri WorldImagery + DENUE (INEGI) + OpenStreetMap (24 Zonas)
+        <div style="font-size: 10.5px; color: #94A3B8; margin-bottom: 10px; font-weight: 500;">
+            Esri WorldImagery • DENUE (INEGI) • OpenStreetMap (24 Zonas)
         </div>
 
-        <div style="font-size: 11px; font-weight: 700; color: #E2E8F0; margin-bottom: 5px;">
-            📊 Escala Coroplética — Renta Promedio ($/m²)
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; color: #38BDF8; margin-bottom: 6px; letter-spacing: 0.2px;">
+            {svg_icons['bar_chart']} <span>Escala Coroplética — Renta Promedio ($/m²)</span>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 3px; font-size: 10.5px; margin-bottom: 8px;">
-            <div><span style="display:inline-block;width:12px;height:12px;background:#EF4444;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Prime (&ge;$500 ZMVM | &ge;$210 Colima):</b> Polanco, Esmeralda Norte</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#F97316;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Cosmopolita / Norte ($430+ ZMVM | $185+ Col):</b> Roma, La Comarca</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#EAB308;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Consolidado ($340+ ZMVM | $165+ Col):</b> Del Valle, Real Bugambilias</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#22C55E;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Residencial Medio ($290–$339 ZMVM):</b> Narvarte, S. Pedro Pinos</div>
-            <div><span style="display:inline-block;width:12px;height:12px;background:#06B6D4;border-radius:3px;vertical-align:middle;margin-right:6px;"></span><b>Alto Yield (&lt;$290 ZMVM | UdeC Colima):</b> Sta. María, Zona Universidad</div>
+        <div style="display: flex; flex-direction: column; gap: 4.5px; font-size: 10.5px; color: #E2E8F0; margin-bottom: 10px;">
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;background:#EF4444;border-radius:3px;flex-shrink:0;"></span><span><b>Prime (&ge;$500 ZMVM | &ge;$210 Colima):</b> Polanco, Esmeralda Norte</span></div>
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;background:#F97316;border-radius:3px;flex-shrink:0;"></span><span><b>Cosmopolita / Norte ($430+ ZMVM | $185+ Col):</b> Roma, La Comarca</span></div>
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;background:#EAB308;border-radius:3px;flex-shrink:0;"></span><span><b>Consolidado ($340+ ZMVM | $165+ Col):</b> Del Valle, Real Bugambilias</span></div>
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;background:#22C55E;border-radius:3px;flex-shrink:0;"></span><span><b>Residencial Medio ($290–$339 ZMVM):</b> Narvarte, S. Pedro Pinos</span></div>
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;background:#06B6D4;border-radius:3px;flex-shrink:0;"></span><span><b>Alto Yield (&lt;$290 ZMVM | UdeC Colima):</b> Sta. María, Zona Universidad</span></div>
         </div>
-        <div style="border-top: 1px solid #334155; padding-top: 6px; font-size: 10px; color: #CBD5E1;">
-            💡 <i>Haz clic en cualquier polígono para abrir su tarjeta completa (incluyendo renta estimada de depto. 70 m²). Las etiquetas se ocultan automáticamente en zoom lejano (&lt;11).</i>
+        <div style="display: flex; align-items: flex-start; gap: 6px; border-top: 1px solid rgba(148, 163, 184, 0.20); padding-top: 7px; font-size: 10px; color: #94A3B8; line-height: 1.45;">
+            {svg_icons['info']} <span>Haz clic en cualquier polígono para abrir su ficha ejecutiva (incluye renta estimada de depto. 70 m² y linaje SHA-256). Las etiquetas se ocultan automáticamente en zoom lejano (&lt;11).</span>
         </div>
     </div>
     """

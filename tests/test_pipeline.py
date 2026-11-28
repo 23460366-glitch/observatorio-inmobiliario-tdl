@@ -24,6 +24,10 @@ from src.analytics_e3_e4 import (
     run_time_series_forecasting_e1,
     simulate_live_ingestion_batch,
 )
+from src.benchmark_optimizacion_e3 import (
+    load_or_run_e3_optimization_report,
+    run_e3_pipeline_optimization_benchmark,
+)
 from src.extract_bronze import (
     check_robots_txt,
     fetch_banxico_macro_series,
@@ -263,6 +267,39 @@ def test_colima_villa_de_alvarez_expansion_and_lineage():
     mv_col = run_multivariate_pca_manova_e3(region="COLIMA")
     assert len(mv_col["pca"]["scores_colonias_df"]) == 8
     assert mv_col["pca"]["varianza_acumulada_2pc_pct"] > 70.0
+
+
+def test_e3_optimization_benchmark_and_svg_map():
+    """
+    Verifica los entregables de E3 (benchmark cuantitativo Antes vs. Después en tiempo, memoria y errores,
+    `docs/E3/datasheet.md`, `docs/relatoria-E3.md`, `docs/E3/ENTREGA.md`) y el rediseño SVG sin emojis del mapa E2.
+    """
+    bench = run_e3_pipeline_optimization_benchmark(n_repeats=2)
+    cached_bench = load_or_run_e3_optimization_report()
+    assert cached_bench["n_registros_evaluados_por_corrida"] >= 2000
+
+    assert bench["metricas_tiempo_ms"]["reduccion_tiempo_pct"] > 50.0
+    assert bench["metricas_memoria"]["reduccion_pico_heap_pct"] > 30.0
+    assert bench["metricas_memoria"]["reduccion_dataframe_ram_pct"] > 50.0
+    assert bench["metricas_calidad_y_errores"]["errores_infiltrados_despues"] == 0
+    assert bench["metricas_calidad_y_errores"]["reduccion_errores_pct"] == 100.0
+
+    for rel_path in (
+        "docs/E3/datasheet.md",
+        "docs/E3/ENTREGA.md",
+        "docs/relatoria-E3.md",
+        "data/gold/inmobiliario/comparativa_optimizacion_e3.csv",
+        "data/gold/inmobiliario/reporte_optimizacion_e3.json",
+    ):
+        p = BASE_DIR / rel_path
+        assert p.exists() and p.stat().st_size > 200, f"Falta entregable requerido: {rel_path}"
+
+    mapa_html = (BASE_DIR / "docs/E2/mapa_interactivo_zmvm.html").read_text(encoding="utf-8")
+    assert "<svg" in mapa_html
+    assert "Plus Jakarta Sans" in mapa_html
+    assert "JetBrains Mono" in mapa_html
+    for forbidden_emoji in ("🛰️", "🗺️", "🏙️", "🧭", "🌴", "🇲🇽", "🏪", "🚇", "📍", "🌎", "📊", "💡"):
+        assert forbidden_emoji not in mapa_html, f"Emoji no permitido en el mapa E2: {forbidden_emoji}"
 
 
 def test_entrypoints_and_zero_hardcoded_secrets():

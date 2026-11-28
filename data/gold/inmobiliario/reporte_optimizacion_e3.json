@@ -1,0 +1,98 @@
+{
+  "entregable": "E3 — Optimización Medida del Pipeline (Antes vs. Después)",
+  "fecha_medicion_utc": "2026-11-28T06:17:01.202871+00:00",
+  "n_registros_evaluados_por_corrida": 2163,
+  "n_corridas_repetidas": 2,
+  "tecnicas_aplicadas": [
+    "Reemplazo de iteración fila-a-fila (iterrows) por vectorización en C con Pandas/NumPy",
+    "Cruce hash indexado O(N) con Series.map() en lugar de búsqueda lineal O(N*M) sobre series macro",
+    "Expresión regular precompilada y conversión vectorizada de cadenas monetarias",
+    "Puerta de Calidad automática vectorizada (Pandera + máscaras booleanas) con aislamiento en cuarentena",
+    "Downcasting de tipos numéricos (float64 -> float32, int64 -> int16) y codificación category + reducción columnar"
+  ],
+  "metricas_tiempo_ms": {
+    "media_antes_ms": 6534.47,
+    "media_despues_ms": 1005.46,
+    "p95_antes_ms": 6741.63,
+    "p95_despues_ms": 1057.88,
+    "reduccion_tiempo_pct": 84.61,
+    "speedup_factor_x": 6.5
+  },
+  "metricas_memoria": {
+    "tracemalloc_pico_antes_mib": 9.494,
+    "tracemalloc_pico_despues_mib": 2.561,
+    "reduccion_pico_heap_pct": 73.03,
+    "dataframe_ram_antes_kib": 4110.08,
+    "dataframe_ram_despues_kib": 222.61,
+    "reduccion_dataframe_ram_pct": 94.58
+  },
+  "metricas_calidad_y_errores": {
+    "desglose_antes": {
+      "duplicados_no_filtrados": 3,
+      "superficie_fuera_rango_infiltrada": 3,
+      "renta_invalida_infiltrada": 2,
+      "categorias_no_homologadas": 48,
+      "celdas_nulas_sin_imputar": 151,
+      "total_errores_infiltrados": 207
+    },
+    "desglose_despues": {
+      "duplicados_no_filtrados": 0,
+      "superficie_fuera_rango_infiltrada": 0,
+      "renta_invalida_infiltrada": 0,
+      "categorias_no_homologadas": 0,
+      "celdas_nulas_sin_imputar": 0,
+      "total_errores_infiltrados": 0,
+      "registros_aislados_en_cuarentena": 8
+    },
+    "errores_infiltrados_antes": 207,
+    "errores_infiltrados_despues": 0,
+    "reduccion_errores_pct": 100.0
+  },
+  "tabla_comparativa": [
+    {
+      "dimension": "Tiempo de Ejecución Medio (ms)",
+      "antes_pipeline_base": 6534.47,
+      "despues_pipeline_optimizado_e3": 1005.46,
+      "unidad": "ms",
+      "mejora_absoluta": 5529.01,
+      "mejora_relativa_pct": 84.61,
+      "factor_mejora": "6.5x más rápido"
+    },
+    {
+      "dimension": "Latencia P95 del Lote Completo (ms)",
+      "antes_pipeline_base": 6741.63,
+      "despues_pipeline_optimizado_e3": 1057.88,
+      "unidad": "ms",
+      "mejora_absoluta": 5683.75,
+      "mejora_relativa_pct": 84.31,
+      "factor_mejora": "6.37x menor P95"
+    },
+    {
+      "dimension": "Memoria Dinámica Pico (tracemalloc Heap)",
+      "antes_pipeline_base": 9.494,
+      "despues_pipeline_optimizado_e3": 2.561,
+      "unidad": "MiB",
+      "mejora_absoluta": 6.933,
+      "mejora_relativa_pct": 73.03,
+      "factor_mejora": "-73.03% pico Heap"
+    },
+    {
+      "dimension": "Huella en RAM del Dataset Procesado",
+      "antes_pipeline_base": 4110.08,
+      "despues_pipeline_optimizado_e3": 222.61,
+      "unidad": "KiB",
+      "mejora_absoluta": 3887.47,
+      "mejora_relativa_pct": 94.58,
+      "factor_mejora": "-94.58% huella RAM"
+    },
+    {
+      "dimension": "Errores y Defectos Infiltrados a Capa Analítica",
+      "antes_pipeline_base": 207,
+      "despues_pipeline_optimizado_e3": 0,
+      "unidad": "defectos",
+      "mejora_absoluta": 207,
+      "mejora_relativa_pct": 100.0,
+      "factor_mejora": "100% interceptados / imputados"
+    }
+  ]
+}
